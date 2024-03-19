@@ -1,0 +1,27 @@
+/**
+  |============================
+  | include css partials with
+  | default @import url()
+  |============================
+*/
+@import 'node_modules/modern-normalize/modern-normalize.css';
+@import './main.css';
+
+@font-face {
+  font-family: "Poppins";
+  src: url('../fonts/Poppins/Poppins-Regular.ttf') format('ttf'),
+       url('../fonts/Poppins/Poppins-Bold.ttf') format('ttf'),
+       url('../fonts/Poppins/Poppins-SemiBold.ttf') format('ttf'),
+}
+  :root {
+  --font-family: "Poppins";
+  --primarily-font-size: 16px;
+  --secondary-font-size: 18px;  
+  --primarily-line-height: 24px;
+  --secondary-line-height: 21px;  
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 800;
+  --black-color: #242424;  
+  --white-color: #FBFBFB;
+}
