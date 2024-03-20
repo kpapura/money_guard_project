@@ -3,11 +3,14 @@ import {
   addTransactionThunk,
   deleteTransactionThunk,
   editTransactionThunk,
+  fetchTransactionCategoriesThunk,
   fetchTransactionsDataThunk,
 } from './operations';
 
 const initialState = {
   transactionsList: [],
+  transactionCategories: [],
+  transactionSummaryController: null,
   loading: false,
   error: false,
 };
@@ -43,12 +46,28 @@ const transactionsSlice = createSlice({
         state.transactionsList.splice(transactionIndex, 1, payload);
         state.loading = false;
       })
+      .addCase(
+        fetchTransactionCategoriesThunk.fulfilled,
+        (state, { payload }) => {
+          state.transactionCategories = payload;
+          state.loading = false;
+        }
+      )
+      .addCase(
+        fetchTransactionSummaryController.fulfilled,
+        (state, { payload }) => {
+          state.transactionSummaryController = payload;
+          state.loading = false;
+        }
+      )
       .addMatcher(
         isAnyOf(
           fetchTransactionsDataThunk.pending,
           deleteTransactionThunk.pending,
           addTransactionThunk.pending,
-          editTransactionThunk.pending
+          editTransactionThunk.pending,
+          fetchTransactionCategoriesThunk.pending,
+          fetchTransactionSummaryController.pending
         ),
         (state, { payload }) => {
           state.loading = true;
@@ -60,7 +79,9 @@ const transactionsSlice = createSlice({
           fetchTransactionsDataThunk.rejected,
           deleteTransactionThunk.rejected,
           addTransactionThunk.rejected,
-          editTransactionThunk.rejected
+          editTransactionThunk.rejected,
+          fetchTransactionCategoriesThunk.rejected,
+          fetchTransactionSummaryController.rejected
         ),
         (state, { payload }) => {
           state.error = payload;
