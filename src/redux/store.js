@@ -39,3 +39,35 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { configureStore } from '@reduxjs/toolkit';
+// import { persistStore, persistReducer } from 'redux-persist';
+// import storage from 'redux-persist/lib/storage'; 
+// import currencyReducer from './currencyRate/currencyRateSlice';
+
+// const persistConfig = {
+//   key: 'root',
+//   storage,
+// };
+
+// const persistedReducer = persistReducer(persistConfig, currencyReducer);
+
+// export const store = configureStore({
+//   reducer: {
+//     currency: persistedReducer,
+//   },
+// });
+
+// export const persistor = persistStore(store);
