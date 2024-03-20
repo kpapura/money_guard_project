@@ -30,6 +30,7 @@
     "redux-persist": "^6.0.0",
     "vite-plugin-full-reload": "^1.0.5",
     "vite-plugin-html-inject": "^1.0.1",
-    "yup": "^1.4.0"
+    "yup": "^1.4.0",
+    "axios": "^1.6.7"
   }
 }
