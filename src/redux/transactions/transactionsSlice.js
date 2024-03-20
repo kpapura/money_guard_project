@@ -23,6 +23,7 @@ const transactionsSlice = createSlice({
     selectTransactions: state => state.transactionsList,
     selectIsLoading: state => state.loading,
     selectIsError: state => state.error,
+    selectTransactionCategories: state => state.transactionCategories,
   },
   extraReducers: builder => {
     builder
@@ -93,5 +94,9 @@ const transactionsSlice = createSlice({
 });
 
 export const transactionsReducer = transactionsSlice.reducer;
-export const { selectTransactions, selectIsLoading, selectIsError } =
-  transactionsSlice.selectors;
+export const {
+  selectTransactions,
+  selectIsLoading,
+  selectIsError,
+  selectTransactionCategories,
+} = transactionsSlice.selectors;
