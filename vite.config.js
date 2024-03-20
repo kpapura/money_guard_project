@@ -26,5 +26,8 @@ export default defineConfig(({ command }) => {
       outDir: '../dist',
     },
     plugins: [injectHTML(), FullReload(['./src/**/**.html'])],
+    optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom'] 
+  }
   };
 });
