@@ -5,6 +5,7 @@ import {
   editTransactionThunk,
   fetchTransactionCategoriesThunk,
   fetchTransactionsDataThunk,
+  fetchTransactionSummaryControllerThunk,
 } from './operations';
 
 const initialState = {
@@ -54,7 +55,7 @@ const transactionsSlice = createSlice({
         }
       )
       .addCase(
-        fetchTransactionSummaryController.fulfilled,
+        fetchTransactionSummaryControllerThunk.fulfilled,
         (state, { payload }) => {
           state.transactionSummaryController = payload;
           state.loading = false;
@@ -67,7 +68,7 @@ const transactionsSlice = createSlice({
           addTransactionThunk.pending,
           editTransactionThunk.pending,
           fetchTransactionCategoriesThunk.pending,
-          fetchTransactionSummaryController.pending
+          fetchTransactionSummaryControllerThunk.pending
         ),
         (state, { payload }) => {
           state.loading = true;
@@ -81,7 +82,7 @@ const transactionsSlice = createSlice({
           addTransactionThunk.rejected,
           editTransactionThunk.rejected,
           fetchTransactionCategoriesThunk.rejected,
-          fetchTransactionSummaryController.rejected
+          fetchTransactionSummaryControllerThunk.rejected
         ),
         (state, { payload }) => {
           state.error = payload;
