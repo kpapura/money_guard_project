@@ -7,7 +7,6 @@ export const fetchTransactionsDataThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await walletApi.get('transactions');
-      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -20,8 +19,6 @@ export const deleteTransactionThunk = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const { data } = await walletApi.delete(`transactions/${id}`);
-      console.log(data);
-
       return data.id;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -34,8 +31,6 @@ export const addTransactionThunk = createAsyncThunk(
   async (body, thunkAPI) => {
     try {
       const { data } = await walletApi.post('transactions', body);
-      console.log(data);
-
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -48,8 +43,30 @@ export const editTransactionThunk = createAsyncThunk(
   async (body, thunkAPI) => {
     try {
       const { data } = await walletApi.patch(`/transactions/${body.id}`, body);
-      console.log(data);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
+export const fetchTransactionCategoriesThunk = createAsyncThunk(
+  'fetchTransactionCategories',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await walletApi.get('transaction-categories');
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchTransactionSummaryControllerThunk = createAsyncThunk(
+  'fetchTransactionSummaryController',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await walletApi.get('transactions-summary');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
