@@ -10,8 +10,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <BrowserRouter basename='/money_guard_project'>
+  // <React.StrictMode>
+    <BrowserRouter basename='/money_guard_project/'>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <App />
@@ -19,5 +19,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </PersistGate>
       </Provider>
     </BrowserRouter>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
