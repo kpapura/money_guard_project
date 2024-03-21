@@ -25,3 +25,7 @@
   --black-color: #242424;  
   --white-color: #FBFBFB;
 }
+body{
+  font-size: var(--font-family);
+  font-weight: var(--font-weight-regular);
+}
