@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import Layout from './Layout/Layout';
 import Register from '../pages/Register/Register';
 import StatisticsTab from '../pages/StatisticsTab/StatisticsTab';
+import "modern-normalize"
 
 function App() {
   return (
