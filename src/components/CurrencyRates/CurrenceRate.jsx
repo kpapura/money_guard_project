@@ -1,21 +1,18 @@
 // import React, { useEffect } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
 
-
 // // import image from '../img/currency_mobile.webp';
 
 // import s from './CurrenceRate.module.css'
 // import { fetchCurrencyRate } from '../../redux/currencyRate/operations';
 
 // function CurrencyRates() {
-  
+
 //   // const currencyRate = useSelector(state => state.currency.currencyRate);
 
 //   // if (!currencyRate) {
 //   //   return <p>Loading...</p>;
 //   // }
-
-  
 
 //   return (
 //     <div className={s.wrapper}>
@@ -40,7 +37,7 @@
 //         </ul> */}
 //           {/* )} */}
 //           {/* <img src={image} alt="" /> */}
-          
+
 //       {/* <img src="../img/currency_mobile.webp" alt="картинка відсутня" /> */}
 //     </div>
 //   );
@@ -48,30 +45,20 @@
 
 // export default CurrencyRates;
 
-
-
-
-
-
-
-
-
 import React from 'react';
 import { useSelector } from 'react-redux';
 
 // import image from '../img/currency_mobile.webp';
-
-import s from './CurrenceRate.module.css'
+import {
+  selectUsdRate,
+  selectEurRate,
+  selectLastFetchTime,
+} from '../../redux/currencyRate/currencyRateSlice';
+import s from './CurrenceRate.module.css';
 
 function CurrencyRates() {
-  const currencyRate = useSelector(state => state.currency.currencyRate);
-
-  if (!currencyRate) {
-    return <p>Loading...</p>;
-  }
-
-  const usdRate = currencyRate.find(rate => rate.currencyCodeA === 840 && rate.currencyCodeB === 980);
-  const eurRate = currencyRate.find(rate => rate.currencyCodeA === 978 && rate.currencyCodeB === 980);
+  const usdRate = useSelector(selectUsdRate);
+  const eurRate = useSelector(selectEurRate);
 
   return (
     <div className={s.wrapper}>
@@ -93,9 +80,9 @@ function CurrencyRates() {
           <li className={s.rowItem}>{eurRate.rateBuy}</li>
           <li className={s.rowItem}>{eurRate.rateSell}</li>
         </ul>
-          )}
-          {/* <img src={image} alt="" /> */}
-          
+      )}
+      {/* <img src={image} alt="" /> */}
+
       {/* <img src="../img/currency_mobile.webp" alt="картинка відсутня" /> */}
     </div>
   );

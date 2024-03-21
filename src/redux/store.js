@@ -22,8 +22,6 @@
 //   whitelist: ['token', 'lastFetchTime'],
 // };
 
-
-
 // export const store = configureStore({
 //   reducer: {
 //     auth:  persistReducer(persistConfig, authReducer),
@@ -42,12 +40,6 @@
 
 // export const persistor = persistStore(store);
 
-
-
-
-
-
-
 import { configureStore } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
@@ -62,7 +54,7 @@ import {
 
 import { authReducer } from './auth/authSlice';
 import { transactionsReducer } from './transactions/transactionsSlice';
-import currencyReducer from '../redux/currencyRate/currencyRateSlice';
+import { currencyReducer } from '../redux/currencyRate/currencyRateSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -77,7 +69,10 @@ const currencyPersistConfig = {
 };
 
 const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
-const persistedCurrencyReducer = persistReducer(currencyPersistConfig, currencyReducer);
+const persistedCurrencyReducer = persistReducer(
+  currencyPersistConfig,
+  currencyReducer
+);
 
 export const store = configureStore({
   reducer: {
@@ -95,11 +90,3 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-
-
-
-
-
-
-
-
