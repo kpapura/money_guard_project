@@ -5,6 +5,7 @@ import {
   editTransactionThunk,
   fetchTransactionCategoriesThunk,
   fetchTransactionsDataThunk,
+  fetchTransactionSummaryControllerThunk,
 } from './operations';
 
 const initialState = {

@@ -1,0 +1,13 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  background-color: rgb(105, 105, 230, 0.7);
+  width: 534px;
+}

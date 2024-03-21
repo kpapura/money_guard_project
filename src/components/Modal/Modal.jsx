@@ -1,10 +1,11 @@
-import { useCallback, useEffect } from 'react';
-import React from 'react';
-import s from './ModalTransaction.module.css';
+import React, { useCallback, useEffect } from 'react';
+import ReactDOM from 'react-dom';
+
+import s from './Modal.module.css';
 
 const modalRoot = document.querySelector('#modal');
 
-export function ModalTransaction({ children, closeModal }) {
+const Modal = ({ closeModal, children }) => {
   const handleKeyDown = useCallback(
     e => {
       if (e.key === 'Escape') {
@@ -13,8 +14,10 @@ export function ModalTransaction({ children, closeModal }) {
     },
     [closeModal]
   );
+
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
+
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
@@ -25,16 +28,12 @@ export function ModalTransaction({ children, closeModal }) {
       closeModal();
     }
   };
-
   return ReactDOM.createPortal(
-    <div className={s.modalWrapper} onClick={handleBackdropClick}>
-      <div className={s.modalContent}>
-        <button className={s.closeButton} onClick={closeModal}>
-          x
-        </button>
-        {children}
-      </div>
+    <div onClick={handleBackdropClick} className={s.backdrop}>
+      <div className={s.modal}>{children}</div>
     </div>,
     modalRoot
   );
-}
+};
+
+export default Modal;
