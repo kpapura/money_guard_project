@@ -4,12 +4,22 @@
 
 }
 
-.income {
+.income_border {
     border-left: 5px solid rgb(255, 134, 141);
 }
 
-.expense {
+.expense_border {
     border-left: 5px solid rgb(255, 182, 39);
+}
+
+.income_text {
+    color: rgb(255, 134, 141);
+    font-weight: 600;
+}
+
+.expense_text {
+    color: rgb(255, 182, 39);
+    font-weight: 600;
 }
 
 .transactions_table_mobile {
@@ -85,4 +95,11 @@ tr:last-child {
     justify-content: flex-end;
     align-items: center;
     gap: 8px;
+}
+
+.icon_edit {
+    width: 14px;
+    height: 14px;
+    stroke: rgba(255, 255, 255, 0.6);
+    fill: transparent;
 }
