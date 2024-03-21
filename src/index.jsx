@@ -10,14 +10,14 @@ import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <BrowserRouter basename='/money_guard_project/'>
+  // <BrowserRouter basename='/money_guard_project/'>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <App />
           <ToastContainer autoClose={1500} />
       </PersistGate>
       </Provider>
-      </BrowserRouter>
+      // </BrowserRouter>
 );
 
 
