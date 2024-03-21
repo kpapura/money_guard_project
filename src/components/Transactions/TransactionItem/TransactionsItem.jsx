@@ -5,12 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteTransactionThunk } from '../../../redux/transactions/operations';
 import { selectTransactionCategories } from '../../../redux/transactions/transactionsSlice';
 import { ModalTransaction } from '../../ModalTransaction/ModalTransaction';
-import { useModal } from '../../../hooks/useModal';
 
 const TransactionsItem = ({ transaction }) => {
   const { id, transactionDate, type, categoryId, comment, amount } =
     transaction;
-  const { isOpen, open, close } = useModal();
 
   const isBigScreenOrTablet = useMediaQuery({ query: '(min-width: 768px)' });
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
@@ -25,10 +23,6 @@ const TransactionsItem = ({ transaction }) => {
 
   const handleDeleteTransaction = id => {
     dispatch(deleteTransactionThunk(id));
-  };
-
-  const handleEditTransaction = () => {
-    open();
   };
 
   const signType = type.toLowerCase() === 'income' ? '+' : '-';
@@ -72,12 +66,7 @@ const TransactionsItem = ({ transaction }) => {
                   </button>
                 </td>
                 <td>
-                  <button
-                    className={s.btn_edit}
-                    onClick={handleEditTransaction}
-                  >
-                    Edit
-                  </button>
+                  <button className={s.btn_edit}>Edit</button>
                 </td>
               </tr>
             </tbody>
@@ -98,9 +87,7 @@ const TransactionsItem = ({ transaction }) => {
           <td className={s.transaction_colum}>
             {' '}
             <div className={s.btn_wrapper}>
-              <button className={s.btn_edit} onClick={handleEditTransaction}>
-                Edit
-              </button>
+              <button className={s.btn_edit}>Edit</button>
               <button
                 className={s.btn_delete}
                 onClick={() => handleDeleteTransaction(id)}
@@ -110,13 +97,6 @@ const TransactionsItem = ({ transaction }) => {
             </div>
           </td>
         </tr>
-      )}
-      {isOpen && (
-        <ModalTransaction
-          closeModal={close}
-          content={transaction}
-          typeForm="edit"
-        />
       )}
     </>
   );

@@ -1,20 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
-import { useModal } from '../../hooks/useModal';
-import { loginThunk } from '../../redux/auth/operations';
 import {
   fetchTransactionsDataThunk,
   fetchTransactionCategoriesThunk,
 } from '../../redux/transactions/operations';
 import { selectTransactions } from '../../redux/transactions/transactionsSlice';
-import { ModalTransaction } from '../ModalTransaction/ModalTransaction';
 import TransactionsItem from './TransactionItem/TransactionsItem.jsx';
 import s from './TransactionList.module.css';
 
 const TransactionsList = () => {
-  const { isOpen, open, close } = useModal();
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -32,18 +27,6 @@ const TransactionsList = () => {
   return (
     <section className={s.transactions_section}>
       <div className={s.transactions_container}>
-        <button
-          onClick={() =>
-            dispatch(
-              loginThunk({
-                email: 'test099@gmail.com',
-                password: 'qwerty',
-              })
-            )
-          }
-        >
-          Login
-        </button>
         {isMobile && (
           <ul className={s.transactions_list}>
             {transactions.map(transaction => (
@@ -76,10 +59,7 @@ const TransactionsList = () => {
             </tbody>
           </table>
         )}
-        <button className={s.btn_add} onClick={open}>
-          +
-        </button>
-        {isOpen && <ModalTransaction closeModal={close} typeForm="add" />}
+        <button className={s.btn_add}>+</button>
       </div>
     </section>
   );
