@@ -52,42 +52,42 @@ const transactionsSlice = createSlice({
           state.transactionCategories = payload;
           state.loading = false;
         }
-      )
-      .addCase(
-        fetchTransactionSummaryController.fulfilled,
-        (state, { payload }) => {
-          state.transactionSummaryController = payload;
-          state.loading = false;
-        }
-      )
-      .addMatcher(
-        isAnyOf(
-          fetchTransactionsDataThunk.pending,
-          deleteTransactionThunk.pending,
-          addTransactionThunk.pending,
-          editTransactionThunk.pending,
-          fetchTransactionCategoriesThunk.pending,
-          fetchTransactionSummaryController.pending
-        ),
-        (state, { payload }) => {
-          state.loading = true;
-          state.error = null;
-        }
-      )
-      .addMatcher(
-        isAnyOf(
-          fetchTransactionsDataThunk.rejected,
-          deleteTransactionThunk.rejected,
-          addTransactionThunk.rejected,
-          editTransactionThunk.rejected,
-          fetchTransactionCategoriesThunk.rejected,
-          fetchTransactionSummaryController.rejected
-        ),
-        (state, { payload }) => {
-          state.error = payload;
-          state.loading = false;
-        }
       );
+    // .addCase(
+    //   fetchTransactionSummaryController.fulfilled,
+    //   (state, { payload }) => {
+    //     state.transactionSummaryController = payload;
+    //     state.loading = false;
+    //   }
+    // )
+    // .addMatcher(
+    //   isAnyOf(
+    //     fetchTransactionsDataThunk.pending,
+    //     deleteTransactionThunk.pending,
+    //     addTransactionThunk.pending,
+    //     editTransactionThunk.pending,
+    //     fetchTransactionCategoriesThunk.pending,
+    //     fetchTransactionSummaryController.pending
+    //   ),
+    //   (state, { payload }) => {
+    //     state.loading = true;
+    //     state.error = null;
+    //   }
+    // )
+    // .addMatcher(
+    //   isAnyOf(
+    //     fetchTransactionsDataThunk.rejected,
+    //     deleteTransactionThunk.rejected,
+    //     addTransactionThunk.rejected,
+    //     editTransactionThunk.rejected,
+    //     fetchTransactionCategoriesThunk.rejected,
+    //     fetchTransactionSummaryController.rejected
+    //   ),
+    //   (state, { payload }) => {
+    //     state.error = payload;
+    //     state.loading = false;
+    //   }
+    // );
   },
 });
 
