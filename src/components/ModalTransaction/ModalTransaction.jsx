@@ -1,12 +1,10 @@
 import { useCallback, useEffect } from 'react';
 import React from 'react';
 import s from './ModalTransaction.module.css';
-import { AddTransactionForm } from '../Form/AddTransactionForm/AddTransactionForm';
-import { EditTransactionForm } from '../Form/EditTransactionForm/EditTransactionForm';
 
-//const modalRoot = document.querySelector('#modal')
+const modalRoot = document.querySelector('#modal');
 
-export function ModalTransaction({ children, closeModal, typeForm }) {
+export function ModalTransaction({ children, closeModal }) {
   const handleKeyDown = useCallback(
     e => {
       if (e.key === 'Escape') {
@@ -28,21 +26,15 @@ export function ModalTransaction({ children, closeModal, typeForm }) {
     }
   };
 
-  return (
+  return ReactDOM.createPortal(
     <div className={s.modalWrapper} onClick={handleBackdropClick}>
       <div className={s.modalContent}>
         <button className={s.closeButton} onClick={closeModal}>
           x
         </button>
-        {typeForm === 'add' ? (
-          <AddTransactionForm onCancelClose={closeModal} />
-        ) : (
-          <EditTransactionForm onCancelClose={closeModal} />
-        )}
         {children}
       </div>
-    </div>
+    </div>,
+    modalRoot
   );
 }
-
-//ReactDOM.createPortal()

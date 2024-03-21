@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useModal } from '../../hooks/useModal';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -6,27 +6,52 @@ import { useForm } from 'react-hook-form';
 import TransactionSwitcher from './TransactionSwitcher/TransactionSwitcher';
 import s from './Form.module.css';
 
-export function Form({ closeModal, typeForm }) {
-  const { toggle, close } = useModal();
+export function Form({ categories, closeModal, typeForm, onDataSubmit }) {
+  const { toggle } = useModal();
 
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-    getValues,
     setValue,
   } = useForm();
-  const [type, setType] = useState('Expense');
 
+  const [type, setType] = useState('Expense');
   const [startDate, setStartDate] = useState(new Date());
 
-  const submit = () => {
-    const data = getValues();
-    toggle();
-    reset();
+  const addLeadingZero = number => {
+    return number < 10 ? '0' + number : number;
   };
+  const year = startDate.getFullYear();
+  const month = addLeadingZero(startDate.getMonth() + 1);
+  const day = addLeadingZero(startDate.getDate());
+  const formattedDate = `${year}-${month}-${day}`;
 
+  const submit = data => {
+    const category = categories.find(category => {
+      return category.name.toLowerCase() === data.category.split('-').join(' ')
+        ? category.id
+        : null;
+    });
+    if (typeForm === 'add') {
+      onDataSubmit({
+        transactionDate: formattedDate,
+        amount: +data.amount,
+        comment: data.comment,
+        type: category.type,
+        categoryId: category.id,
+      });
+    } else {
+      onDataSubmit({
+        transactionDate: formattedDate,
+        amount: +data.amount,
+        comment: data.comment,
+      });
+    }
+    reset();
+    toggle();
+  };
   const toggleTransaction = () => {
     const newType = type === 'Expense' ? 'Income' : 'Expense';
     setType(newType);
@@ -58,6 +83,11 @@ export function Form({ closeModal, typeForm }) {
               placeholder="Select a category"
               name="category"
             >
+              {/* {categories?.map((category)=>{
+                console.log(category);
+              <option value={category.id} key={category.id}>{category.name}</option>
+              })} */}
+
               <option value="main-expenses">Main expenses</option>
               <option value="products">Products</option>
               <option value="car">Car</option>
@@ -74,16 +104,16 @@ export function Form({ closeModal, typeForm }) {
           <div className={s.boxDate}>
             <input
               className={s.incomeInput}
-              {...register('income')}
+              {...register('amount')}
               errors={errors}
               placeholder="0.00"
-              name="income"
+              name="amount"
             />
             <DatePicker
               className={s.customInput}
               selected={startDate}
               onChange={date => {
-                setValue('date', date);
+                setValue('transactionDate', date);
                 setStartDate(date);
               }}
             />
