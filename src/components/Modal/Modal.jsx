@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-
 import s from './Modal.module.css';
 
 const modalRoot = document.querySelector('#modal');
@@ -29,8 +28,10 @@ const Modal = ({ closeModal, children }) => {
     }
   };
   return ReactDOM.createPortal(
-    <div onClick={handleBackdropClick} className={s.backdrop}>
-      <div className={s.modal}>{children}</div>
+    <div onClick={handleBackdropClick} className={s.modalWrapper}>
+      <div className={s.modalContent}>
+      <button className={s.closeButton} onClick={closeModal}>x</button>  
+        {children}</div>
     </div>,
     modalRoot
   );
