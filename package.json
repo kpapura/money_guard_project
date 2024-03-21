@@ -3,6 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://kpapura.github.io/money_guard_project",
+
   "scripts": {
     "dev": "vite",
     "build": "vite build --base=/money-guard-project/",
