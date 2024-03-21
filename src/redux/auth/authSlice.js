@@ -44,6 +44,7 @@ const slice = createSlice({
         (state, { payload }) => {
           state.user.username = payload.user.username;
           state.user.email = payload.user.email;
+          state.user.password = payload.user.password;
           state.token = payload.token;
           state.isLoggedIn = true;
         }

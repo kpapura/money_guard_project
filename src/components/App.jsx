@@ -1,21 +1,18 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { fetchCurrencyRate } from '../redux/currencyRate/operations';
-import CurrencyRates from './CurrencyRates/CurrenceRate';
-import { Layout } from './Layout';
+import React from 'react';
+import Login from '../pages/Login/Login';
+import { Route, Routes } from 'react-router-dom';
+import Layout from './Layout/Layout';
+import Register from '../pages/Register/Register';
 
-function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchCurrencyRate());
-  }, [dispatch]);
-
+export default function App() {
   return (
     <div>
-      <h1>Мій додаток</h1>
-      <CurrencyRates />
-      <Layout />
+      <h1>Hello</h1>
+      <Routes>
+        <Route path="/" element={<Layout />}></Route>
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+      </Routes>
     </div>
   );
 }
