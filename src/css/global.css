@@ -4,7 +4,6 @@
   | default @import url()
   |============================
 */
-@import 'node_modules/modern-normalize/modern-normalize.css';
 @import './main.css';
 
 @font-face {
@@ -24,4 +23,8 @@
   --font-weight-bold: 800;
   --black-color: #242424;  
   --white-color: #FBFBFB;
+}
+body{
+  font-size: var(--font-family);
+  font-weight: var(--font-weight-regular);
 }

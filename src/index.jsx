@@ -6,13 +6,19 @@ import App from './components/App';
 
 import { persistor, store } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
+import { BrowserRouter } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <App />
+  <BrowserRouter basename='/money_guard_project/'>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <App />
+          <ToastContainer autoClose={1500} />
       </PersistGate>
-    </Provider>
-  </React.StrictMode>
+      </Provider>
+      </BrowserRouter>
 );
+
+
+//<React.StrictMode></React.StrictMode>

@@ -8,7 +8,7 @@ import {
 
 const initialState = {
   user: {
-    name: '',
+    username: '',
     email: '',
   },
   token: null,
@@ -22,7 +22,7 @@ const slice = createSlice({
   name: 'auth',
   initialState,
   selectors: {
-    selectUser: state => state.user,
+    selectUser: state => state.username,
     selectIsLoggedIn: state => state.isLoggedIn,
     selectToken: state => state.isLoggedIn,
     selectIsRefresh: state => state.isRefresh,
@@ -33,7 +33,7 @@ const slice = createSlice({
         return initialState;
       })
       .addCase(refreshThunk.fulfilled, (state, { payload }) => {
-        state.user.name = payload.name;
+        state.user.username = payload.username;
         state.user.email = payload.email;
         state.isLoggedIn = true;
         state.isRefresh = false;
@@ -42,8 +42,9 @@ const slice = createSlice({
       .addMatcher(
         isAnyOf(registerThunk.fulfilled, loginThunk.fulfilled),
         (state, { payload }) => {
-          state.user.name = payload.user.name;
+          state.user.username = payload.user.username;
           state.user.email = payload.user.email;
+          state.user.password = payload.user.password;
           state.token = payload.token;
           state.isLoggedIn = true;
         }
