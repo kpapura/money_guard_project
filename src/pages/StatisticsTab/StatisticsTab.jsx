@@ -1,10 +1,12 @@
 // StatisticsTab.jsx
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTransactionSummaryControllerThunk } from '../../../redux/transactions/operations';
-import Chart from './Chart'; // Імпорт компонента Chart
+// import { fetchTransactionSummaryControllerThunk } from '../../../redux/transactions/operations';
+// import Chart from './Chart'; // Імпорт компонента Chart
 import StatisticsDashboard from './StatisticsDashboard/StatisticsDashboard';
 import StatisticsTable from './StatisticsTable/StatisticsTable';
+import { fetchTransactionSummaryControllerThunk } from '../../redux/transactions/operations';
+import Chart from './Chart/Chart';
 
 const StatisticsTab = () => {
   const dispatch = useDispatch();
