@@ -5,7 +5,7 @@ import Login from '../../pages/Login/Login';
 const Layout = () => {
   return (
     <main>
-      <Login />
+      {/* <Login /> */}
       <Outlet />
     </main>
   );

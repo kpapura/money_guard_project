@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import Layout from './Layout/Layout';
 import Register from '../pages/Register/Register';
 import StatisticsTab from '../pages/StatisticsTab/StatisticsTab';
-import "modern-normalize"
+import 'modern-normalize';
 
 function App() {
   return (
@@ -12,8 +12,8 @@ function App() {
       <h1>Hello</h1>
       <Routes>
         <Route path="/" element={<Layout />}>
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
         </Route>
       </Routes>
     </div>
