@@ -55,16 +55,12 @@ const LoginRegisterForm = ({ onDataSubmit, formType, schema }) => {
       )}
       {formType === 'login' ? (
         <>
-          <NavLink to="/login" onClick={handleSubmit(submit)}>
-            LOG IN
-          </NavLink>
+          <button type="submit">LOG IN</button>
           <NavLink to="/register">REGISTER</NavLink>
         </>
       ) : (
         <>
-          <NavLink to="/register" onClick={handleSubmit(submit)}>
-            REGISTER
-          </NavLink>
+          <button type="submit">REGISTER</button>
           <NavLink to="/login">LOGIN</NavLink>
         </>
       )}
