@@ -6,9 +6,8 @@ import { selectTransactionCategories } from '../../../redux/transactions/transac
 import sprite from '../../../img/sprite.svg';
 import { useDashboard } from '../../../hooks/useDashboard';
 
-const TransactionsItem = ({ transaction }) => {
-  const { id, transactionDate, type, categoryId, comment, amount } =
-    transaction;
+const TransactionsItem = ({ transaction, handleEditItem }) => {
+  const { id, transactionDate, type, categoryId, comment, amount } = transaction;
 
   const { isBigScreenOrTablet, isMobile } = useDashboard();
 
@@ -71,12 +70,16 @@ const TransactionsItem = ({ transaction }) => {
                   </button>
                 </td>
                 <td>
-                  <button className={s.btn_edit}>
+                  <button
+                    onClick={() =>
+                      handleEditItem(
+                        { categoryId, type, amount, comment, transactionDate }, id)
+                    } className={s.btn_edit}>
                     {' '}
                     <svg className={s.icon_edit}>
                       <use xlinkHref={`${sprite}#icon-edit`} />
                     </svg>{' '}
-                    Edit
+                     Edit
                   </button>
                 </td>
               </tr>
@@ -101,12 +104,7 @@ const TransactionsItem = ({ transaction }) => {
           <td className={s.transaction_colum}>
             {' '}
             <div className={s.btn_wrapper}>
-              <button className={s.btn_edit}>
-                {' '}
-                <svg className={s.icon_edit}>
-                  <use xlinkHref={`${sprite}#icon-edit`} />
-                </svg>
-              </button>
+              <button className={s.btn_edit}>Edit</button>
               <button
                 className={s.btn_delete}
                 onClick={() => handleDeleteTransaction(id)}
