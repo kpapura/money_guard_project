@@ -1,16 +1,22 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
-import s from './Header.module.css';
 import { useSelector } from 'react-redux';
+// import { Link } from 'react-router-dom';
+
+import { Exit } from '../Exit/Exit';
+import Modal from '../Modal/Modal';
+
 import { selectUser } from '../../redux/auth/authSlice';
 import { useModal } from '../../hooks/useModal';
-import Modal from '../Modal/Modal';
-import { Exit } from '../Exit/Exit';
+import s from './Header.module.css';
 
 export const Header = () => {
   const { isOpen, toggle } = useModal();
+
   const user = useSelector(selectUser);
-  console.log(user);
+
+  const index = user.email.indexOf('@');
+  const userEmail = user.email.slice(0, index);
+
   return (
     <header className={s.header}>
       <div className={s.hederContainer}>
@@ -24,7 +30,7 @@ export const Header = () => {
         {/* </Link > */}
         <div className={s.wrap}>
           {' '}
-          <p className={s.user}>{user.email}</p>
+          <p className={s.user}>{userEmail}</p>
           <button className={s.button} onClick={toggle}>
             <svg width="18" height="18" className={s.icon}>
               <use href="../../img/sprite.svg#icon-exit"></use>
