@@ -1,5 +1,6 @@
 .modalWrapper {
   position: fixed;
+  z-index: 999;
   inset: 0;
   display: flex;
   justify-content: center;
@@ -12,7 +13,7 @@
   position: relative;
   padding: 20px;
   overflow: hidden;
-  width: 534px;
+  width: 100%;
   border-radius: 5px;
   border-radius: 8px;
   backdrop-filter: blur(100px);
@@ -29,4 +30,10 @@
   font-size: 20px;
   cursor: pointer;
   stroke: var(--white-color);
+}
+
+@media screen and (min-width: 768px) {
+  .modalContent {
+    width: 540px;
+  }
 }
