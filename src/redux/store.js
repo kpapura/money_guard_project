@@ -21,11 +21,9 @@ const persistConfig = {
   whitelist: ['token'],
 };
 
-const persistedReducer = persistReducer(persistConfig, authReducer);
-
 export const store = configureStore({
   reducer: {
-    auth: persistedReducer,
+    auth: persistReducer(persistConfig, authReducer),
     transactions: transactionsReducer,
   },
   middleware: getDefaultMiddleware =>
@@ -40,21 +38,9 @@ export const store = configureStore({
 
 export const persistor = persistStore(store);
 
-
-
-
-
-
-
-
-
-
-
-
-
 // import { configureStore } from '@reduxjs/toolkit';
 // import { persistStore, persistReducer } from 'redux-persist';
-// import storage from 'redux-persist/lib/storage'; 
+// import storage from 'redux-persist/lib/storage';
 // import currencyReducer from './currencyRate/currencyRateSlice';
 
 // const persistConfig = {
