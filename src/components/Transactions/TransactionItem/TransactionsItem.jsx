@@ -40,7 +40,7 @@ const TransactionsItem = ({ transaction }) => {
           className={`${s.transaction_item} ${transactionBorderColor}`}
         >
           <table className={s.transactions_table_mobile}>
-            <tbody>
+            <tbody className={s.table_body}>
               <tr className={s.transaction_row_mobile}>
                 <td className={s.transaction_first_column}>Date</td>
                 <td>{transactionDate}</td>
