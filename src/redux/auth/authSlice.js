@@ -8,8 +8,8 @@ import {
 
 const initialState = {
   user: {
-    username: '',
-    email: '',
+    username: 'nata',
+    email: 'nata@hhh.com',
   },
   token: null,
   loading: false,
@@ -22,21 +22,24 @@ const slice = createSlice({
   name: 'auth',
   initialState,
   selectors: {
-    selectUser: state => state.username,
+    selectUser: state => state.user,
     selectIsLoggedIn: state => state.isLoggedIn,
     selectToken: state => state.isLoggedIn,
     selectIsRefresh: state => state.isRefresh,
   },
+  reducers: {
+    logout: state => {
+      return initialState;
+    },
+  },
   extraReducers: builder => {
     builder
-      .addCase(logoutThunk.fulfilled, state => {
-        return initialState;
-      })
       .addCase(refreshThunk.fulfilled, (state, { payload }) => {
         state.user.username = payload.username;
         state.user.email = payload.email;
         state.isLoggedIn = true;
         state.isRefresh = false;
+        state.loading = false;
       })
 
       .addMatcher(
@@ -47,6 +50,7 @@ const slice = createSlice({
           state.user.password = payload.user.password;
           state.token = payload.token;
           state.isLoggedIn = true;
+          state.loading = false;
         }
       )
       .addMatcher(
@@ -79,3 +83,4 @@ const slice = createSlice({
 export const authReducer = slice.reducer;
 export const { selectIsLoggedIn, selectUser, selectToken, selectIsRefresh } =
   slice.selectors;
+export const { logout } = slice.actions;
