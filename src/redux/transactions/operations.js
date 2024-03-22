@@ -5,6 +5,7 @@ import { walletApi } from '../../axiosConfig/walletApi';
 export const fetchTransactionsDataThunk = createAsyncThunk(
   'fetchTransactionsData',
   async (_, thunkAPI) => {
+
     try {
       const { data } = await walletApi.get('transactions', {
         headers: {
@@ -46,7 +47,7 @@ export const editTransactionThunk = createAsyncThunk(
   'editTransaction',
   async (body, thunkAPI) => {
     try {
-      const { data } = await walletApi.patch(`/transactions/${body.id}`, body);
+      const { data } = await walletApi.patch(`/transactions/${body.id}`, body.content);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -57,6 +58,7 @@ export const editTransactionThunk = createAsyncThunk(
 export const fetchTransactionCategoriesThunk = createAsyncThunk(
   'fetchTransactionCategories',
   async (_, thunkAPI) => {
+
     try {
       const { data } = await walletApi.get('transaction-categories', {
         headers: {

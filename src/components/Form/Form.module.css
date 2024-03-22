@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     padding: 40px 73px;
-    max-width: 540;
+    max-width: 540px;
 }
 
 .header {
@@ -28,7 +28,7 @@
     display: flex;
     flex-direction: row;
     gap: 32px;
-    margin-bottom: 40px;
+    /* margin-bottom: 40px; */
     cursor: pointer;
 }
 
@@ -60,10 +60,11 @@
     font-size: 18px;
     font-weight: bold;
     border-bottom: 1px solid rgba(255, 255, 255, 0.6);
-    margin-bottom: 40px;
     cursor: pointer;
 }
-
+/* .selectExpense{
+    margin-bottom: 40px;
+} */
 .comment::placeholder {
     color: rgba(255, 255, 255, 0.6);
 }
@@ -96,4 +97,24 @@
             rgb(255, 199, 39),
             rgb(158, 64, 186),
             rgb(112, 0, 255))
+}
+.activeIncome{
+color:#FFB627;
+}
+.activeExpense {
+    color: #FFB627;
+}
+
+.inputContainer{
+display: flex;
+flex-direction: column;
+gap: 8px;
+position: relative;
+margin-bottom: 40px;
+
+&>span {
+    color: red;
+    font-size: 0.8rem;
+    font-style: italic;
+}
 }

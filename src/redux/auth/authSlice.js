@@ -8,8 +8,8 @@ import {
 
 const initialState = {
   user: {
-    username: 'nata',
-    email: 'nata@hhh.com',
+    username: '',
+    email: '',
   },
   token: null,
   loading: false,
@@ -34,6 +34,9 @@ const slice = createSlice({
   },
   extraReducers: builder => {
     builder
+      .addCase(logoutThunk.fulfilled, state => {
+        return initialState;
+      })
       .addCase(refreshThunk.fulfilled, (state, { payload }) => {
         state.user.username = payload.username;
         state.user.email = payload.email;
