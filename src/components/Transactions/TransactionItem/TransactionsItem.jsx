@@ -1,17 +1,16 @@
 import React from 'react';
 import s from './TransactionsItem.module.css';
-import { useMediaQuery } from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteTransactionThunk } from '../../../redux/transactions/operations';
 import { selectTransactionCategories } from '../../../redux/transactions/transactionsSlice';
 import sprite from '../../../img/sprite.svg';
+import { useDashboard } from '../../../hooks/useDashboard';
 
 const TransactionsItem = ({ transaction }) => {
   const { id, transactionDate, type, categoryId, comment, amount } =
     transaction;
 
-  const isBigScreenOrTablet = useMediaQuery({ query: '(min-width: 768px)' });
-  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  const { isBigScreenOrTablet, isMobile } = useDashboard();
 
   const dispatch = useDispatch();
   const categories = useSelector(selectTransactionCategories);

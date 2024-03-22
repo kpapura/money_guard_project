@@ -29,12 +29,16 @@ screen and (min-resolution: 2dppx) {
         padding: 20px 32px 0 32px;
         display: block;
         min-height: calc(100vh - 294px);
-        overflow-y: auto;
     }
 
     .transactions_container {
         max-height: calc(100vh - 414px);
         overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: rgb(158, 64, 186) rgba(82, 59, 126, 0.6);
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
     }
 
     @media screen and (min-resolution: 192dpi),
@@ -44,7 +48,6 @@ screen and (min-resolution: 2dppx) {
             background-image: url(../../img/images/gradient_tab@2x.webp);
         }
     }
-
 }
 
 @media(min-width: 1280px) {
@@ -90,13 +93,18 @@ screen and (min-resolution: 2dppx) {
     padding: 16px 10px 16px 20px;
     border-radius: 8px;
     box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(100px);
-    background: rgba(82, 59, 126, 0.6);
+    background: rgba(82, 59, 126);
     text-align: left;
     gap: 33px;
 }
 
-th {
+.transactions_table thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.transactions_table th {
     width: 16.66%;
 }
 

@@ -6,11 +6,7 @@ export const fetchTransactionsDataThunk = createAsyncThunk(
   'fetchTransactionsData',
   async (_, thunkAPI) => {
     try {
-      const { data } = await walletApi.get('transactions', {
-        headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiJjNzQ0ZjMzZC0zY2EyLTRjZjctYTM4Zi1lZDJiMjcxY2M3N2QiLCJpYXQiOjE3MTExMDMyMjUsImV4cCI6MTAwMDAwMDE3MTExMDMyMjR9.AcA2HU4FB0SngDTLpNvn8nu5tYEjjj5ZLC5Sn1OYats`,
-        },
-      });
+      const { data } = await walletApi.get('transactions');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -58,11 +54,7 @@ export const fetchTransactionCategoriesThunk = createAsyncThunk(
   'fetchTransactionCategories',
   async (_, thunkAPI) => {
     try {
-      const { data } = await walletApi.get('transaction-categories', {
-        headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiJjNzQ0ZjMzZC0zY2EyLTRjZjctYTM4Zi1lZDJiMjcxY2M3N2QiLCJpYXQiOjE3MTExMDMyMjUsImV4cCI6MTAwMDAwMDE3MTExMDMyMjR9.AcA2HU4FB0SngDTLpNvn8nu5tYEjjj5ZLC5Sn1OYats`,
-        },
-      });
+      const { data } = await walletApi.get('transaction-categories');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
