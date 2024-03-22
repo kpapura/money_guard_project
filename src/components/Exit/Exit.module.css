@@ -13,6 +13,7 @@
 
 .text {
   margin-bottom: 52px;
+  text-align: center;
   font-size: 18px;
   color: var(--white-color);
 }
