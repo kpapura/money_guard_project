@@ -30,8 +30,13 @@ const Modal = ({ closeModal, children }) => {
   return ReactDOM.createPortal(
     <div onClick={handleBackdropClick} className={s.modalWrapper}>
       <div className={s.modalContent}>
-      <button className={s.closeButton} onClick={closeModal}>x</button>  
-        {children}</div>
+        <button className={s.closeButton} onClick={closeModal}>
+          <svg width="16" height="16">
+            <use href="../../img/sprite.svg#icon-close"></use>
+          </svg>
+        </button>
+        {children}
+      </div>
     </div>,
     modalRoot
   );

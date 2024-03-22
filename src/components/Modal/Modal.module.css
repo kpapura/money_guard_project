@@ -1,28 +1,32 @@
 .modalWrapper {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(7px);
+  background: rgba(34, 13, 91, 0.23);
 }
 
 .modalContent {
-    position: relative;
-    background-color: rgb(105, 105, 230, 0.7);
-    padding: 20px;
-    overflow: hidden;
-    width: 534px;
-    border-radius: 5px;
+  position: relative;
+  padding: 20px;
+  overflow: hidden;
+  width: 534px;
+  border-radius: 5px;
+  border-radius: 8px;
+  backdrop-filter: blur(100px);
+  box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .closeButton {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background-color: transparent;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    color: white;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  stroke: var(--white-color);
 }
