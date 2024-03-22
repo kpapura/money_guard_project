@@ -15,6 +15,8 @@ import { useModal } from '../../hooks/useModal.jsx';
 import Modal from '../Modal/Modal.jsx';
 import { EditTransactionForm } from '../Form/EditTransactionForm/EditTransactionForm.jsx';
 import { AddTransactionForm } from '../Form/AddTransactionForm/AddTransactionForm.jsx';
+import sprite from '../../img/sprite.svg';
+import { useDashboard } from '../../hooks/useDashboard';
 
 const TransactionsList = () => {
   const { isOpen, toggle } = useModal();
@@ -32,8 +34,7 @@ const TransactionsList = () => {
   const transactions = useSelector(selectTransactions);
   const categories = useSelector(selectTransactionCategories);
 
-  const isBigScreenOrTablet = useMediaQuery({ query: '(min-width: 768px)' });
-  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  const { isBigScreenOrTablet, isMobile } = useDashboard();
 
   const handleEditItem = (content, id, name) => {
     toggle();
@@ -48,39 +49,66 @@ const TransactionsList = () => {
       <div className={s.transactions_container}>
         {isMobile && (
           <ul className={s.transactions_list}>
-            {transactions.map(transaction => (
-              <TransactionsItem
-                key={transaction.id}
-                transaction={transaction}
-              />
-            ))}
-          </ul>
-        )}
-        {isBigScreenOrTablet && (
-          <table className={s.transactions_table}>
-            <thead>
-              <tr className={s.transaction_row_head}>
-                <th>Date</th>
-                <th style={{ textAlign: 'center' }}>Type</th>
-                <th>Category</th>
-                <th>Comment</th>
-                <th style={{ textAlign: 'right' }}>Sum</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {transactions.map(transaction => (
+            {transactions.length > 0 ? (
+              transactions.map(transaction => (
                 <TransactionsItem
-                  handleEditItem={handleEditItem}
                   key={transaction.id}
                   transaction={transaction}
                 />
-              ))}
-            </tbody>
-          </table>
+              ))
+            ) : (
+              <div className={s.empty_transactions}>No transactions</div>
+            )}
+          </ul>
         )}
-        <button onClick={() => handleAddItem()} className={s.btn_add}>
-          +
+        {isBigScreenOrTablet && (
+          <>
+            {transactions.length > 0 ? (
+              <table className={s.transactions_table}>
+                <thead>
+                  <tr className={s.transaction_row_head}>
+                    <th>Date</th>
+                    <th style={{ textAlign: 'center' }}>Type</th>
+                    <th>Category</th>
+                    <th>Comment</th>
+                    <th style={{ textAlign: 'right' }}>Sum</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody className={s.table_body}>
+                  {transactions.map(transaction => (
+                    <TransactionsItem
+                      key={transaction.id}
+                      transaction={transaction}
+                    />
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <>
+                <table className={s.transactions_table}>
+                  <thead>
+                    <tr className={s.transaction_row_head}>
+                      <th>Date</th>
+                      <th style={{ textAlign: 'center' }}>Type</th>
+                      <th>Category</th>
+                      <th>Comment</th>
+                      <th style={{ textAlign: 'right' }}>Sum</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                </table>
+                <div className={s.empty_transactions}>No transactions</div>
+              </>
+            )}
+          </>
+        )}
+
+        <button className={s.btn_add}>
+          {' '}
+          <svg className={s.icon_plus}>
+            <use xlinkHref={`${sprite}#icon-plus`} />
+          </svg>
         </button>
       </div>
       {isOpen && (

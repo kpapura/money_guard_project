@@ -10,10 +10,11 @@
   font-family: 'Poppins';
   src: url('../fonts/Poppins/Poppins-Regular.ttf') format('ttf'),
     url('../fonts/Poppins/Poppins-Bold.ttf') format('ttf'),
-    url('../fonts/Poppins/Poppins-SemiBold.ttf') format('ttf');
+    url('../fonts/Poppins/Poppins-SemiBold.ttf') format('ttf'),
 }
+
 :root {
-  --font-family: 'Poppins';
+  --font-family: "Poppins";
   --primarily-font-size: 16px;
   --secondary-font-size: 18px;
   --primarily-line-height: 24px;
@@ -22,11 +23,11 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 800;
   --black-color: #242424;
-  --white-color: #fbfbfb;
+  --white-color: #FBFBFB;
 }
 
 body {
-  font-size: var(--font-family);
+  font-family: var(--font-family);
   font-weight: var(--font-weight-regular);
 }
 
