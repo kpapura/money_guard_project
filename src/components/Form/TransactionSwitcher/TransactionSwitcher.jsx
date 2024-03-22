@@ -2,23 +2,22 @@ import React, { useState } from 'react';
 import styles from './TransactionSwitcher.module.css';
 
 const TransactionSwitcher = ({ onChange }) => {
-  const [isExpense, setIsExpense] = useState(false);
+  const [isIncome, setIsIncome] = useState(false);
 
   const handleSwitch = () => {
-    setIsExpense(!isExpense);
-    onChange(!isExpense);
+    setIsIncome(!isIncome);
+    onChange(!isIncome);
   };
-
   return (
     <div className={styles['transaction-switcher']}>
       <span className={styles.labelIncome}>Income</span>
 
       <label
         className={`${styles.switch} ${
-          isExpense ? styles.expense : styles.income
+          isIncome ? styles.income : styles.expense
         }`}
       >
-        <input type="checkbox" onChange={handleSwitch} checked={!isExpense} />
+        <input type="checkbox" onChange={handleSwitch} checked={!isIncome} />
         <span className={`${styles.slider} ${styles.round}`}></span>
       </label>
       <span className={styles.labelExpense}>Expense</span>

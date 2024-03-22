@@ -1,28 +1,28 @@
 .modalWrapper {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modalContent {
-  position: relative;
-  background-color: rgb(105, 105, 230, 0.7);
-  padding: 20px;
-  overflow: hidden;
-  width: 534px;
-  border-radius: 5px;
+    position: relative;
+    background-color: rgb(105, 105, 230, 0.7);
+    padding: 20px;
+    overflow: hidden;
+    width: 534px;
+    border-radius: 5px;
 }
 
 .closeButton {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background-color: transparent;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  color: white;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
 }

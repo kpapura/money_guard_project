@@ -4,11 +4,9 @@ import { useMediaQuery } from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteTransactionThunk } from '../../../redux/transactions/operations';
 import { selectTransactionCategories } from '../../../redux/transactions/transactionsSlice';
-import { ModalTransaction } from '../../ModalTransaction/ModalTransaction';
 
-const TransactionsItem = ({ transaction }) => {
-  const { id, transactionDate, type, categoryId, comment, amount } =
-    transaction;
+const TransactionsItem = ({ transaction, handleEditItem }) => {
+  const { id, transactionDate, type, categoryId, comment, amount } = transaction;
 
   const isBigScreenOrTablet = useMediaQuery({ query: '(min-width: 768px)' });
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
@@ -66,7 +64,11 @@ const TransactionsItem = ({ transaction }) => {
                   </button>
                 </td>
                 <td>
-                  <button className={s.btn_edit}>Edit</button>
+                  <button
+                    onClick={() =>
+                      handleEditItem(
+                        { categoryId, type, amount, comment, transactionDate }, id)
+                    } className={s.btn_edit}> Edit</button>
                 </td>
               </tr>
             </tbody>
@@ -87,7 +89,17 @@ const TransactionsItem = ({ transaction }) => {
           <td className={s.transaction_colum}>
             {' '}
             <div className={s.btn_wrapper}>
-              <button className={s.btn_edit}>Edit</button>
+              <button
+                onClick={() =>
+                  handleEditItem(
+                    { categoryId, type, amount, comment, transactionDate },
+                    id
+                  )
+                }
+                className={s.btn_edit}
+              >
+                Edit
+              </button>
               <button
                 className={s.btn_delete}
                 onClick={() => handleDeleteTransaction(id)}
