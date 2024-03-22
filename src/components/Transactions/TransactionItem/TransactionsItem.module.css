@@ -1,7 +1,6 @@
 .transaction_item {
     border-radius: 10px;
     background: rgb(255, 255, 255, 0.1);
-
 }
 
 .income_border {
@@ -23,8 +22,6 @@
 }
 
 .transactions_table_mobile {
-    color: rgb(251, 251, 251);
-    font-family: Poppins;
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
@@ -69,7 +66,7 @@ tr:last-child {
     border-radius: 18px;
     box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
     background: linear-gradient(166.82deg, rgb(255, 199, 39) -66.598%, rgb(158, 64, 186) 135.96%, rgb(112, 0, 255) 231.793%);
-    color: rgb(255, 255, 255);
+    color: var(--white-color);
     font-family: Poppins;
     font-size: 14px;
     font-weight: 400;

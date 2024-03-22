@@ -5,9 +5,9 @@ import Layout from './Layout/Layout';
 import Register from '../pages/Register/Register';
 import StatisticsTab from '../pages/StatisticsTab/StatisticsTab';
 import 'modern-normalize';
-import TransactionsList from './Transactions/TransactionsList';
 import { refreshThunk } from '../redux/auth/operations';
 import { useDispatch } from 'react-redux';
+import HomeTab from '../pages/HomeTab/HomeTab';
 
 function App() {
   const dispatch = useDispatch();
@@ -23,9 +23,9 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
+          <Route path="home" element={<HomeTab />} />
         </Route>
       </Routes>
-      <TransactionsList />
     </div>
   );
 }

@@ -11,8 +11,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: var(--font-family);
+    color: var(--white-color);
+}
 
+@media screen and (min-resolution: 192dpi),
+screen and (min-device-pixel-ratio: 2),
+screen and (min-resolution: 2dppx) {
+    .transactions_section {
+        background-image: url(../../img/images/gradient_mob@2x.webp);
+    }
 }
 
 @media(min-width: 768px) {
@@ -22,12 +29,22 @@
         padding: 20px 32px 0 32px;
         display: block;
         min-height: calc(100vh - 294px);
-        overflow: auto;
+        overflow-y: auto;
     }
 
     .transactions_container {
         max-height: calc(100vh - 414px);
+        overflow-y: auto;
     }
+
+    @media screen and (min-resolution: 192dpi),
+    screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 2dppx) {
+        .transactions_section {
+            background-image: url(../../img/images/gradient_tab@2x.webp);
+        }
+    }
+
 }
 
 @media(min-width: 1280px) {
@@ -55,12 +72,8 @@
 .transactions_table {
     width: 100%;
     text-align: left;
-    color: rgb(251, 251, 251);
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    width: 100%;
-    height: 312px;
+    font-size: var(--primarily-font-size);
+    line-height: var(--primarily-line-height);
 }
 
 .transactions_list {
@@ -111,5 +124,4 @@ th {
 .empty_transactions {
     text-align: center;
     font-size: 36px;
-    color: white;
 }
