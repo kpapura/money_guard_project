@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Login from '../pages/Login/Login';
 import { Route, Routes } from 'react-router-dom';
-import Layout from './Layout/Layout';
+import { Layout } from './Layout';
 import Register from '../pages/Register/Register';
 import StatisticsTab from '../pages/StatisticsTab/StatisticsTab';
 import 'modern-normalize';
