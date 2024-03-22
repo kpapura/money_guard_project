@@ -13,59 +13,87 @@ const LoginRegisterForm = ({ onDataSubmit, formType, schema }) => {
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
-  const submit = data => {
-    delete data.passwordConfirmation;
+  const submit = dataS => {
+    const { passwordConfirmation, ...data } = dataS;
     onDataSubmit(data);
-    console.log(data);
     reset();
   };
 
   return (
-    <form className={s.form} onSubmit={handleSubmit(submit)}>
-      {formType === 'register' && (
-        <InputField
-          register={register}
-          errors={errors}
-          name="username"
-          placeholder="Name"
-        />
-      )}
-      <InputField
-        register={register}
-        errors={errors}
-        name="email"
-        placeholder="Email"
-      />
-      <PassInputField
-        register={register}
-        errors={errors}
-        name="password"
-        placeholder="Password"
-      />
-
-      {formType === 'register' && (
-        <>
+    <section className={s.front_section}>
+      <div
+        className={s.form_container}
+        style={{ padding: formType === 'login' ? '98px' : '23px' }}
+      >
+        <a
+          href=""
+          className={s.logo_wrapper}
+          style={{ paddingBottom: formType === 'login' ? '11px' : '0px' }}
+        >
+          <svg width="25.5" height="25.5">
+            <use href="../../img/sprite.svg#icon-logo"></use>
+          </svg>
+          Money Guard
+        </a>
+        <form className={s.form} onSubmit={handleSubmit(submit)}>
+          {formType === 'register' && (
+            <InputField
+              register={register}
+              errors={errors}
+              name="username"
+              placeholder="Name"
+              className="username"
+            />
+          )}
+          <InputField
+            register={register}
+            errors={errors}
+            name="email"
+            placeholder="E-mail"
+            className="email"
+          />
           <PassInputField
             register={register}
             errors={errors}
-            name="passwordConfirmation"
-            placeholder="Confirm password"
+            name="password"
+            placeholder="Password"
+            onChange={e => handleChange(e)}
+            formType={formType}
+            className="password"
           />
-        </>
-      )}
-      {formType === 'login' ? (
-        <>
-          <button type="submit">LOG IN</button>
-          <NavLink to="/register">REGISTER</NavLink>
-        </>
-      ) : (
-        <>
-          <button type="submit">REGISTER</button>
-          <NavLink to="/login">LOGIN</NavLink>
-        </>
-      )}
-      <button hidden></button>
-    </form>
+          {formType === 'register' && (
+            <>
+              <PassInputField
+                register={register}
+                errors={errors}
+                name="passwordConfirmation"
+                placeholder="Confirm password"
+                className="cpassword"
+              />
+            </>
+          )}
+          {formType === 'login' ? (
+            <div className={s.button_cont}>
+              <button className={s.submit_btn} type="submit">
+                log in
+              </button>
+              <NavLink className={s.inactive_btn} to="/register">
+                register
+              </NavLink>
+            </div>
+          ) : (
+            <div className={s.button_cont}>
+              <button className={s.submit_btn} type="submit">
+                register
+              </button>
+              <NavLink className={s.inactive_btn} to="/login">
+                log in
+              </NavLink>
+            </div>
+          )}{' '}
+        </form>
+      </div>
+    </section>
   );
 };
 
