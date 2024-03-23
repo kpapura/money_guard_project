@@ -1,0 +1,10 @@
+@import url('../../css/global.css');
+
+s.statisticsContainers {
+}
+
+s.title {
+  font-weight: var(--font-weight-regular);
+  font-size: 30px;
+  color: var(--white-color);
+}

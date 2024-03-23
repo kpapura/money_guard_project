@@ -23,6 +23,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="home" element={<HomeTab />} />
+          <Route path="statistics" element={<StatisticsTab />} />
         </Route>
       </Routes>
     </div>

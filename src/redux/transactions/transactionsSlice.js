@@ -54,7 +54,11 @@ const transactionsSlice = createSlice({
           state.transactionCategories = payload;
           state.loading = false;
         }
-      );
+      )
+      .addCase(fetchTransactionSummaryControllerThunk.fulfilled, (state, { payload }) => {
+        state.transactionSummaryController = payload;
+        state.loading = false;
+      });
     // .addCase(
     //   fetchTransactionSummaryController.fulfilled,
     //   (state, { payload }) => {

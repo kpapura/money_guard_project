@@ -1,0 +1,35 @@
+@import url('../../../css/global.css');
+
+s.selectContainers {
+  display: flex;
+}
+
+s.select {
+  width: 182px;
+  height: 50px;
+  font-weight: var(--font-weight-regular);
+  font-size: var(--primarily-font-size);
+  color: var(--white-color);
+  background: rgba(74, 86, 226, 0.1);
+}
+
+s.option {
+  font-weight: var(--font-weight-regular);
+  font-size: var(--primarily-font-size);
+  color: var(--white-color);
+  backdrop-filter: blur(100px);
+  box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+  background: linear-gradient(
+    360deg,
+    rgba(83, 61, 186, 0.7) 0%,
+    rgba(80, 48, 154, 0.7) 35.94%,
+    rgba(106, 70, 165, 0.7) 61.04%,
+    rgba(133, 93, 175, 0.7) 100%
+  );
+  cursor: pointer;
+}
+
+s.option:active {
+  color: #ff868d;
+  background: rgba(255, 255, 255, 0.1);
+}
