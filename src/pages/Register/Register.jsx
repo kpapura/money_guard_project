@@ -23,7 +23,7 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <div className={s.registerWrapper}>
       <Login_RegisterForm
         onDataSubmit={handleSubmit}
         formType={'register'}
