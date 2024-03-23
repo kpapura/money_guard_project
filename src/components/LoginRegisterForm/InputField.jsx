@@ -4,7 +4,7 @@ import s from './LoginRegisterForm.module.css';
 const InputField = ({ register, errors, name, placeholder, className }) => {
   return (
     <>
-      <div className={s.error_cont}>
+      <div className={s.error_container}>
         <label className={s.name_label}>
           {name === 'username' ? (
             <div className={s.name_user_icon}>
