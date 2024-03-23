@@ -18,13 +18,13 @@ function App() {
 
   return (
     <div>
-      <h1>Hello</h1>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="home" element={<HomeTab />} />
         </Route>
+      </Routes>
       </Routes>
     </div>
   );
