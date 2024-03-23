@@ -52,6 +52,7 @@ const TransactionsList = () => {
             {transactions.length > 0 ? (
               transactions.map(transaction => (
                 <TransactionsItem
+                  handleEditItem={handleEditItem}
                   key={transaction.id}
                   transaction={transaction}
                 />
@@ -78,6 +79,7 @@ const TransactionsList = () => {
                 <tbody className={s.table_body}>
                   {transactions.map(transaction => (
                     <TransactionsItem
+                     handleEditItem={handleEditItem}
                       key={transaction.id}
                       transaction={transaction}
                     />
@@ -104,7 +106,7 @@ const TransactionsList = () => {
           </>
         )}
 
-        <button className={s.btn_add}>
+        <button onClick={()=>handleAddItem()} className={s.btn_add}>
           {' '}
           <svg className={s.icon_plus}>
             <use xlinkHref={`${sprite}#icon-plus`} />

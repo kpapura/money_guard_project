@@ -72,9 +72,7 @@ const TransactionsItem = ({ transaction, handleEditItem }) => {
                 <td>
                   <button
                     onClick={() =>
-                      handleEditItem(
-                        { categoryId, type, amount, comment, transactionDate }, id)
-                    } className={s.btn_edit}>
+                      handleEditItem({ categoryId, type, amount, comment, transactionDate }, id)} className={s.btn_edit}>
                     {' '}
                     <svg className={s.icon_edit}>
                       <use xlinkHref={`${sprite}#icon-edit`} />
@@ -104,7 +102,7 @@ const TransactionsItem = ({ transaction, handleEditItem }) => {
           <td className={s.transaction_colum}>
             {' '}
             <div className={s.btn_wrapper}>
-              <button className={s.btn_edit}>Edit</button>
+              <button onClick={() => handleEditItem({ categoryId, type, amount, comment, transactionDate }, id)} className={s.btn_edit}>Edit</button>
               <button
                 className={s.btn_delete}
                 onClick={() => handleDeleteTransaction(id)}
