@@ -7,10 +7,9 @@ export const registerThunk = createAsyncThunk(
     try {
       const { data } = await walletApi.post('auth/sign-up', credentials);
       setToken(data.token);
-      console.log(data);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -21,11 +20,10 @@ export const loginThunk = createAsyncThunk(
     try {
       const { data } = await walletApi.post('auth/sign-in', credentials);
       setToken(data.token);
-      console.log(data);
-
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      console.log(error);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );

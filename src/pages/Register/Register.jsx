@@ -13,7 +13,7 @@ const Register = () => {
   const handleSubmit = data => {
     dispatch(registerThunk(data))
       .unwrap()
-      .then(() => {
+      .then(data => {
         navigation('/login');
       })
       .catch(error => {
