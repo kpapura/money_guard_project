@@ -1,6 +1,7 @@
 // Chart.jsx
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
+import s from './Chart.module.css';
 
 const Chart = ({ transactions }) => {
   const getColorForCategory = (category) => {

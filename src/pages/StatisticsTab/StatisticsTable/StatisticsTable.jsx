@@ -1,63 +1,33 @@
 // StatisticsTable.jsx
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchTransactionSummaryControllerThunk } from '../../../redux/transactions/operations';
+import React from 'react';
+import s from './StatisticsTable.module.css'
 
-const StatisticsTable = ({ selectedMonth, selectedYear }) => {
-  const dispatch = useDispatch();
-  const transactionsList = useSelector(state => state.transactions.transactionsList);
-  const incomeSummary = useSelector(state => state.transactions.transactionSummaryController?.incomeSummary);
-  const expenseSummary = useSelector(state => state.transactions.transactionSummaryController?.expenseSummary);
-
-  useEffect(() => {
-    dispatch(fetchTransactionSummaryControllerThunk());
-  }, [dispatch, selectedMonth, selectedYear]);
-
-  const generateRandomColor = () => {
-    return '#' + Math.floor(Math.random() * 16777215).toString(16);
-  };
-
-  const generateColorsForCategories = () => {
-    return transactionsList.map(transaction => ({
-      type: transaction.type,
-      color: generateRandomColor()
-    }));
-  };
-
-  const colorsForCategories = generateColorsForCategories();
-
-  const getColorForCategory = (category) => {
-    const colorObj = colorsForCategories.find(colorObj => colorObj.type === category);
-    return colorObj ? colorObj.color : '#000';
-  };
+const StatisticsTable = ({ transactionsSummary }) => {
+  const categoriesSummary = transactionsSummary?.categoriesSummary || [];
+  const incomeSummary = transactionsSummary?.incomeSummary || 0;
+  const expenseSummary = transactionsSummary?.expenseSummary || 0;
 
   return (
-    <div>
-      <h2>Statistics Table</h2>
-      <table>
-        <thead>
+    <div className={s.tableContainer}>
+      <table className={s.table}>
+        <thead className={s.tableHeader}>
           <tr>
-            <th>Category</th>
-            <th>Sum</th>
+            <th className={s.tableCell}>Category</th>
+            <th className={s.tableCell}>Sum</th>
           </tr>
         </thead>
         <tbody>
-          {transactionsList.map((transaction, index) => (
-            <tr key={index}>
-              <td>
-                <div>
-                  <div style={{ width: '10px', height: '10px', backgroundColor: getColorForCategory(transaction.type) }}></div>
-                  {transaction.type}
-                </div>
-              </td>
-              <td>{transaction.total}</td>
+          {categoriesSummary.map((category, index) => (
+            <tr key={index} className={s.tableRow}>
+              <td className={s.tableCell}>{category.name}</td>
+              <td className={s.tableCell}>{category.total}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      <div>
-        <p>Expenses: {expenseSummary}</p>
-        <p>Income: {incomeSummary}</p>
+      <div className={s.paragraphContainer}>
+        <p className={s.paragraph}>Income: {incomeSummary}</p>
+        <p className={s.paragraph}>Expenses: {expenseSummary}</p>
       </div>
     </div>
   );
