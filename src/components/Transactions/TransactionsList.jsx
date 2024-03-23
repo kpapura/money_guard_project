@@ -21,28 +21,28 @@ import { useDashboard } from '../../hooks/useDashboard';
 const TransactionsList = () => {
   const { isOpen, toggle } = useModal();
   const [editContent, setEditContent] = useState('');
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchTransactionsDataThunk());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(fetchTransactionCategoriesThunk());
-  }, [dispatch]);
 
   const transactions = useSelector(selectTransactions);
   const categories = useSelector(selectTransactionCategories);
 
   const { isBigScreenOrTablet, isMobile } = useDashboard();
 
+  if (isOpen) {
+    document.body.classList.add('modal-open');
+  }
+  else {
+    document.body.classList.remove('modal-open');
+  }
   const handleEditItem = (content, id, name) => {
     toggle();
     setEditContent({ content, id, name });
+    isOpen && document.body.classList.add('modal-open');
+
   };
   const handleAddItem = () => {
     toggle();
     setEditContent(null);
+
   };
   return (
     <section className={s.transactions_section}>

@@ -8,13 +8,14 @@ import 'modern-normalize';
 import { refreshThunk } from '../redux/auth/operations';
 import { useDispatch } from 'react-redux';
 import HomeTab from '../pages/HomeTab/HomeTab';
+import TransactionsList from './Transactions/TransactionsList';
 
 function App() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(refreshThunk());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(refreshThunk());
+  // }, [dispatch]);
 
   return (
     <div>
@@ -22,8 +23,10 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
-          <Route path="home" element={<HomeTab />} />
-        </Route>
+          <Route path="/" element={<HomeTab />}>
+          <Route path="/transactions" element={<TransactionsList />} />
+          </Route >
+          </Route >
       </Routes>
     </div>
   );
