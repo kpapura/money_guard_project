@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import StatisticsDashboard from './StatisticsDashboard/StatisticsDashboard';
-import StatisticsTable from './StatisticsTable/StatisticsTable';
 import { fetchTransactionSummaryControllerThunk } from '../../redux/transactions/operations';
-import { selectTransactionSummary } from '../../redux/transactions/transactionsSlice';
+import { selectCategoriesSummary } from '../../redux/transactions/transactionsSlice';
 import s from './StatisticsTab.module.css';
+import StatisticsTable from './StatisticsTable/StatisticsTable';
 
 const StatisticsTab = () => {
   const dispatch = useDispatch();
-  const transactionsSummaryList = useSelector(selectTransactionSummary);
+  const transactionsSummaryList = useSelector(selectCategoriesSummary);
 
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1);
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
