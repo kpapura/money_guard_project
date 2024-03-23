@@ -7,8 +7,8 @@ import s from './Form.module.css';
 import { formatDate } from '../../helpers/addLeadingzero';
 import Select from 'react-select';
 import FormInput from './FormFields/FormFields';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useDashboard } from '../../hooks/useDashboard';
+//import { yupResolver } from '@hookform/resolvers/yup';
+//import { useDashboard } from '../../hooks/useDashboard';
 
 export function Form({
   content,
@@ -16,7 +16,6 @@ export function Form({
   toggle,
   typeForm,
   onDataSubmit,
-  schema
 }) {
   const {
     register,
@@ -24,8 +23,9 @@ export function Form({
     formState: { errors },
     setValue,
     reset
-  } = useForm({ resolver: yupResolver(schema) });
-
+  } = useForm();
+  // { resolver: yupResolver(schema) }
+    // schema
   const [selectedOption, setSelectedOption] = useState('');
   const [type, setType] = useState('');
   const [startDate, setStartDate] = useState(new Date());

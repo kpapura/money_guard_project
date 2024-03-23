@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { addTransactionThunk } from '../../../redux/transactions/operations';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { addTransactionShema } from '../../../Schemas/addTransactionShema';
+// import { addTransactionShema } from '../../../Schemas/addTransactionShema';
 
 export function AddTransactionForm({ categories, toggle }) {
   const dispatch = useDispatch()
@@ -19,6 +19,8 @@ export function AddTransactionForm({ categories, toggle }) {
       });
   }
   return (
-<Form schema={addTransactionShema}  categories={categories} onDataSubmit={handleSubmit} toggle={toggle} typeForm="add"/>
+<Form categories={categories} onDataSubmit={handleSubmit} toggle={toggle} typeForm="add"/>
   );
 }
+
+// schema={addTransactionShema} 
