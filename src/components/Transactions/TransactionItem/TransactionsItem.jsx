@@ -7,7 +7,8 @@ import sprite from '../../../img/sprite.svg';
 import { useDashboard } from '../../../hooks/useDashboard';
 
 const TransactionsItem = ({ transaction, handleEditItem }) => {
-  const { id, transactionDate, type, categoryId, comment, amount } = transaction;
+  const { id, transactionDate, type, categoryId, comment, amount } =
+    transaction;
 
   const { isBigScreenOrTablet, isMobile } = useDashboard();
 
@@ -73,13 +74,17 @@ const TransactionsItem = ({ transaction, handleEditItem }) => {
                   <button
                     onClick={() =>
                       handleEditItem(
-                        { categoryId, type, amount, comment, transactionDate }, id)
-                    } className={s.btn_edit}>
+                        { categoryId, type, amount, comment, transactionDate },
+                        id
+                      )
+                    }
+                    className={s.btn_edit}
+                  >
                     {' '}
                     <svg className={s.icon_edit}>
                       <use xlinkHref={`${sprite}#icon-edit`} />
                     </svg>{' '}
-                     Edit
+                    Edit
                   </button>
                 </td>
               </tr>
@@ -104,7 +109,17 @@ const TransactionsItem = ({ transaction, handleEditItem }) => {
           <td className={s.transaction_colum}>
             {' '}
             <div className={s.btn_wrapper}>
-              <button className={s.btn_edit}>Edit</button>
+              <button
+                className={s.btn_edit}
+                onClick={() =>
+                  handleEditItem(
+                    { categoryId, type, amount, comment, transactionDate },
+                    id
+                  )
+                }
+              >
+                Edit
+              </button>
               <button
                 className={s.btn_delete}
                 onClick={() => handleDeleteTransaction(id)}

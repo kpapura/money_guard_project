@@ -1,10 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useMediaQuery } from 'react-responsive';
-import {
-  fetchTransactionsDataThunk,
-  fetchTransactionCategoriesThunk,
-} from '../../redux/transactions/operations';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   selectTransactionCategories,
   selectTransactions,
@@ -21,15 +16,6 @@ import { useDashboard } from '../../hooks/useDashboard';
 const TransactionsList = () => {
   const { isOpen, toggle } = useModal();
   const [editContent, setEditContent] = useState('');
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchTransactionsDataThunk());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(fetchTransactionCategoriesThunk());
-  }, [dispatch]);
 
   const transactions = useSelector(selectTransactions);
   const categories = useSelector(selectTransactionCategories);
@@ -54,6 +40,7 @@ const TransactionsList = () => {
                 <TransactionsItem
                   key={transaction.id}
                   transaction={transaction}
+                  handleEditItem={handleEditItem}
                 />
               ))
             ) : (
@@ -80,6 +67,7 @@ const TransactionsList = () => {
                     <TransactionsItem
                       key={transaction.id}
                       transaction={transaction}
+                      handleEditItem={handleEditItem}
                     />
                   ))}
                 </tbody>
@@ -104,7 +92,7 @@ const TransactionsList = () => {
           </>
         )}
 
-        <button className={s.btn_add}>
+        <button className={s.btn_add} onClick={handleAddItem}>
           {' '}
           <svg className={s.icon_plus}>
             <use xlinkHref={`${sprite}#icon-plus`} />
