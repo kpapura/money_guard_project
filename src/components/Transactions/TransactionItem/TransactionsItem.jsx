@@ -110,13 +110,13 @@ const TransactionsItem = ({ transaction, handleEditItem }) => {
             {' '}
             <div className={s.btn_wrapper}>
               <button
-                className={s.btn_edit}
                 onClick={() =>
                   handleEditItem(
                     { categoryId, type, amount, comment, transactionDate },
                     id
                   )
                 }
+                className={s.btn_edit}
               >
                 Edit
               </button>
