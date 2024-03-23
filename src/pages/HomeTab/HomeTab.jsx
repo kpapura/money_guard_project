@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import TransactionsList from '../../components/Transactions/TransactionsList';
 import {
   fetchTransactionCategoriesThunk,
   fetchTransactionsDataThunk,
