@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import TransactionsList from '../../components/Transactions/TransactionsList';
 import {
   fetchTransactionCategoriesThunk,
   fetchTransactionsDataThunk,
 } from '../../redux/transactions/operations';
+import useResize from '../../hooks/useResize';
+import TransactionsList from '../../components/Transactions/TransactionsList';
+import CurrencyRates from '../../components/CurrencyRates/CurrenceRate';
 
 const HomeTab = () => {
+  const screenWidth = useResize().windowWidth;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,7 +20,12 @@ const HomeTab = () => {
     dispatch(fetchTransactionCategoriesThunk());
   }, [dispatch]);
 
-  return <TransactionsList />;
+  return (
+    <>
+    {screenWidth >= 768 && <CurrencyRates/>}
+    <TransactionsList />
+    </>
+  );
 };
 
 export default HomeTab;

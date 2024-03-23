@@ -54,7 +54,7 @@
     gap: 33px;
 }
 
-.transactions_table tr:last-child {
+.table_body tr:last-child {
     border-bottom: none;
 }
 
