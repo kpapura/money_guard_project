@@ -44,6 +44,7 @@ const slice = createSlice({
         state.user.email = payload.email;
         state.balance = payload.balance;
         state.isLoggedIn = true;
+        state.loading = false;
         state.isRefresh = false;
         state.loading = false;
       })
@@ -55,8 +56,10 @@ const slice = createSlice({
           state.user.email = payload.user.email;
           state.user.password = payload.user.password;
           state.token = payload.token;
+          state.loading = false;
           state.isLoggedIn = true;
           state.loading = false;
+          state.isRefresh = false;
         }
       )
       .addMatcher(
@@ -93,5 +96,6 @@ export const {
   selectToken,
   selectIsRefresh,
   selectBalance,
+  selectIsLoading,
 } = slice.selectors;
 export const { logout } = slice.actions;

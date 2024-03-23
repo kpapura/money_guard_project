@@ -5,7 +5,6 @@ import { walletApi } from '../../axiosConfig/walletApi';
 export const fetchTransactionsDataThunk = createAsyncThunk(
   'fetchTransactionsData',
   async (_, thunkAPI) => {
-
     try {
       const { data } = await walletApi.get('transactions');
       return data;
@@ -43,7 +42,10 @@ export const editTransactionThunk = createAsyncThunk(
   'editTransaction',
   async (body, thunkAPI) => {
     try {
-      const { data } = await walletApi.patch(`/transactions/${body.id}`, body.content);
+      const { data } = await walletApi.patch(
+        `/transactions/${body.id}`,
+        body.content
+      );
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -54,7 +56,6 @@ export const editTransactionThunk = createAsyncThunk(
 export const fetchTransactionCategoriesThunk = createAsyncThunk(
   'fetchTransactionCategories',
   async (_, thunkAPI) => {
-
     try {
       const { data } = await walletApi.get('transaction-categories');
       return data;
@@ -66,9 +67,11 @@ export const fetchTransactionCategoriesThunk = createAsyncThunk(
 
 export const fetchTransactionSummaryControllerThunk = createAsyncThunk(
   'fetchTransactionSummaryController',
-  async (_, thunkAPI) => {
+  async (query, thunkAPI) => {
     try {
-      const { data } = await walletApi.get('transactions-summary');
+      const { data } = await walletApi.get(
+        `transactions-summary?month=${query.month}&year=${query.year}`
+      );
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

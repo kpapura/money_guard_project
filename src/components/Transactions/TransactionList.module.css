@@ -55,6 +55,16 @@ screen and (min-resolution: 2dppx) {
         padding: 46px 16px 0 69px;
         min-height: calc(100vh - 80px);
         border-left: 1px solid rgb(251, 251, 251, 0.6);
+        background-image: url(../../img/images/home_desk@1x.webp);
+    }
+
+
+    @media screen and (min-resolution: 192dpi),
+    screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 2dppx) {
+        .transactions_section {
+            background-image: url(../../img/images/home_desk@2x.webp);
+        }
     }
 
     .transactions_container {
@@ -106,6 +116,10 @@ screen and (min-resolution: 2dppx) {
 
 .transactions_table th {
     width: 16.66%;
+}
+
+.table_body tr:last-child {
+    border-bottom: none;
 }
 
 .btn_add {
