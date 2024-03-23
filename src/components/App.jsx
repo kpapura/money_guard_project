@@ -5,17 +5,19 @@ import { Layout } from './Layout';
 import Register from '../pages/Register/Register';
 import StatisticsTab from '../pages/StatisticsTab/StatisticsTab';
 import 'modern-normalize';
+import CurrencyRates from './CurrencyRates/CurrenceRate';
 
 function App() {
   return (
     <div>
       <h1>Hello</h1>
-      <Routes>
+      <CurrencyRates/>
+      {/* <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
         </Route>
-      </Routes>
+      </Routes> */}
     </div>
   );
 }
