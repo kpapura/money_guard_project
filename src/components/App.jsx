@@ -14,7 +14,6 @@ import HomeTab from '../pages/HomeTab/HomeTab';
 import Loader from '../components/Loader/Loader';
 
 import 'modern-normalize';
-import StatisticsTest from '../pages/StatisticsTest/StatisticsTest';
 import CurrencyRates from './CurrencyRates/CurrenceRate';
 import StatisticsTab from '../pages/StatisticsTab/StatisticsTab';
 
