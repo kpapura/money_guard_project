@@ -33,15 +33,46 @@ const LoginRegisterForm = ({ onDataSubmit, formType, schema }) => {
   };
 
   return (
-    <section
-      className={
-        formType === 'login'
-          ? `${s.login_register_section}`
-          : `${s.register_login_section}`
-      }
-    >
-      {' '}
-      <div className={s.background_container}>
+    <>
+      <section
+        className={
+          formType === 'login'
+            ? `${s.login_register_section}`
+            : `${s.register_login_section}`
+        }
+      >
+        {formType === 'login' ? (
+          <>
+            <div className={s.background_img_container_login}>
+              <div></div>
+              <div></div>
+            </div>
+            <div className={s.background_container_login}>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className={s.background_container_registration}>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div className={s.background_img_container_registration}>
+              <div></div>
+              <div></div>
+            </div>
+          </>
+        )}
+
         <div
           className={s.form_container}
           style={{
@@ -127,8 +158,8 @@ const LoginRegisterForm = ({ onDataSubmit, formType, schema }) => {
             )}{' '}
           </form>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
