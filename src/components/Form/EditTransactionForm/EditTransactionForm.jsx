@@ -5,28 +5,27 @@ import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export function EditTransactionForm({ categories, content, onCancelClose }) {
+export function EditTransactionForm({ categories, editContent, toggle }) {
   const dispatch = useDispatch();
 
   const handleSubmit = data => {
-    console.log({ ...content, ...data });
-    dispatch(editTransactionThunk({ ...content, ...data }))
+    dispatch(editTransactionThunk({ content:{...data}, id:editContent.id }))
       .unwrap()
       .then(data => {
         toast.success(`Changed!`);
+        toggle()
       })
       .catch(err => {
         toast.error('Credentials is not valid!');
       });
-    // onCancelClose()
-    // reset()
   };
 
   return (
     <Form
+      toggle={toggle}
+      content={editContent.content}
       categories={categories}
       onDataSubmit={handleSubmit}
-      closeModal={onCancelClose}
       typeForm="edit"
     />
   );

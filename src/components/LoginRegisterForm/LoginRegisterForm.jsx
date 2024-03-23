@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { NavLink } from 'react-router-dom';
 import s from './LoginRegisterForm.module.css';
@@ -7,65 +7,128 @@ import InputField from './InputField';
 import PassInputField from './PassInputField';
 
 const LoginRegisterForm = ({ onDataSubmit, formType, schema }) => {
+  const [size, setSize] = useState(0);
+  useEffect(() => {
+    const handleResize = () => {
+      setSize(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const {
     register,
     reset,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
-  const submit = data => {
-    delete data.passwordConfirmation;
+  const submit = dataS => {
+    const { passwordConfirmation, ...data } = dataS;
     onDataSubmit(data);
-    console.log(data);
     reset();
   };
 
   return (
-    <form className={s.form} onSubmit={handleSubmit(submit)}>
-      {formType === 'register' && (
-        <InputField
-          register={register}
-          errors={errors}
-          name="username"
-          placeholder="Name"
-        />
-      )}
-      <InputField
-        register={register}
-        errors={errors}
-        name="email"
-        placeholder="Email"
-      />
-      <PassInputField
-        register={register}
-        errors={errors}
-        name="password"
-        placeholder="Password"
-      />
-
-      {formType === 'register' && (
-        <>
-          <PassInputField
-            register={register}
-            errors={errors}
-            name="passwordConfirmation"
-            placeholder="Confirm password"
-          />
-        </>
-      )}
-      {formType === 'login' ? (
-        <>
-          <button type="submit">LOG IN</button>
-          <NavLink to="/register">REGISTER</NavLink>
-        </>
-      ) : (
-        <>
-          <button type="submit">REGISTER</button>
-          <NavLink to="/login">LOGIN</NavLink>
-        </>
-      )}
-      <button hidden></button>
-    </form>
+    <section
+      className={
+        formType === 'login'
+          ? `${s.login_register_section}`
+          : `${s.register_login_section}`
+      }
+    >
+      {' '}
+      <div className={s.background_container}>
+        <div
+          className={s.form_container}
+          style={{
+            padding:
+              size < 768 && formType === 'login'
+                ? '98px 20px'
+                : size > 768 && formType === 'login'
+                ? '80px 62px'
+                : '40px 62px',
+          }}
+        >
+          <a
+            href=""
+            className={s.logo_wrapper}
+            style={{ paddingBottom: formType === 'login' ? '11px' : '0px' }}
+          >
+            {size < 768 ? (
+              <svg width="25.5" height="25.5">
+                <use href="../../img/sprite.svg#icon-logo"></use>
+              </svg>
+            ) : (
+              <svg width="36" height="36">
+                <use href="../../img/sprite.svg#icon-logo"></use>
+              </svg>
+            )}
+            Money Guard
+          </a>
+          <form className={s.form} onSubmit={handleSubmit(submit)}>
+            {formType === 'register' && (
+              <InputField
+                register={register}
+                errors={errors}
+                name="username"
+                placeholder="Name"
+                className="username"
+              />
+            )}
+            <InputField
+              register={register}
+              errors={errors}
+              name="email"
+              placeholder="E-mail"
+              className="email"
+            />
+            <PassInputField
+              register={register}
+              errors={errors}
+              name="password"
+              placeholder="Password"
+              onChange={e => handleChange(e)}
+              formType={formType}
+              className="password"
+            />
+            {formType === 'register' && (
+              <>
+                <PassInputField
+                  register={register}
+                  errors={errors}
+                  name="passwordConfirmation"
+                  placeholder="Confirm password"
+                  className="cpassword"
+                />
+              </>
+            )}
+            {formType === 'login' ? (
+              <div className={s.button_cont}>
+                <button className={s.submit_btn} type="submit">
+                  log in
+                </button>
+                <NavLink className={s.inactive_btn} to="/register">
+                  register
+                </NavLink>
+              </div>
+            ) : (
+              <div className={s.button_cont}>
+                <button className={s.submit_btn} type="submit">
+                  register
+                </button>
+                <NavLink className={s.inactive_btn} to="/login">
+                  log in
+                </NavLink>
+              </div>
+            )}{' '}
+          </form>
+        </div>
+      </div>
+    </section>
   );
 };
 

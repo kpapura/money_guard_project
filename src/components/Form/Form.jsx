@@ -1,62 +1,87 @@
-import React, { useEffect, useState } from 'react';
-import { useModal } from '../../hooks/useModal';
+import React, { useEffect, useMemo, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useForm } from 'react-hook-form';
 import TransactionSwitcher from './TransactionSwitcher/TransactionSwitcher';
 import s from './Form.module.css';
+import { formatDate } from '../../helpers/addLeadingzero';
+import Select from 'react-select';
+import FormInput from './FormFields/FormFields';
+//import { yupResolver } from '@hookform/resolvers/yup';
+import { useDashboard } from '../../hooks/useDashboard';
 
-export function Form({ categories, closeModal, typeForm, onDataSubmit }) {
-  const { toggle } = useModal();
-
+export function Form({
+  content,
+  categories,
+  toggle,
+  typeForm,
+  onDataSubmit,
+}) {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
     setValue,
   } = useForm();
 
-  const [type, setType] = useState('Expense');
+  const [selectedOption, setSelectedOption] = useState('');
+  const [type, setType] = useState('');
   const [startDate, setStartDate] = useState(new Date());
 
-  const addLeadingZero = number => {
-    return number < 10 ? '0' + number : number;
-  };
-  const year = startDate.getFullYear();
-  const month = addLeadingZero(startDate.getMonth() + 1);
-  const day = addLeadingZero(startDate.getDate());
-  const formattedDate = `${year}-${month}-${day}`;
+  useEffect(() => {
+    content ? setType(content.type) : setType('EXPENSE');
+  }, [content]);
 
-  const submit = data => {
-    const category = categories.find(category => {
-      return category.name.toLowerCase() === data.category.split('-').join(' ')
-        ? category.id
-        : null;
+  useEffect(() => {
+    setValue('amount', content && content.amount);
+  }, [content, setValue]);
+
+  useEffect(() => {
+    setValue('comment', content && content.comment);
+  }, [content, setValue]);
+
+  const categoriesValues = useMemo(() => {
+    return categories.map(({ id, name }) => {
+      return { value: id, label: name };
     });
+  }, [categories]);
+
+  const defaultValue = useMemo(() => {
+    return categoriesValues.find(option => {
+      return content?.categoryId === option.value;
+    });
+  }, [content, categoriesValues]);
+
+  const handleChange = selectedOption => {
+    setSelectedOption(selectedOption);
+  };
+  const submit = data => {
     if (typeForm === 'add') {
       onDataSubmit({
-        transactionDate: formattedDate,
+        transactionDate: formatDate(startDate),
         amount: +data.amount,
         comment: data.comment,
-        type: category.type,
-        categoryId: category.id,
+        type: type,
+        categoryId:
+          type === 'EXPENSE'
+            ? selectedOption.value || categoriesValues[0].value
+            : '063f1132-ba5d-42b4-951d-44011ca46262',
       });
     } else {
       onDataSubmit({
-        transactionDate: formattedDate,
+        transactionDate: formatDate(startDate),
         amount: +data.amount,
         comment: data.comment,
       });
     }
-    reset();
-    toggle();
   };
-  const toggleTransaction = () => {
-    const newType = type === 'Expense' ? 'Income' : 'Expense';
-    setType(newType);
+  const toggleTransaction = type => {
+    if (type) {
+      setType('INCOME');
+    } else {
+      setType('EXPENSE');
+    }
   };
-
   return (
     <div>
       <form className={s.formWrapper} onSubmit={handleSubmit(submit)}>
@@ -67,72 +92,95 @@ export function Form({ categories, closeModal, typeForm, onDataSubmit }) {
           <TransactionSwitcher onChange={toggleTransaction} />
         ) : (
           <div>
-            <ul className={s.checkBox} onClick={toggleTransaction}>
-              <li>Income</li>
+            <ul className={s.checkBox}>
+              <li
+                onClick={() => {
+                  if (!(typeForm === 'edit' && type === 'EXPENSE')) {
+                    toggleTransaction(true);
+                  }
+                }}
+                className={
+                  content.type === 'INCOME' || type === 'INCOME'
+                    ? s.activeIncome
+                    : ''
+                }
+                disabled={typeForm === 'edit' && type === 'EXPENSE'}
+              >
+                {' '}
+                Income
+              </li>
               <span>/</span>
-              <li>Expense</li>
+              <li
+                onClick={() => {
+                  if (!(typeForm === 'edit' && type === 'INCOME')) {
+                    toggleTransaction(false);
+                  }
+                }}
+                className={type === 'EXPENSE' ? s.activeExpense : ''}
+                disabled={typeForm === 'edit' && type === 'INCOME'}
+              >
+                {' '}
+                Expense{' '}
+              </li>
             </ul>
           </div>
         )}
         <div>
-          {type === 'Expense' && (
-            <select
-              className={s.selectExpense}
-              {...register('category')}
-              errors={errors}
-              placeholder="Select a category"
-              name="category"
-            >
-              {/* {categories?.map((category)=>{
-                console.log(category);
-              <option value={category.id} key={category.id}>{category.name}</option>
-              })} */}
-
-              <option value="main-expenses">Main expenses</option>
-              <option value="products">Products</option>
-              <option value="car">Car</option>
-              <option value="self-care">Self Care</option>
-              <option value="child-care">Child Care</option>
-              <option value="household-products">Household products</option>
-              <option value="education">Education</option>
-              <option value="leisure">Leisure</option>
-              <option value="other-expenses">Other expenses</option>
-              <option value="entertainment">Entertainment</option>
-            </select>
+          {type === 'EXPENSE' && (
+            <div className={s.inputContainer}>
+              <Select
+                name="category"
+                //className={s.selectExpense}
+                options={categoriesValues}
+                defaultValue={defaultValue ? defaultValue : categoriesValues[0]}
+                onChange={handleChange}
+                isDisabled={typeForm === 'edit'}
+              />
+            {errors['category'] && <span>{errors['category'].message}</span>}
+            </div>
           )}
 
           <div className={s.boxDate}>
-            <input
+            <FormInput
               className={s.incomeInput}
-              {...register('amount')}
-              errors={errors}
-              placeholder="0.00"
               name="amount"
+              placeholder="0.00"
+              errors={errors}
+              register={register}
             />
-            <DatePicker
-              className={s.customInput}
-              selected={startDate}
-              onChange={date => {
-                setValue('transactionDate', date);
-                setStartDate(date);
-              }}
-            />
+
+            <div className={s.inputContainer}>
+              <DatePicker
+                className={s.customInput}
+                selected={content ? content.transactionDate : startDate}
+                onChange={date => {
+                  setValue('transactionDate', date);
+                  setStartDate(date);
+                }}
+              />
+              {errors['transactionDate'] && (
+                <span>{errors['transactionDate'].message}</span>
+              )}
+            </div>
           </div>
-          <input
+          
+          <FormInput
             className={s.comment}
-            {...register('comment')}
-            errors={errors}
-            placeholder="Comment"
             name="comment"
+            placeholder="Comment"
+            errors={errors}
+            register={register}
           />
+
           <div className={s.btnBox}>
             <button className={s.btn}>
               {typeForm === 'add' ? 'ADD' : 'EDIT'}
             </button>
-            <button className={s.btn} onClick={closeModal}>
+            <button type="button" onClick={toggle} className={s.btn}>
               CANCEL
             </button>
           </div>
+
         </div>
       </form>
     </div>

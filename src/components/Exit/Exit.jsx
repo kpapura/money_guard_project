@@ -4,12 +4,15 @@ import s from './Exit.module.css';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../redux/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
+import { logoutThunk } from '../../redux/auth/operations';
 
 export const Exit = ({ closeModal }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const logout = () => {
-    dispatch(logout);
+  const onLogout = () => {
+    dispatch(logoutThunk());
+    dispatch(logout());
+    closeModal();
     navigate('/login');
   };
   return (
@@ -22,8 +25,12 @@ export const Exit = ({ closeModal }) => {
       </a>
       <p className={s.text}>Are you sure you want to log out?</p>
 
-      <button onClick={logout}>Logout</button>
-      <button onClick={closeModal}>Cancel</button>
+      <button className="modalButtonColor" onClick={onLogout}>
+        Logout
+      </button>
+      <button className="modalButton" onClick={closeModal}>
+        Cancel
+      </button>
     </div>
   );
 };

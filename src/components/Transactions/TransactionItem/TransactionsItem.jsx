@@ -1,17 +1,15 @@
 import React from 'react';
 import s from './TransactionsItem.module.css';
-import { useMediaQuery } from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteTransactionThunk } from '../../../redux/transactions/operations';
 import { selectTransactionCategories } from '../../../redux/transactions/transactionsSlice';
-import { ModalTransaction } from '../../ModalTransaction/ModalTransaction';
+import sprite from '../../../img/sprite.svg';
+import { useDashboard } from '../../../hooks/useDashboard';
 
-const TransactionsItem = ({ transaction }) => {
-  const { id, transactionDate, type, categoryId, comment, amount } =
-    transaction;
+const TransactionsItem = ({ transaction, handleEditItem }) => {
+  const { id, transactionDate, type, categoryId, comment, amount } = transaction;
 
-  const isBigScreenOrTablet = useMediaQuery({ query: '(min-width: 768px)' });
-  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  const { isBigScreenOrTablet, isMobile } = useDashboard();
 
   const dispatch = useDispatch();
   const categories = useSelector(selectTransactionCategories);
@@ -27,13 +25,19 @@ const TransactionsItem = ({ transaction }) => {
 
   const signType = type.toLowerCase() === 'income' ? '+' : '-';
 
-  const transactionClass =
-    type.toLowerCase() === 'income' ? s.income : s.expense;
+  const transactionBorderColor =
+    type.toLowerCase() === 'income' ? s.income_border : s.expense_border;
+
+  const transactionTextColor =
+    type.toLowerCase() === 'income' ? s.income_text : s.expense_text;
 
   return (
     <>
       {isMobile && (
-        <li key={id} className={`${s.transaction_item} ${transactionClass}`}>
+        <li
+          key={id}
+          className={`${s.transaction_item} ${transactionBorderColor}`}
+        >
           <table className={s.transactions_table_mobile}>
             <tbody>
               <tr className={s.transaction_row_mobile}>
@@ -54,7 +58,7 @@ const TransactionsItem = ({ transaction }) => {
               </tr>
               <tr className={s.transaction_row_mobile}>
                 <td className={s.transaction_first_column}>Sum</td>
-                <td>{amount}</td>
+                <td className={transactionTextColor}>{amount}</td>
               </tr>
               <tr className={s.transaction_row_mobile}>
                 <td>
@@ -66,7 +70,15 @@ const TransactionsItem = ({ transaction }) => {
                   </button>
                 </td>
                 <td>
-                  <button className={s.btn_edit}>Edit</button>
+                  <button
+                    onClick={() =>
+                      handleEditItem({ categoryId, type, amount, comment, transactionDate }, id)} className={s.btn_edit}>
+                    {' '}
+                    <svg className={s.icon_edit}>
+                      <use xlinkHref={`${sprite}#icon-edit`} />
+                    </svg>{' '}
+                     Edit
+                  </button>
                 </td>
               </tr>
             </tbody>
@@ -81,13 +93,16 @@ const TransactionsItem = ({ transaction }) => {
           </td>
           <td className={s.transaction_colum}>{getCategoryName(categoryId)}</td>
           <td className={s.transaction_colum}>{comment}</td>
-          <td className={s.transaction_colum} style={{ textAlign: 'right' }}>
+          <td
+            className={`${s.transaction_colum} ${transactionTextColor}`}
+            style={{ textAlign: 'right' }}
+          >
             {amount}
           </td>
           <td className={s.transaction_colum}>
             {' '}
             <div className={s.btn_wrapper}>
-              <button className={s.btn_edit}>Edit</button>
+              <button onClick={() => handleEditItem({ categoryId, type, amount, comment, transactionDate }, id)} className={s.btn_edit}>Edit</button>
               <button
                 className={s.btn_delete}
                 onClick={() => handleDeleteTransaction(id)}
