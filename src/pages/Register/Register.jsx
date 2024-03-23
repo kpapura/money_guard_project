@@ -14,7 +14,7 @@ const Register = () => {
     dispatch(registerThunk(data))
       .unwrap()
       .then(() => {
-        navigation('/login');
+        navigation('/home');
       })
       .catch(error => {
         console.log(error);

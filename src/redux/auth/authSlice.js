@@ -57,6 +57,7 @@ const slice = createSlice({
           state.token = payload.token;
           state.isLoggedIn = true;
           state.loading = false;
+          state.isRefresh = false;
         }
       )
       .addMatcher(
@@ -93,5 +94,6 @@ export const {
   selectToken,
   selectIsRefresh,
   selectBalance,
+  selectIsLoading,
 } = slice.selectors;
 export const { logout } = slice.actions;
