@@ -25,7 +25,6 @@ function App() {
           <Route path="home" element={<HomeTab />} />
         </Route>
       </Routes>
-      </Routes>
     </div>
   );
 }
