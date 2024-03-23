@@ -1,45 +1,97 @@
-.wrapper {
-    display: flex;
+
+    /* display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
-    background-image: linear-gradient(rgba(142, 46, 121, 1.00), rgba(46, 23, 70, 1.00), rgba(109, 84, 235, 1.00), rgba(109, 84, 235, 1.00), rgba(74, 86, 226, 0.10)),
-
-        url('../../img/images/gradient_mob@1x.webp');
+    padding: 20px; */
+    /* background-image: linear-gradient(rgba(142, 46, 121, 1.00),rgba(46, 23, 70, 1.00), rgba(109, 84, 235, 1.00), rgba(109, 84, 235, 1.00), rgba(74, 86, 226, 0.10)),
+        
+     url('../../img/images/gradient_mob@1x.webp');
     max-width: 320px;
     margin: 0 auto;
     height: 568px;
-    background-color: rgb(105, 105, 230, 0.7);
+    background-color: rgb(105, 105, 230, 0.7); */
 
-
+.wrapper {
+    background-color: black;
+        background-image: url('../../img/images/gradient_mob@1x.webp');
+        background-size: cover;
+        position: relative;
+        width: 100%;
+        display: flex;
+        /* padding: 32px 20px 0 20px; */
+        height: 100vh;
+        overflow: auto;
+           
 }
 
-.secondwrapper {
-    box-shadow: rgba(0, 0, 0, 0.25);
+@media(min-width: 768px) {
+    .wrapper {
+        width: 336px;
+        height: 214px;
+        border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+    }
 }
 
+@media(min-width: 1280px) {
+    .wrapper {
+        width: 480px;
+        height: 380px;
+        background-color: rgb(44, 3, 97);
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        /* flex-direction: column;
+         justify-content: flex-end; */
+
+                    }
+}
 
 .title {
     display: flex;
     justify-content: space-between;
     align-items: center;
     list-style-type: none;
-    width: 320px;
+    width: 100%;
+    max-width: 320px;
     height: 44px;
     background-color: rgba(255, 255, 255, 0.2);
     margin-top: 140px;
+}
+
+@media(min-width: 768px) {
+    .title{
+        max-width: 336px;    
+        width: 100%;
+            height: 48px;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin-top: 0px;
+    }
+}
+
+@media(min-width: 768px) {
+    .title {
+        max-width: 480px;
+            width: 100%;
+            height: 56px;
+    }
 }
 
 .row {
     display: flex;
     justify-content: space-between;
     list-style-type: none;
-    width: 320px;
+    width: 100%;
+    max-width: 320px;    
     height: 24px;
     margin-top: 8px;
-    margin-bottom: 2px;
+    margin-bottom: 2px;   
+}
 
-
+@media(min-width: 768px) {
+    .row {
+        max-width: 480px;
+        width: 100%;
+    }
 }
 
 .titleItem,
@@ -54,13 +106,99 @@
     stroke: black;
 }
 
-
-.image {
+.image{
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+    width: 100%;
 }
+@media(min-width: 768px) {
+    .image {
+    margin-top: 10px;
+    }
+}
+
+@media(min-width: 1280px) {
+    .image {
+        margin-top: 60px;
+        position: relative;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        /* width: 100%;
+        height: 100%; */
+    }
+}
+
 
 .secondimage {
     position: relative;
-    margin-top: -95px;
+    margin-top: -28%;
+    width: 100%;
+    /* width: 320px;
+    height: 214px; */
 }
+
+@media(min-width: 1280px) {
+    .secondimage {
+        margin-top: -40%;
+        /* height: 100%; */
+}
+}
+
+
+.smallnumeur{
+    color: rgb(255, 134, 141);
+    font-weight: 400;
+    font-size: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(530%, -400%);
+}
+
+.smallnumusd {
+    color: rgb(255, 134, 141);
+    font-weight: 400;
+    font-size: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-670%, -150%);
+}
+
+
+
+
+
+
+
+
+/* .secondwrapper {
+    height: 214px;
+    box-shadow: rgba(0, 0, 0, 0.25);
+    background-image: url('../../img/images/line_desc_mob_1x.webp'), url('../../img/images/currency_mobile.webp');
+    background-position: bottom, bottom;
+} */
+
+
+
+/* .secondwrapper {
+    height: 214px;
+    box-shadow: rgba(0, 0, 0, 0.25);
+    background-image: url('../../img/images/line_desc_mob_1x.webp'), url('../../img/images/currency_mobile.webp');
+    background-position: bottom, center;
+} */
+
+
+
+
+
+
+
+
+
+/* @media screen and (min-width: 768px) {
+    .secondwrapper{
+        width: 336px;
+        height: 214px;
+    }
+} */
