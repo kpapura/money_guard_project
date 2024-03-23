@@ -1,3 +1,24 @@
+@media screen and (max-width: 767px) {
+.transaction-switcher {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 60px;
+    }
+/* .labelExpense {
+    color: white;
+    margin-left: 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.labelIncome {
+    color: white;
+    margin-right: 20px;
+    font-size: 16px;
+    font-weight: bold;
+} */
+}
 .switch {
     position: relative;
     display: inline-block;
@@ -11,18 +32,30 @@
     height: 0;
 }
 .labelExpense{
-color: white;
+color: rgba(255, 255, 255, 0.6) ;
 margin-left: 20px;
 font-size: 16px;
 font-weight: bold;
 }
 .labelIncome {
-    color: white;
+    color: rgba(255, 255, 255, 0.6);
+    margin-right: 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.activeIncome {
+    color: #FFB627 ;
     margin-right: 20px;
     font-size: 16px;
     font-weight: bold;
 }
 
+.activeExpense {
+    color: rgb(255, 134, 141);
+    margin-left: 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
 .slider {
     position: absolute;
     cursor: pointer;
@@ -82,4 +115,13 @@ input:checked+.slider:before {
     justify-content: center;
     align-items: center;
     margin-bottom: 40px;
+}
+
+@media screen and (min-width: 768px) {
+    .transaction-switcher {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 60px;
+        }
 }

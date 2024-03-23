@@ -4,9 +4,11 @@ import {
   fetchTransactionCategoriesThunk,
   fetchTransactionsDataThunk,
 } from '../../redux/transactions/operations';
-import TransactionsList from '../../components/Transactions/TransactionsList';
+import useResize from '../../hooks/useResize';
+import CurrenceRates from '../CurrencyRate/CurrencyRate';
 
 const HomeTab = () => {
+  const screenWidth = useResize().windowWidth;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,7 +19,12 @@ const HomeTab = () => {
     dispatch(fetchTransactionCategoriesThunk());
   }, [dispatch]);
 
-  return <TransactionsList />;
+  return (
+    <>
+    {screenWidth >= 768 && <CurrenceRates/>}
+    <TransactionsList />
+    </>
+  );
 };
 
 export default HomeTab;

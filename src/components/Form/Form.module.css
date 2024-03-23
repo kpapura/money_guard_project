@@ -1,19 +1,393 @@
+@media screen and (max-width: 767px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        padding: 40px 20px;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
 .formWrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 40px 73px;
-    max-width: 540px;
+    max-width: 280px;
 }
 
+.header {
+    font-size: 24px;
+    color: white;
+    margin-bottom: 32px;
+    font-weight: var(--font-weight-regular);
+}
+.secondContainer{
+    max-width: 280px;
+}
+.category {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    margin-bottom: 40px;
+
+    &>span {
+        color: black;
+        font-size: 0.8rem;
+        font-style: italic;
+    }
+}
+.boxDate {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.incomeInput,
+.customInput {
+    width: 100% ;
+    background-color: transparent;
+    border-style: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    padding: 8px;
+}
+.customInput {
+width: 280px;
+}
+.incomeInput::placeholder,
+.customInput::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+.svgBox{
+position: relative;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+width: 100%;
+background-color: transparent;
+border-style: none;
+color: white;
+font-size: 18px;
+font-weight: bold;
+&>svg{
+position: absolute;
+right: 10px;
+top: 6px;
+fill: #734AEF;
+width: 24px;
+height: 24px;
+}
+}
+
+.comment,
+.selectExpense {
+    width: 280px;
+    background-color: transparent;
+    padding: 8px;
+    border-style: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    margin-bottom: 40px;
+}
+
+.comment::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+.btnBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+}
+
+@media screen and (min-width: 768px) {
+
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    /* padding: 40px 80px; */
+    /* width: 540px;
+    height: 580px; */
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.formWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* padding: 40px 80px; */
+    width: 100%;
+    height: 100%;
+    /* width: 540px;
+    height: 580px; */
+}
 .header {
     font-size: 30px;
     color: white;
     margin-bottom: 40px;
+    font-weight: var(--font-weight-regular);
+}
+.checkBox {
+    display: flex;
+    flex-direction: row;
+    gap: 11px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 60px;
+    cursor: pointer;
+}
+.secondContainer {
+    max-width: 400px;
 }
 
-.checkBox {
+.category {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    margin-bottom: 40px;
+
+    &>span {
+        color: black;
+        font-size: 0.8rem;
+        font-style: italic;
+    }
+}
+
+.boxDate {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.incomeInput,
+.customInput {
+    width: 185px;
+    background-color: transparent;
+    border-style: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    padding: 8px;
+}
+
+.customInput {
+    width: 185px;
+}
+
+.incomeInput::placeholder,
+.customInput::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.svgBox {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    background-color: transparent;
+    border-style: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+
+    &>svg {
+        position: absolute;
+        right: 10px;
+        top: 6px;
+        fill: #734AEF;
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.comment
+ {
+    width: 100%;
+    background-color: transparent;
+    padding: 8px;
+    border-style: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    margin-bottom: 40px;
+}
+
+.comment::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.btnBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+}
+@media screen and (min-width: 1280px) {
+.container {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        /* padding: 40px 80px; */
+        /* width: 540px;
+    height: 580px; */
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .formWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* padding: 40px 80px; */
+        width: 100%;
+        height: 100%;
+        /* width: 540px;
+    height: 580px; */
+    }
+
+    .header {
+        font-size: 30px;
+        color: white;
+        margin-bottom: 40px;
+        font-weight: var(--font-weight-regular);
+    }
+
+    .checkBox {
+        display: flex;
+        flex-direction: row;
+        gap: 11px;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 60px;
+        cursor: pointer;
+    }
+
+    .secondContainer {
+        max-width: 400px;
+    }
+
+    .category {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        position: relative;
+        margin-bottom: 40px;
+
+        &>span {
+            color: black;
+            font-size: 0.8rem;
+            font-style: italic;
+        }
+    }
+
+    .boxDate {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        cursor: pointer;
+        width: 100%;
+        margin-bottom: 40px;
+    }
+
+    .incomeInput,
+    .customInput {
+        width: 185px;
+        background-color: transparent;
+        border-style: none;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+        padding: 8px;
+    }
+
+    .customInput {
+        width: 185px;
+    }
+
+    .incomeInput::placeholder,
+    .customInput::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .svgBox {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        background-color: transparent;
+        border-style: none;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+
+        &>svg {
+            position: absolute;
+            right: 10px;
+            top: 6px;
+            fill: #734AEF;
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    .comment {
+        width: 100%;
+        background-color: transparent;
+        padding: 8px;
+        border-style: none;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+        cursor: pointer;
+        margin-bottom: 40px;
+    }
+
+    .comment::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .btnBox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+/* .checkBox {
     display: flex;
     flex-direction: row;
     gap: 11px;
@@ -22,17 +396,16 @@
     font-weight: bold;
     margin-bottom: 60px;
     cursor: pointer;
-}
+} */
 
-.boxDate {
+/* .boxDate {
     display: flex;
     flex-direction: row;
     gap: 32px;
-    /* margin-bottom: 40px; */
     cursor: pointer;
-}
+} */
 
-.incomeInput,
+/* .incomeInput,
 .customInput {
     width: 180px;
     background-color: transparent;
@@ -48,9 +421,9 @@
 .customInput::placeholder{
     color: rgba(255, 255, 255, 0.6);
     text-align: center;
-}
+} */
 
-.comment,
+/* .comment,
 .selectExpense {
     width: 394px;
     background-color: transparent;
@@ -62,50 +435,26 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.6);
     cursor: pointer;
 }
-/* .selectExpense{
-    margin-bottom: 40px;
-} */
+
 .comment::placeholder {
     color: rgba(255, 255, 255, 0.6);
-}
+} */
 
-.btnBox {
+/* .btnBox {
     display: flex;
     flex-direction: column;
     gap: 20px;
     align-items: center;
-}
+} */
 
-.btn {
-    width: 300px;
-    height: 50px;
-    border-radius: 20px;
-    font-size: 18px;
-    color: rgb(98, 63, 139);
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    border-style: none;
-    transition: all 0.3 ease;
-}
-
-.btn:hover {
-    color: white;
-    background-image: linear-gradient(to right,
-            rgb(255, 199, 39),
-            rgb(158, 64, 186),
-            rgb(112, 0, 255))
-}
-.activeIncome{
+/* .activeIncome{
 color:#FFB627;
 }
 .activeExpense {
     color: #FFB627;
-}
+} */
 
-.inputContainer{
+/* .inputContainer{
 display: flex;
 flex-direction: column;
 gap: 8px;
@@ -117,4 +466,4 @@ margin-bottom: 40px;
     font-size: 0.8rem;
     font-style: italic;
 }
-}
+} */

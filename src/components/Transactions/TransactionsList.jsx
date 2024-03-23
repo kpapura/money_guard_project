@@ -22,14 +22,23 @@ const TransactionsList = () => {
 
   const { isBigScreenOrTablet, isMobile } = useDashboard();
 
+  if (isOpen) {
+    document.body.classList.add('modal-open');
+  }
+  else {
+    document.body.classList.remove('modal-open');
+  }
   const handleEditItem = (content, id, name) => {
     toggle();
     setEditContent({ content, id, name });
+    isOpen && document.body.classList.add('modal-open');
+
   };
 
   const handleAddItem = () => {
     toggle();
     setEditContent(null);
+
   };
 
   return (

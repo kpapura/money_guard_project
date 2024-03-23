@@ -67,9 +67,11 @@ export const fetchTransactionCategoriesThunk = createAsyncThunk(
 
 export const fetchTransactionSummaryControllerThunk = createAsyncThunk(
   'fetchTransactionSummaryController',
-  async (_, thunkAPI) => {
+  async (query, thunkAPI) => {
     try {
-      const { data } = await walletApi.get('transactions-summary');
+      const { data } = await walletApi.get(
+        `transactions-summary?month=${query.month}&year=${query.year}`
+      );
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

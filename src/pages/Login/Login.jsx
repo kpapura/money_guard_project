@@ -14,7 +14,7 @@ const Login = () => {
     dispatch(loginThunk(data))
       .unwrap()
       .then(() => {
-        navigate('/');
+        navigate('/home');
       })
       .catch(error => {
         console.log(error.message);

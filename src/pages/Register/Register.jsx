@@ -14,7 +14,7 @@ const Register = () => {
     dispatch(registerThunk(data))
       .unwrap()
       .then(() => {
-        navigation('/login');
+        navigation('/home');
       })
       .catch(error => {
         console.log(error);
@@ -23,7 +23,7 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <div className={s.registerWrapper}>
       <Login_RegisterForm
         onDataSubmit={handleSubmit}
         formType={'register'}
