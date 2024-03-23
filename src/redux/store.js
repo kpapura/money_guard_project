@@ -13,6 +13,7 @@ import {
 
 import { authReducer } from './auth/authSlice';
 import { transactionsReducer } from './transactions/transactionsSlice';
+import { currencyReducer } from '../redux/currencyRate/currencyRateSlice';
 
 const persistConfig = {
   key: 'auth',
@@ -21,12 +22,19 @@ const persistConfig = {
   whitelist: ['token'],
 };
 
-const persistedReducer = persistReducer(persistConfig, authReducer);
+const currencyPersistConfig = {
+  key: 'root',
+  storage,
+};
 
 export const store = configureStore({
   reducer: {
-    auth: persistedReducer,
+    auth: persistReducer(persistConfig, authReducer),
     transactions: transactionsReducer,
+     currency:  persistReducer(
+  currencyPersistConfig,
+  currencyReducer
+),
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
@@ -38,36 +46,4 @@ export const store = configureStore({
   devTools: process.env.NODE_ENV !== 'production',
 });
 
-export const persistor = persistStore(store);
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { configureStore } from '@reduxjs/toolkit';
-// import { persistStore, persistReducer } from 'redux-persist';
-// import storage from 'redux-persist/lib/storage'; 
-// import currencyReducer from './currencyRate/currencyRateSlice';
-
-// const persistConfig = {
-//   key: 'root',
-//   storage,
-// };
-
-// const persistedReducer = persistReducer(persistConfig, currencyReducer);
-
-// export const store = configureStore({
-//   reducer: {
-//     currency: persistedReducer,
-//   },
-// });
-
-// export const persistor = persistStore(store);
+export const persistor = persistStore(store)
