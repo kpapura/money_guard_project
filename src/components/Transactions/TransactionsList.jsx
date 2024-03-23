@@ -1,49 +1,46 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useMediaQuery } from 'react-responsive';
-import {
-  fetchTransactionsDataThunk,
-  fetchTransactionCategoriesThunk,
-} from '../../redux/transactions/operations';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useModal } from '../../hooks/useModal.jsx';
+import { useDashboard } from '../../hooks/useDashboard';
 import {
   selectTransactionCategories,
   selectTransactions,
 } from '../../redux/transactions/transactionsSlice';
-import TransactionsItem from './TransactionItem/TransactionsItem.jsx';
-import s from './TransactionList.module.css';
-import { useModal } from '../../hooks/useModal.jsx';
 import Modal from '../Modal/Modal.jsx';
 import { EditTransactionForm } from '../Form/EditTransactionForm/EditTransactionForm.jsx';
 import { AddTransactionForm } from '../Form/AddTransactionForm/AddTransactionForm.jsx';
+import TransactionsItem from './TransactionItem/TransactionsItem.jsx';
 import sprite from '../../img/sprite.svg';
-import { useDashboard } from '../../hooks/useDashboard';
+import s from './TransactionList.module.css';
 
 const TransactionsList = () => {
   const { isOpen, toggle } = useModal();
   const [editContent, setEditContent] = useState('');
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchTransactionsDataThunk());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(fetchTransactionCategoriesThunk());
-  }, [dispatch]);
 
   const transactions = useSelector(selectTransactions);
   const categories = useSelector(selectTransactionCategories);
 
   const { isBigScreenOrTablet, isMobile } = useDashboard();
 
+  if (isOpen) {
+    document.body.classList.add('modal-open');
+  }
+  else {
+    document.body.classList.remove('modal-open');
+  }
   const handleEditItem = (content, id, name) => {
     toggle();
     setEditContent({ content, id, name });
+    isOpen && document.body.classList.add('modal-open');
+
   };
+
   const handleAddItem = () => {
     toggle();
     setEditContent(null);
+
   };
+
   return (
     <section className={s.transactions_section}>
       <div className={s.transactions_container}>
@@ -79,7 +76,7 @@ const TransactionsList = () => {
                 <tbody className={s.table_body}>
                   {transactions.map(transaction => (
                     <TransactionsItem
-                     handleEditItem={handleEditItem}
+                      handleEditItem={handleEditItem}
                       key={transaction.id}
                       transaction={transaction}
                     />
@@ -105,8 +102,7 @@ const TransactionsList = () => {
             )}
           </>
         )}
-
-        <button onClick={()=>handleAddItem()} className={s.btn_add}>
+        <button onClick={() => handleAddItem()} className={s.btn_add}>
           {' '}
           <svg className={s.icon_plus}>
             <use xlinkHref={`${sprite}#icon-plus`} />
