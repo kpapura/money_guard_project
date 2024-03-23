@@ -1,10 +1,10 @@
 import React from 'react';
-import s from './TransactionsItem.module.css';
 import { useDispatch, useSelector } from 'react-redux';
+import { useDashboard } from '../../../hooks/useDashboard';
 import { deleteTransactionThunk } from '../../../redux/transactions/operations';
 import { selectTransactionCategories } from '../../../redux/transactions/transactionsSlice';
 import sprite from '../../../img/sprite.svg';
-import { useDashboard } from '../../../hooks/useDashboard';
+import s from './TransactionsItem.module.css';
 
 const TransactionsItem = ({ transaction, handleEditItem }) => {
   const { id, transactionDate, type, categoryId, comment, amount } =
@@ -80,7 +80,6 @@ const TransactionsItem = ({ transaction, handleEditItem }) => {
                     }
                     className={s.btn_edit}
                   >
-                    {' '}
                     <svg className={s.icon_edit}>
                       <use xlinkHref={`${sprite}#icon-edit`} />
                     </svg>{' '}
@@ -107,7 +106,6 @@ const TransactionsItem = ({ transaction, handleEditItem }) => {
             {amount}
           </td>
           <td className={s.transaction_colum}>
-            {' '}
             <div className={s.btn_wrapper}>
               <button
                 onClick={() =>

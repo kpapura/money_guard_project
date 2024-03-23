@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useModal } from '../../hooks/useModal.jsx';
+import { useDashboard } from '../../hooks/useDashboard';
 import {
   selectTransactionCategories,
   selectTransactions,
 } from '../../redux/transactions/transactionsSlice';
-import TransactionsItem from './TransactionItem/TransactionsItem.jsx';
-import s from './TransactionList.module.css';
-import { useModal } from '../../hooks/useModal.jsx';
 import Modal from '../Modal/Modal.jsx';
 import { EditTransactionForm } from '../Form/EditTransactionForm/EditTransactionForm.jsx';
 import { AddTransactionForm } from '../Form/AddTransactionForm/AddTransactionForm.jsx';
+import TransactionsItem from './TransactionItem/TransactionsItem.jsx';
 import sprite from '../../img/sprite.svg';
-import { useDashboard } from '../../hooks/useDashboard';
+import s from './TransactionList.module.css';
 
 const TransactionsList = () => {
   const { isOpen, toggle } = useModal();
@@ -26,10 +26,12 @@ const TransactionsList = () => {
     toggle();
     setEditContent({ content, id, name });
   };
+
   const handleAddItem = () => {
     toggle();
     setEditContent(null);
   };
+
   return (
     <section className={s.transactions_section}>
       <div className={s.transactions_container}>
@@ -91,7 +93,6 @@ const TransactionsList = () => {
             )}
           </>
         )}
-
         <button onClick={() => handleAddItem()} className={s.btn_add}>
           {' '}
           <svg className={s.icon_plus}>

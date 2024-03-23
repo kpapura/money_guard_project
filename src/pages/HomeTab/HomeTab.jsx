@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import TransactionsList from '../../components/Transactions/TransactionsList';
 import {
   fetchTransactionCategoriesThunk,
   fetchTransactionsDataThunk,
 } from '../../redux/transactions/operations';
+import TransactionsList from '../../components/Transactions/TransactionsList';
 
 const HomeTab = () => {
   const dispatch = useDispatch();
