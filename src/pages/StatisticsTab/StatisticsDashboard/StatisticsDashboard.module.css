@@ -1,19 +1,22 @@
-@import url('../../../css/global.css');
-
-s.selectContainers {
+.selectContainers {
   display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-s.select {
-  width: 182px;
-  height: 50px;
+.select {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  min-width: 280px;
+  min-height: 50px;
+  width: 100%;
+  color: var(--white-color);
   font-weight: var(--font-weight-regular);
   font-size: var(--primarily-font-size);
-  color: var(--white-color);
   background: rgba(74, 86, 226, 0.1);
 }
 
-s.option {
+.option {
   font-weight: var(--font-weight-regular);
   font-size: var(--primarily-font-size);
   color: var(--white-color);
@@ -29,7 +32,13 @@ s.option {
   cursor: pointer;
 }
 
-s.option:active {
+.option:active {
   color: #ff868d;
   background: rgba(255, 255, 255, 0.1);
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1280px) {
 }

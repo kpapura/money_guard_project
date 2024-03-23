@@ -1,30 +1,23 @@
 // StatisticsDashboard.jsx
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
 import s from './StatisticsDashboard.module.css';
-import { fetchTransactionSummaryControllerThunk } from '../../../redux/transactions/operations';
-import StatisticsTable from '../StatisticsTable/StatisticsTable';
 
-const StatisticsDashboard = () => {
-  const dispatch = useDispatch();
-  const summaryController = useSelector(state => state.transactions.transactionSummaryController);
-  const [selectedMonth, setSelectedMonth] = useState(summaryController?.month || (new Date().getMonth() + 1));
-  const [selectedYear, setSelectedYear] = useState(summaryController?.year || new Date().getFullYear());
-
-  useEffect(() => {
-    dispatch(fetchTransactionSummaryControllerThunk());
-  }, [dispatch]);
-
-  const handleMonthChange = (e) => {
-    setSelectedMonth(parseInt(e.target.value));
-  };
-
-  const handleYearChange = (e) => {
-    setSelectedYear(parseInt(e.target.value));
-  };
-
+const StatisticsDashboard = ({ onMonthChange, onYearChange }) => {
   const currentDate = new Date();
   const currentYear = currentDate.getFullYear();
+  const [selectedMonth, setSelectedMonth] = useState(currentDate.getMonth() + 1);
+  const [selectedYear, setSelectedYear] = useState(currentYear);
+
+  const handleMonthChange = e => {
+    setSelectedMonth(parseInt(e.target.value));
+    onMonthChange(parseInt(e.target.value));
+  };
+
+  const handleYearChange = e => {
+    setSelectedYear(parseInt(e.target.value));
+    onYearChange(parseInt(e.target.value));
+  };
+
   const years = Array.from({ length: currentYear - 2019 }, (_, i) => currentYear - i).reverse();
   const months = [
     'January', 'February', 'March', 'April', 'May', 'June',
