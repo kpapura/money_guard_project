@@ -17,29 +17,36 @@ import Loader from '../components/Loader/Loader';
 import 'modern-normalize';
 import CurrencyRates from './CurrencyRates/CurrenceRate';
 import StatisticsTab from '../pages/StatisticsTab/StatisticsTab';
-import 'modern-normalize';
-import { refreshThunk } from '../redux/auth/operations';
-import { useDispatch } from 'react-redux';
-import HomeTab from '../pages/HomeTab/HomeTab';
 
 function App() {
+  const isAuth = useSelector(selectIsLoggedIn);
+  const isRefreshing = useSelector(selectIsRefresh);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(refreshThunk());
+    dispatch(fetchTransactionCategoriesThunk());
   }, [dispatch]);
 
-  return (
-    <div>
+  return isRefreshing ? (
+    <Loader />
+  ) : (
+    <>
+      <Suspense fallback={<Loader />}>
       <Routes>
+          <Route index element={<RestrictedRoute component={Login} redirectTo='/home'/>} />
+          <Route path="register" element={<RestrictedRoute component={Register} redirectTo='/home'/>} />
+          {/* ======= Login&Register has been moved out the <Layout> ======= */}
         <Route path="/" element={<Layout />}>
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-          <Route path="home" element={<HomeTab />} />
+          <Route path="/home" element={<PrivateRoute component={HomeTab} redirectTo='/'/>} />
+          <Route path="/statistics" element={<PrivateRoute component={StatisticsTab} redirectTo='/'/>} />
+          <Route path="/currency" element={<PrivateRoute component={CurrencyRates} redirectTo='/'/>} />
         </Route>
+          <Route path='*' element={!isAuth ? <Navigate to='/'/> : <Navigate to='/home'/>}/>
       </Routes>
-    </div>
+      </Suspense>
+    </>
   );
 }
-export default App;
 
+export default App;
