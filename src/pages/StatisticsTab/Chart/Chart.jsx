@@ -3,27 +3,18 @@ import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import s from './Chart.module.css';
 
-const Chart = ({ transactions }) => {
-  const getColorForCategory = (category) => {
-    const transaction = transactions.find(transaction => transaction.type === category);
-    if (transaction) {
-      return transaction.color;
-    } else {
-      return '#' + Math.floor(Math.random() * 16777215).toString(16);
-    }
-  };
-
+const Chart = ({ transactions, colors }) => {
   const data = {
-    labels: transactions.map(transaction => transaction.type),
+    labels: transactions.map(transaction => transaction.name),
     datasets: [{
       data: transactions.map(transaction => transaction.total),
-      backgroundColor: transactions.map(transaction => getColorForCategory(transaction.type)),
-      hoverBackgroundColor: transactions.map(transaction => getColorForCategory(transaction.type))
+      backgroundColor: transactions.map(transaction => colors[transaction.name]),
+      hoverBackgroundColor: transactions.map(transaction => colors[transaction.name])
     }]
   };
 
   return (
-    <div>
+    <div className={s.chartContainer}>
       <Doughnut data={data} />
     </div>
   );

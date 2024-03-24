@@ -5,6 +5,7 @@ import { fetchTransactionSummaryControllerThunk } from '../../redux/transactions
 import { selectCategoriesSummary } from '../../redux/transactions/transactionsSlice';
 import s from './StatisticsTab.module.css';
 import StatisticsTable from './StatisticsTable/StatisticsTable';
+import Chart from './Chart/Chart';
 
 const StatisticsTab = () => {
   const dispatch = useDispatch();
@@ -12,10 +13,23 @@ const StatisticsTab = () => {
 
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1);
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+  const [colors, setColors] = useState({});
 
   useEffect(() => {
     dispatch(fetchTransactionSummaryControllerThunk({ month: selectedMonth, year: selectedYear }));
   }, [selectedMonth, selectedYear, dispatch]);
+
+  const generateColors = () => {
+    const generatedColors = {};
+    transactionsSummaryList?.categoriesSummary.forEach((category, index) => {
+      generatedColors[category.name] = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+    });
+    setColors(generatedColors);
+  };
+
+  useEffect(() => {
+    generateColors();
+  }, [transactionsSummaryList]);
 
   const handleMonthChange = (month) => {
     setSelectedMonth(month);
@@ -32,11 +46,11 @@ const StatisticsTab = () => {
       </div>
       <div className={s.contentContainer}>
         <div className={s.chartContainer}>
-          {/* <Chart transactions={transactionsList} /> */}
+          <Chart transactions={transactionsSummaryList?.categoriesSummary} colors={colors} />
         </div>
         <div className={s.tableContainer}>
           <StatisticsDashboard onMonthChange={handleMonthChange} onYearChange={handleYearChange} />
-          <StatisticsTable transactionsSummary={transactionsSummaryList} />
+          <StatisticsTable transactionsSummary={transactionsSummaryList} colors={colors} />
         </div>
       </div>
     </section>
