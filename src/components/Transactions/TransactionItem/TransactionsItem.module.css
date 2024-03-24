@@ -4,20 +4,20 @@
 }
 
 .income_border {
-    border-left: 5px solid rgb(255, 134, 141);
-}
-
-.expense_border {
     border-left: 5px solid rgb(255, 182, 39);
 }
 
+.expense_border {
+    border-left: 5px solid rgb(255, 134, 141);
+}
+
 .income_text {
-    color: rgb(255, 134, 141);
+    color: rgb(255, 182, 39);
     font-weight: 600;
 }
 
 .expense_text {
-    color: rgb(255, 182, 39);
+    color: rgb(255, 134, 141);
     font-weight: 600;
 }
 
