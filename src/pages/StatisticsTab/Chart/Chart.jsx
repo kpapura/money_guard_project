@@ -2,14 +2,18 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import s from './Chart.module.css';
+import Chart from 'chart.js/auto'; 
 
-const Chart = ({ transactions, colors }) => {
+const DoughnutChart = ({ transactions, colors }) => {
+   if (!transactions || !colors) {
+    return <div>No data available</div>; // Повертаємо повідомлення про відсутність даних
+  }
   const data = {
-    labels: transactions.map(transaction => transaction.name),
+    labels: transactions?.map(transaction => transaction.name),
     datasets: [{
-      data: transactions.map(transaction => transaction.total),
-      backgroundColor: transactions.map(transaction => colors[transaction.name]),
-      hoverBackgroundColor: transactions.map(transaction => colors[transaction.name])
+      data: transactions?.map(transaction => transaction.total),
+      backgroundColor: transactions?.map(transaction => colors[transaction.name]),
+      hoverBackgroundColor: transactions?.map(transaction => colors[transaction.name])
     }]
   };
 
@@ -20,4 +24,4 @@ const Chart = ({ transactions, colors }) => {
   );
 };
 
-export default Chart;
+export default DoughnutChart;
