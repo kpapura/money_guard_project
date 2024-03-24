@@ -33,7 +33,7 @@ const NavBar = () => {
           </svg>
         </NavLink>
         ) : (<NavLink to="statistics" className={ ({isActive})=>clsx(s.navLinkTitle, isActive && s.active)}>
-        <svg width="18" height="18" className={ ({isActive})=>clsx(s.s.navLinkIcon, isActive && s.active)}>
+        <svg width="18" height="18" className={s.navLinkIcon}>
           <use href="../../img/sprite.svg#icon-statistics"></use>
         </svg>
         Statistics
@@ -42,7 +42,7 @@ const NavBar = () => {
 
         {screenWidth < 768 && (
           <NavLink to="/currency" className={ ({isActive})=>clsx(s.navLinkTitle, isActive && s.active)}>
-            <svg width="38" height="38" className={ ({isActive})=>clsx(s.s.navLinkIcon, isActive && s.active)}>
+            <svg width="38" height="38" className={s.navLinkIcon}>
               <use href="../../img/sprite.svg#icon-currency"></use>
             </svg>
           </NavLink>
