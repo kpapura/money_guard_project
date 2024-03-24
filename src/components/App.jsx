@@ -30,9 +30,10 @@ function App() {
     <>
       <Suspense fallback={<Loader />}>
       <Routes>
-        <Route path="/" element={<Layout />}>
           <Route index element={<RestrictedRoute component={Login} redirectTo='/home'/>} />
           <Route path="register" element={<RestrictedRoute component={Register} redirectTo='/home'/>} />
+          {/* ======= Login&Register has been moved out the <Layout> ======= */}
+        <Route path="/" element={<Layout />}>
           <Route path="/home" element={<PrivateRoute component={HomeTab} redirectTo='/'/>} />
           <Route path="/statistics" element={<PrivateRoute component={StatisticsTab} redirectTo='/'/>} />
           <Route path="/currency" element={<PrivateRoute component={CurrencyRates} redirectTo='/'/>} />
