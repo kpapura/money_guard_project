@@ -16,10 +16,10 @@ export const fetchTransactionsDataThunk = createAsyncThunk(
 
 export const deleteTransactionThunk = createAsyncThunk(
   'deleteTransaction',
-  async (id, thunkAPI) => {
+  async (transaction, thunkAPI) => {
     try {
-      await walletApi.delete(`transactions/${id}`);
-      return id;
+      await walletApi.delete(`transactions/${transaction.id}`);
+      return transaction;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

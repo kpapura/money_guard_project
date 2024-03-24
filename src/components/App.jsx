@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { selectIsLoggedIn, selectIsRefresh } from '../redux/auth/authSlice';
 import { refreshThunk } from '../redux/auth/operations';
+import { fetchTransactionCategoriesThunk } from '../redux/transactions/operations';
 
-import PrivateRoute from '../../src/authRoutes/PrivateRoute'
-import RestrictedRoute from '../../src/authRoutes/RestrictedRoute'
+import PrivateRoute from '../../src/authRoutes/PrivateRoute';
+import RestrictedRoute from '../../src/authRoutes/RestrictedRoute';
 
 import { Layout } from './Layout';
 import Login from '../pages/Login/Login';
@@ -24,9 +25,12 @@ function App() {
 
   useEffect(() => {
     dispatch(refreshThunk());
+    dispatch(fetchTransactionCategoriesThunk());
   }, [dispatch]);
 
-  return isRefreshing ? (<Loader/>) : (
+  return isRefreshing ? (
+    <Loader />
+  ) : (
     <>
       <Suspense fallback={<Loader />}>
       <Routes>
@@ -46,4 +50,3 @@ function App() {
 }
 
 export default App;
-

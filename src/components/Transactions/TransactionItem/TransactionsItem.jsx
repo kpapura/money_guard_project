@@ -20,8 +20,8 @@ const TransactionsItem = ({ transaction, handleEditItem }) => {
     return category ? category.name : 'Unknown Category';
   }
 
-  const handleDeleteTransaction = id => {
-    dispatch(deleteTransactionThunk(id));
+  const handleDeleteTransaction = () => {
+    dispatch(deleteTransactionThunk(transaction));
   };
 
   const signType = type.toLowerCase() === 'income' ? '+' : '-';
@@ -65,7 +65,7 @@ const TransactionsItem = ({ transaction, handleEditItem }) => {
                 <td>
                   <button
                     className={s.btn_delete}
-                    onClick={() => handleDeleteTransaction(id)}
+                    onClick={handleDeleteTransaction}
                   >
                     Delete
                   </button>
@@ -116,11 +116,13 @@ const TransactionsItem = ({ transaction, handleEditItem }) => {
                 }
                 className={s.btn_edit}
               >
-                Edit
+                <svg className={s.icon_edit}>
+                  <use xlinkHref={`${sprite}#icon-edit`} />
+                </svg>
               </button>
               <button
                 className={s.btn_delete}
-                onClick={() => handleDeleteTransaction(id)}
+                onClick={handleDeleteTransaction}
               >
                 Delete
               </button>
