@@ -7,7 +7,7 @@ import s from './Form.module.css';
 import { formatDate } from '../../helpers/addLeadingzero';
 import Select from 'react-select';
 import FormInput from './FormFields/FormFields';
-//import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 //import { useDashboard } from '../../hooks/useDashboard';
 
 export function Form({
@@ -16,6 +16,7 @@ export function Form({
   toggle,
   typeForm,
   onDataSubmit,
+  schema
 }) {
   const {
     register,
@@ -23,8 +24,12 @@ export function Form({
     formState: { errors },
     setValue,
     reset
-  } = useForm();
-  // { resolver: yupResolver(schema) }
+  } = useForm(
+
+    
+    { resolver: yupResolver(schema) , mode:'onChange'}
+  )
+    ;
     // schema
   const [selectedOption, setSelectedOption] = useState('');
   const [type, setType] = useState('');
@@ -61,7 +66,7 @@ export function Form({
     if (typeForm === 'add') {
       onDataSubmit({
         transactionDate: formatDate(startDate),
-        amount: +data.amount,
+        amount:type === 'EXPENSE' ? `-${data.amount}` : data.amount,
         comment: data.comment,
         type: type,
         categoryId:

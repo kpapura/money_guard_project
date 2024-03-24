@@ -4,6 +4,8 @@ import { editTransactionThunk } from '../../../redux/transactions/operations';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { editTransactionShema } from '../../../Schemas/EditTransactionShema';
+// import { editTransactionShema } from '../../../Schemas/editTransactionShema';
 
 export function EditTransactionForm({ categories, editContent, toggle }) {
   const dispatch = useDispatch();
@@ -22,6 +24,7 @@ export function EditTransactionForm({ categories, editContent, toggle }) {
 
   return (
     <Form
+      schema={editTransactionShema}
       toggle={toggle}
       content={editContent.content}
       categories={categories}
