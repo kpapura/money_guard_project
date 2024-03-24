@@ -27,10 +27,13 @@
 }
 
 body {
-  font-family: var(--font-family);
+  font-family: var(--font-family), sans-serif;
   font-weight: var(--font-weight-regular);
+  background-color: #231a64;
 }
-
+.modal-open{
+  overflow: hidden;
+}
 .modalButtonColor {
   display: block;
   margin-right: auto;

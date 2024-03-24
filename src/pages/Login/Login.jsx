@@ -14,7 +14,7 @@ const Login = () => {
     dispatch(loginThunk(data))
       .unwrap()
       .then(() => {
-        navigate('/');
+        navigate('/home');
       })
       .catch(error => {
         console.log(error.message);
@@ -26,14 +26,14 @@ const Login = () => {
     password: '0000000',
   };
   return (
-    <div>
+    <>
       <LoginRegisterForm
         formType={'login'}
         onDataSubmit={handleSubmit}
         values={values}
         schema={loginSchema}
       />
-    </div>
+    </>
   );
 };
 

@@ -6,6 +6,7 @@ import { registerThunk } from '../../redux/auth/operations';
 import { registerSchema } from '../../Schemas/registerShema';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import s from './Register.module.css';
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const Register = () => {
     dispatch(registerThunk(data))
       .unwrap()
       .then(() => {
-        navigation('/login');
+        navigation('/home');
       })
       .catch(error => {
         console.log(error);
@@ -23,13 +24,13 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <>
       <Login_RegisterForm
         onDataSubmit={handleSubmit}
         formType={'register'}
         schema={registerSchema}
       />
-    </div>
+    </>
   );
 };
 

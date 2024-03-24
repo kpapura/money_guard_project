@@ -1,31 +1,39 @@
 // Chart.jsx
 import React from 'react';
-import { Doughnut } from 'react-chartjs-2';
 
-const Chart = ({ transactions }) => {
-  const getColorForCategory = (category) => {
-    const transaction = transactions.find(transaction => transaction.type === category);
-    if (transaction) {
-      return transaction.color;
-    } else {
-      return '#' + Math.floor(Math.random() * 16777215).toString(16);
-    }
-  };
+import { Doughnut } from 'react-chartjs-2';
+import s from './Chart.module.css';
+import Chart from 'chart.js/auto'; 
+
+const DoughnutChart = ({ transactions, colors, period }) => {
+   if (!transactions || !colors) {
+    return <div>No data available</div>;
+  }
+
+  const formattedPeriod = period.toFixed(2);
 
   const data = {
-    labels: transactions.map(transaction => transaction.type),
     datasets: [{
-      data: transactions.map(transaction => transaction.total),
-      backgroundColor: transactions.map(transaction => getColorForCategory(transaction.type)),
-      hoverBackgroundColor: transactions.map(transaction => getColorForCategory(transaction.type))
+      data: transactions?.map(transaction => transaction.total),
+      backgroundColor: transactions?.map(transaction => colors[transaction.name]),
+      hoverBackgroundColor: transactions?.map(transaction => colors[transaction.name]),
+      cutout: 95
+      
     }]
   };
 
   return (
-    <div>
-      <Doughnut data={data} />
+    <div className={s.chartContainer}>
+      <div className={s.chartWrapper}>
+        <Doughnut data={data} />
+        <p className={s.periodText}> ₴ {formattedPeriod}</p> 
+      </div>
     </div>
   );
 };
 
-export default Chart;
+export default DoughnutChart;
+
+
+
+  

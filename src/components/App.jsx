@@ -1,60 +1,43 @@
-// import React, { useEffect } from 'react';
-// import Login from '../pages/Login/Login';
-// import { Route, Routes } from 'react-router-dom';
-// import { Layout } from './Layout';
-// import Register from '../pages/Register/Register';
-// import StatisticsTab from '../pages/StatisticsTab/StatisticsTab';
-// import 'modern-normalize';
-// import { refreshThunk } from '../redux/auth/operations';
-// import { useDispatch } from 'react-redux';
-// import HomeTab from '../pages/HomeTab/HomeTab';
+import React, { Suspense, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { selectIsLoggedIn, selectIsRefresh } from '../redux/auth/authSlice';
+import { refreshThunk } from '../redux/auth/operations';
+import { fetchTransactionCategoriesThunk } from '../redux/transactions/operations';
 
-// function App() {
-//   const dispatch = useDispatch();
+import PrivateRoute from '../../src/authRoutes/PrivateRoute';
+import RestrictedRoute from '../../src/authRoutes/RestrictedRoute';
 
-//   useEffect(() => {
-//     dispatch(refreshThunk());
-//   }, [dispatch]);
-
-//   return (
-//     <div>
-//       <Routes>
-//         <Route path="/" element={<Layout />}>
-//           <Route path="login" element={<Login />} />
-//           <Route path="register" element={<Register />} />
-//           <Route path="home" element={<HomeTab />} />
-//         </Route>
-//       </Routes>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-
-
-import React from 'react';
-import Login from '../pages/Login/Login';
-import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
+import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
-import StatisticsTab from '../pages/StatisticsTab/StatisticsTab';
+import HomeTab from '../pages/HomeTab/HomeTab';
+import Loader from '../components/Loader/Loader';
+
 import 'modern-normalize';
 import CurrencyRates from './CurrencyRates/CurrenceRate';
-import Balance from './Balance/Balance';
+import StatisticsTab from '../pages/StatisticsTab/StatisticsTab';
+import 'modern-normalize';
+import { refreshThunk } from '../redux/auth/operations';
+import { useDispatch } from 'react-redux';
+import HomeTab from '../pages/HomeTab/HomeTab';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshThunk());
+  }, [dispatch]);
+
   return (
     <div>
-      <h1>Hello</h1>
-      <CurrencyRates />
-      <Balance/>
-      {/* <Routes>
+      <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
+          <Route path="home" element={<HomeTab />} />
         </Route>
-      </Routes> */}
+      </Routes>
     </div>
   );
 }

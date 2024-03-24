@@ -7,8 +7,8 @@ import s from './Form.module.css';
 import { formatDate } from '../../helpers/addLeadingzero';
 import Select from 'react-select';
 import FormInput from './FormFields/FormFields';
-//import { yupResolver } from '@hookform/resolvers/yup';
-import { useDashboard } from '../../hooks/useDashboard';
+import { yupResolver } from '@hookform/resolvers/yup';
+//import { useDashboard } from '../../hooks/useDashboard';
 
 export function Form({
   content,
@@ -16,14 +16,21 @@ export function Form({
   toggle,
   typeForm,
   onDataSubmit,
+  schema
 }) {
   const {
     register,
     handleSubmit,
     formState: { errors },
     setValue,
-  } = useForm();
+    reset
+  } = useForm(
 
+    
+    { resolver: yupResolver(schema) , mode:'onChange'}
+  )
+    ;
+    // schema
   const [selectedOption, setSelectedOption] = useState('');
   const [type, setType] = useState('');
   const [startDate, setStartDate] = useState(new Date());
@@ -59,7 +66,7 @@ export function Form({
     if (typeForm === 'add') {
       onDataSubmit({
         transactionDate: formatDate(startDate),
-        amount: +data.amount,
+        amount:type === 'EXPENSE' ? `-${data.amount}` : data.amount,
         comment: data.comment,
         type: type,
         categoryId:
@@ -67,13 +74,17 @@ export function Form({
             ? selectedOption.value || categoriesValues[0].value
             : '063f1132-ba5d-42b4-951d-44011ca46262',
       });
+      reset()
     } else {
       onDataSubmit({
         transactionDate: formatDate(startDate),
         amount: +data.amount,
         comment: data.comment,
       });
+      reset()
     }
+    reset();
+
   };
   const toggleTransaction = type => {
     if (type) {
@@ -83,7 +94,7 @@ export function Form({
     }
   };
   return (
-    <div>
+    <div className={s.container}>
       <form className={s.formWrapper} onSubmit={handleSubmit(submit)}>
         <h1 className={s.header}>
           {typeForm === 'add' ? 'Add transaction' : 'Edit transaction'}
@@ -125,14 +136,17 @@ export function Form({
             </ul>
           </div>
         )}
-        <div>
+        <div className={s.secondContainer}>
           {type === 'EXPENSE' && (
-            <div className={s.inputContainer}>
+            <div className={s.category}>
               <Select
                 name="category"
-                //className={s.selectExpense}
+                className="react-select-container"
+                classNamePrefix="react-select"
                 options={categoriesValues}
-                defaultValue={defaultValue ? defaultValue : categoriesValues[0]}
+                placeholder="Select category"
+                defaultValue={defaultValue && defaultValue}
+                // categoriesValues[0]
                 onChange={handleChange}
                 isDisabled={typeForm === 'edit'}
               />
@@ -149,7 +163,7 @@ export function Form({
               register={register}
             />
 
-            <div className={s.inputContainer}>
+            <div className={s.svgBox}>
               <DatePicker
                 className={s.customInput}
                 selected={content ? content.transactionDate : startDate}
@@ -158,6 +172,9 @@ export function Form({
                   setStartDate(date);
                 }}
               />
+              <svg width="36" height="36">
+          <use href="../../img/sprite.svg#icon-date"></use>
+        </svg>
               {errors['transactionDate'] && (
                 <span>{errors['transactionDate'].message}</span>
               )}
@@ -173,10 +190,10 @@ export function Form({
           />
 
           <div className={s.btnBox}>
-            <button className={s.btn}>
+            <button className="modalButtonColor">
               {typeForm === 'add' ? 'ADD' : 'EDIT'}
             </button>
-            <button type="button" onClick={toggle} className={s.btn}>
+            <button type="button" onClick={toggle} className="modalButton">
               CANCEL
             </button>
           </div>

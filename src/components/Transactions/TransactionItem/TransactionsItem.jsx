@@ -1,13 +1,14 @@
 import React from 'react';
-import s from './TransactionsItem.module.css';
 import { useDispatch, useSelector } from 'react-redux';
+import { useDashboard } from '../../../hooks/useDashboard';
 import { deleteTransactionThunk } from '../../../redux/transactions/operations';
 import { selectTransactionCategories } from '../../../redux/transactions/transactionsSlice';
 import sprite from '../../../img/sprite.svg';
-import { useDashboard } from '../../../hooks/useDashboard';
+import s from './TransactionsItem.module.css';
 
 const TransactionsItem = ({ transaction, handleEditItem }) => {
-  const { id, transactionDate, type, categoryId, comment, amount } = transaction;
+  const { id, transactionDate, type, categoryId, comment, amount } =
+    transaction;
 
   const { isBigScreenOrTablet, isMobile } = useDashboard();
 
@@ -19,8 +20,8 @@ const TransactionsItem = ({ transaction, handleEditItem }) => {
     return category ? category.name : 'Unknown Category';
   }
 
-  const handleDeleteTransaction = id => {
-    dispatch(deleteTransactionThunk(id));
+  const handleDeleteTransaction = () => {
+    dispatch(deleteTransactionThunk(transaction));
   };
 
   const signType = type.toLowerCase() === 'income' ? '+' : '-';
@@ -39,7 +40,7 @@ const TransactionsItem = ({ transaction, handleEditItem }) => {
           className={`${s.transaction_item} ${transactionBorderColor}`}
         >
           <table className={s.transactions_table_mobile}>
-            <tbody>
+            <tbody className={s.table_body}>
               <tr className={s.transaction_row_mobile}>
                 <td className={s.transaction_first_column}>Date</td>
                 <td>{transactionDate}</td>
@@ -64,7 +65,7 @@ const TransactionsItem = ({ transaction, handleEditItem }) => {
                 <td>
                   <button
                     className={s.btn_delete}
-                    onClick={() => handleDeleteTransaction(id)}
+                    onClick={handleDeleteTransaction}
                   >
                     Delete
                   </button>
@@ -72,12 +73,17 @@ const TransactionsItem = ({ transaction, handleEditItem }) => {
                 <td>
                   <button
                     onClick={() =>
-                      handleEditItem({ categoryId, type, amount, comment, transactionDate }, id)} className={s.btn_edit}>
-                    {' '}
+                      handleEditItem(
+                        { categoryId, type, amount, comment, transactionDate },
+                        id
+                      )
+                    }
+                    className={s.btn_edit}
+                  >
                     <svg className={s.icon_edit}>
                       <use xlinkHref={`${sprite}#icon-edit`} />
                     </svg>{' '}
-                     Edit
+                    Edit
                   </button>
                 </td>
               </tr>
@@ -100,12 +106,23 @@ const TransactionsItem = ({ transaction, handleEditItem }) => {
             {amount}
           </td>
           <td className={s.transaction_colum}>
-            {' '}
             <div className={s.btn_wrapper}>
-              <button onClick={() => handleEditItem({ categoryId, type, amount, comment, transactionDate }, id)} className={s.btn_edit}>Edit</button>
+              <button
+                onClick={() =>
+                  handleEditItem(
+                    { categoryId, type, amount, comment, transactionDate },
+                    id
+                  )
+                }
+                className={s.btn_edit}
+              >
+                <svg className={s.icon_edit}>
+                  <use xlinkHref={`${sprite}#icon-edit`} />
+                </svg>
+              </button>
               <button
                 className={s.btn_delete}
-                onClick={() => handleDeleteTransaction(id)}
+                onClick={handleDeleteTransaction}
               >
                 Delete
               </button>

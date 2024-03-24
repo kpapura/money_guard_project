@@ -11,7 +11,12 @@ import {
 const initialState = {
   transactionsList: [],
   transactionCategories: [],
-  transactionSummaryController: null,
+  categoriesSummary: [],
+  expenseSummary: 0,
+  incomeSummary: 0,
+  month: new Date().getMonth() + 1,
+  year: new Date().getFullYear(),
+  periodTotal: 0,
   loading: false,
   error: false,
 };
@@ -24,6 +29,20 @@ const transactionsSlice = createSlice({
     selectIsLoading: state => state.loading,
     selectIsError: state => state.error,
     selectTransactionCategories: state => state.transactionCategories,
+    selectMonth: state => state.month,
+    selectYear: state => state.year,
+    selectCategoriesSummary: state => state.categoriesSummary,
+    selectExpenseSummary: state => state.expenseSummary,
+    selectIncomeSummary: state => state.incomeSummary,
+    selectPeriodTotal: state => state.periodTotal,
+  },
+  reducers: {
+    selectedYear: (state, { payload }) => {
+      state.year = payload;
+    },
+    selectedMonth: (state, { payload }) => {
+      state.month = payload;
+    },
   },
   extraReducers: builder => {
     builder
@@ -33,7 +52,7 @@ const transactionsSlice = createSlice({
       })
       .addCase(deleteTransactionThunk.fulfilled, (state, { payload }) => {
         state.transactionsList = state.transactionsList.filter(
-          transaction => transaction.id !== payload
+          transaction => transaction.id !== payload.id
         );
         state.loading = false;
       })
@@ -54,49 +73,59 @@ const transactionsSlice = createSlice({
           state.transactionCategories = payload;
           state.loading = false;
         }
+      )
+      .addCase(
+        fetchTransactionSummaryControllerThunk.fulfilled,
+        (state, { payload }) => {
+          state.categoriesSummary = payload.categoriesSummary;
+          state.expenseSummary = payload.expenseSummary;
+          state.incomeSummary = payload.incomeSummary;
+          state.periodTotal = payload.periodTotal;
+          state.loading = false;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          fetchTransactionsDataThunk.pending,
+          deleteTransactionThunk.pending,
+          addTransactionThunk.pending,
+          editTransactionThunk.pending,
+          fetchTransactionCategoriesThunk.pending,
+          fetchTransactionSummaryControllerThunk.pending
+        ),
+        (state, { payload }) => {
+          state.loading = true;
+          state.error = null;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          fetchTransactionsDataThunk.rejected,
+          deleteTransactionThunk.rejected,
+          addTransactionThunk.rejected,
+          editTransactionThunk.rejected,
+          fetchTransactionCategoriesThunk.rejected,
+          fetchTransactionSummaryControllerThunk.rejected
+        ),
+        (state, { payload }) => {
+          state.error = payload;
+          state.loading = false;
+        }
       );
-    // .addCase(
-    //   fetchTransactionSummaryController.fulfilled,
-    //   (state, { payload }) => {
-    //     state.transactionSummaryController = payload;
-    //     state.loading = false;
-    //   }
-    // )
-    // .addMatcher(
-    //   isAnyOf(
-    //     fetchTransactionsDataThunk.pending,
-    //     deleteTransactionThunk.pending,
-    //     addTransactionThunk.pending,
-    //     editTransactionThunk.pending,
-    //     fetchTransactionCategoriesThunk.pending,
-    //     fetchTransactionSummaryController.pending
-    //   ),
-    //   (state, { payload }) => {
-    //     state.loading = true;
-    //     state.error = null;
-    //   }
-    // )
-    // .addMatcher(
-    //   isAnyOf(
-    //     fetchTransactionsDataThunk.rejected,
-    //     deleteTransactionThunk.rejected,
-    //     addTransactionThunk.rejected,
-    //     editTransactionThunk.rejected,
-    //     fetchTransactionCategoriesThunk.rejected,
-    //     fetchTransactionSummaryController.rejected
-    //   ),
-    //   (state, { payload }) => {
-    //     state.error = payload;
-    //     state.loading = false;
-    //   }
-    // );
   },
 });
 
 export const transactionsReducer = transactionsSlice.reducer;
+export const { selectedYear, selectedMonth } = transactionsSlice.actions;
 export const {
   selectTransactions,
   selectIsLoading,
   selectIsError,
   selectTransactionCategories,
+  selectYear,
+  selectMonth,
+  selectCategoriesSummary,
+  selectExpenseSummary,
+  selectIncomeSummary,
+  selectPeriodTotal,
 } = transactionsSlice.selectors;

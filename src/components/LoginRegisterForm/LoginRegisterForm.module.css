@@ -3,24 +3,163 @@
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: #101010;
   overflow: hidden;
-  background: radial-gradient(
-      circle at center,
-      rgba(47, 21, 176, 0.73),
-      #101010
-    ),
-    radial-gradient(362px at bottom right, #652392, transparent),
-    radial-gradient(173px at top 0px left -45px, #8e2e79, transparent),
-    radial-gradient(134px at bottom 20px right 100px, #8e2e79, transparent),
-    radial-gradient(173px at bottom 153px right -20px, #302e8e, transparent),
-    radial-gradient(434px at top left, #652392, transparent);
   background-blend-mode: exclusion;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
+.background_container_login,
+.background_container_registration {
+  position: absolute;
+  background: #101010;
+  width: 100%;
+  height: 100%;
+}
+.background_container_login div:nth-child(1),
+.background_container_registration div:nth-child(1) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 454px;
+  height: 454px;
+  background: radial-gradient(
+    circle at center,
+    rgba(47, 21, 176, 0.73),
+    #101010
+  );
+  border-radius: 50%;
+}
+.background_container_login div:nth-child(2) {
+  position: absolute;
+  width: 362px;
+  height: 362px;
+  background: linear-gradient(
+    to top right,
+    rgba(101, 35, 146, 1),
+    rgba(109, 84, 235, 1)
+  );
+  border-radius: 50%;
+  top: 302px;
+  left: 50%;
+}
+.background_container_registration div:nth-child(2) {
+  position: absolute;
+  width: 134px;
+  height: 134px;
+  background: rgba(109, 28, 119, 1);
+  border-radius: 50%;
+  bottom: -36px;
+  right: 52px;
+}
+.background_container_login div:nth-child(3) {
+  position: absolute;
+  width: 434px;
+  height: 434px;
+  opacity: 0.73;
+  border-radius: 50%;
+  background: linear-gradient(
+    to top right,
+    rgba(101, 35, 146, 1),
+    rgba(109, 84, 235, 1)
+  );
+  bottom: 284px;
+  right: 50%;
+}
+.background_container_registration div:nth-child(3) {
+  position: absolute;
+  width: 173px;
+  height: 173px;
+  border-radius: 50%;
+  background: rgba(48, 46, 142, 1);
+  bottom: 153px;
+  right: -137px;
+}
+.background_container_login div:nth-child(4) {
+  position: absolute;
+  width: 173px;
+  height: 173px;
+  border-radius: 50%;
+  opacity: 0.68;
+  background: linear-gradient(
+    to top right,
+    rgba(142, 46, 121, 1),
+    rgba(171, 51, 173, 1)
+  );
+  top: -87px;
+  left: 25px;
+}
+.background_container_registration div:nth-child(4) {
+  position: absolute;
+  width: 173px;
+  height: 173px;
+  border-radius: 50%;
+  opacity: 0.68;
+  background: linear-gradient(
+    to top right,
+    rgba(142, 46, 121, 1),
+    rgba(171, 51, 173, 1)
+  );
+  top: -86px;
+  left: -123px;
+}
+.background_container_login div:nth-child(5) {
+  position: absolute;
+  width: 173px;
+  height: 173px;
+  border-radius: 50%;
+  background: rgba(48, 46, 142, 1);
+  right: 0px;
+  bottom: 153px;
+}
+.background_container_registration div:nth-child(5) {
+  position: absolute;
+  width: 434px;
+  height: 434px;
+  border-radius: 50%;
+  opacity: 0.73;
+  background: linear-gradient(
+    to top right,
+    rgba(101, 35, 146, 1),
+    rgba(109, 84, 235, 1)
+  );
+  left: -281px;
+  top: -150px;
+}
+.background_container_login div:nth-child(6) {
+  position: absolute;
+  width: 134px;
+  height: 134px;
+  border-radius: 50%;
+  background: rgba(109, 28, 119, 1);
+  right: 152px;
+  bottom: -86px;
+}
+.background_container_registration div:nth-child(6) {
+  position: absolute;
+  width: 362px;
+  height: 362px;
+  border-radius: 50%;
+  background: linear-gradient(
+    to top right,
+    rgba(101, 35, 146, 1),
+    rgba(109, 84, 235, 1)
+  );
+  right: -185px;
+  bottom: -96px;
+}
+.background_container_login::after,
+.background_container_registration::after {
+  position: absolute;
+  content: '';
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(100px);
+}
+
 .gradient_container {
   display: flex;
   justify-content: center;
@@ -35,6 +174,7 @@
     margin: auto;
     padding: 23px 20px;
     gap: 39.68px;
+    position: absolute;
   }
   .login_register_section {
     box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
@@ -118,7 +258,6 @@
   border: none;
   background-color: transparent;
   color: rgba(255, 255, 255, 0.6);
-  font-family: var(--font-family);
   font-size: 18px;
   font-weight: 400;
   line-height: 27px;
@@ -155,7 +294,6 @@
 
 .password_input::placeholder {
   color: rgba(255, 255, 255, 0.6);
-  font-family: var(--font-family);
   font-size: 18px;
   font-weight: 400;
   line-height: 27px;
@@ -178,7 +316,6 @@
   border: none;
   background-color: transparent;
   color: rgba(255, 255, 255, 0.6);
-  font-family: var(--font-family);
   font-size: 18px;
   font-weight: 400;
   line-height: 27px;
@@ -187,7 +324,6 @@
 }
 .name_input::placeholder {
   color: rgba(255, 255, 255, 0.6);
-  font-family: var(--font-family);
   font-size: 18px;
   font-weight: 400;
   line-height: 27px;
@@ -214,7 +350,6 @@
   margin-top: 8px;
   div {
     height: 4px !important;
-    /* filter: drop-shadow(0px 1px 8px black); */
     :first-child {
       border-top-left-radius: 5px;
       border-bottom-left-radius: 5px;
@@ -240,12 +375,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: var(--font-family);
   line-height: 29px;
   font-size: 19px;
   font-weight: var(--font-weight-regular);
   color: rgb(251, 251, 251);
-  font-family: var(--font-family);
   font-size: 19.11px;
   font-weight: 400;
   line-height: 29px;
@@ -256,35 +389,200 @@
     background-position: top left, bottom right;
     height: 100vh;
     background-color: #101010;
-    background: url('../../img/imgBcg/coins_tab_up.png') top -200px left no-repeat,
-      url('../../img/imgBcg/coins_tab_down.png') bottom right no-repeat,
-      radial-gradient(circle at center, rgba(47, 21, 176, 0.73), #101010),
-      radial-gradient(362px at bottom right, #652392, transparent),
-      radial-gradient(173px at top 0px left -45px, #8e2e79, transparent),
-      radial-gradient(134px at bottom 20px right 100px, #8e2e79, transparent),
-      radial-gradient(173px at bottom 153px right -20px, #302e8e, transparent),
-      radial-gradient(434px at top left, #652392, transparent);
     background-blend-mode: exclusion;
+    z-index: 1;
+    position: relative;
   }
   .register_login_section {
-    background: url('../../img/imgBcg/bucks_tabs_many.png') no-repeat,
-      radial-gradient(circle at center, rgba(47, 21, 176, 0.73), #101010),
-      radial-gradient(362px at bottom right, #652392, transparent),
-      radial-gradient(173px at top 0px left -45px, #8e2e79, transparent),
-      radial-gradient(134px at bottom 20px right 100px, #8e2e79, transparent),
-      radial-gradient(173px at bottom 153px right -20px, #302e8e, transparent),
-      radial-gradient(434px at top left, #652392, transparent);
     background-size: cover;
     background-blend-mode: exclusion;
+    z-index: 1;
+    position: relative;
   }
-  .register_login_section::before {
-    content: url('../../img/imgBcg/bucks_tab_less.png');
-    width: 450px;
-    height: 896px;
+  .form_container {
+    z-index: 3;
+  }
+
+  .background_container_login div:nth-child(1) {
     position: absolute;
-    right: -225px;
-    top: -10px;
-    overflow: hidden;
+    width: 220px;
+    height: 220px;
+    background: rgba(109, 28, 119, 1);
+    border-radius: 50%;
+    bottom: -45px;
+    right: 25%;
+  }
+  .background_container_registration div:nth-child(1) {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    background: rgba(48, 46, 142, 1);
+    border-radius: 50%;
+    bottom: 736px;
+    left: -400px;
+  }
+  .background_container_login div:nth-child(2) {
+    position: absolute;
+    width: 284px;
+    height: 284px;
+    background: rgba(48, 46, 142, 1);
+    border-radius: 50%;
+    right: -78px;
+    bottom: 266px;
+  }
+  .background_container_registration div:nth-child(2) {
+    position: absolute;
+    width: 284px;
+    height: 284px;
+    background: linear-gradient(
+      to top left,
+      rgba(142, 46, 121, 1),
+      rgba(171, 51, 173, 1)
+    );
+    border-radius: 50%;
+    left: -372px;
+    bottom: 220px;
+  }
+  .background_container_login div:nth-child(3) {
+    position: absolute;
+    width: 284px;
+    height: 284px;
+    opacity: 0.68;
+    border-radius: 50%;
+    background: linear-gradient(
+      to top right,
+      rgba(142, 46, 121, 1),
+      rgba(171, 51, 173, 1)
+    );
+    left: -270px;
+    top: 26px;
+  }
+  .background_container_registration div:nth-child(3) {
+    position: absolute;
+    width: 654px;
+    height: 654px;
+    opacity: 0.73;
+    border-radius: 50%;
+    background: linear-gradient(
+      to top left,
+      rgba(101, 45, 156, 1),
+      rgba(109, 84, 235, 1)
+    );
+    right: -369px;
+    top: -253px;
+  }
+  .background_container_login div:nth-child(4) {
+    position: absolute;
+    width: 713px;
+    height: 713px;
+    opacity: 0.73;
+    background: linear-gradient(
+      to top right,
+      rgba(101, 35, 146, 1),
+      rgba(109, 84, 235, 1)
+    );
+    border-radius: 50%;
+    left: -50%;
+    bottom: 481px;
+  }
+  .background_container_registration div:nth-child(4) {
+    position: absolute;
+    width: 454px;
+    height: 454px;
+    opacity: 0.73;
+    background: linear-gradient(
+      to bottom right,
+      rgba(47, 21, 176, 1),
+      rgba(47, 21, 176, 0.73)
+    );
+    border-radius: 50%;
+    left: -173px;
+    top: -166px;
+  }
+  .background_container_login div:nth-child(5) {
+    position: absolute;
+    width: 595px;
+    height: 595px;
+    border-radius: 50%;
+    background: linear-gradient(
+      to top right,
+      rgba(101, 35, 146, 1),
+      rgba(109, 84, 235, 1)
+    );
+    right: -156px;
+    bottom: -143px;
+  }
+  .background_container_registration div:nth-child(5) {
+    position: absolute;
+    width: 515px;
+    height: 515px;
+    border-radius: 50%;
+    background: rgba(109, 28, 119, 1);
+    right: -404px;
+    top: -120px;
+  }
+  .background_container_registration div:nth-child(6) {
+    position: absolute;
+    width: 707px;
+    height: 707px;
+    border-radius: 50%;
+    background: linear-gradient(
+      to top left,
+      rgba(101, 35, 146, 1),
+      rgba(109, 84, 235, 1)
+    );
+    left: -361px;
+    bottom: -49px;
+  }
+  .background_container_login::after,
+  .background_container_registration::after {
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(100px);
+    background-color: transparent;
+  }
+  .background_img_container_login,
+  .background_img_container_registration {
+    background: transparent;
+    width: 100%;
+    height: 100vh;
+  }
+  .background_img_container_login div:nth-child(1) {
+    position: absolute;
+    content: url('../../img/imgBcg/coins_tab_up.png');
+    width: 374px;
+    top: -204px;
+    z-index: 1;
+    opacity: 0.5;
+  }
+  .background_img_container_registration div:nth-child(1) {
+    position: absolute;
+    content: url('../../img/imgBcg/bucks_tabs_many.png');
+    z-index: 2;
+    width: 120%;
+    left: -157px;
+    right: -157px;
+    height: 130%;
+    opacity: 0.5;
+  }
+  .background_img_container_login div:nth-child(2) {
+    position: absolute;
+    content: url('../../img/imgBcg/coins_tab_down.png');
+    bottom: 0px;
+    right: 0px;
+    z-index: 2;
+  }
+  .background_img_container_registration div:nth-child(2) {
+    position: absolute;
+    content: url('../../img/imgBcg/bucks_tab_less.png');
+    top: -12px;
+    right: -234px;
+    z-index: 2;
+    opacity: 0.5;
+    height: 896px;
+    max-height: 90%;
   }
   .background_container {
     display: flex;
@@ -298,14 +596,14 @@
   }
   .form_container {
     box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
-    position: relative;
+    position: absolute;
     border-radius: 8px;
     width: 533px;
     height: 624px;
     background: radial-gradient(
       circle at center,
       rgba(47, 21, 176, 0.73),
-      rgba(255, 255, 255, 0.1) 95%
+      rgba(255, 255, 255, 0.1)
     );
     position: absolute;
     backdrop-filter: blur(60px);
@@ -319,10 +617,12 @@
   .password_label {
     width: 409px;
     margin: 0 auto;
+    background-color: transparent;
   }
   .name_label {
     width: 409px;
     margin: 0 auto;
+    background-color: transparent;
   }
   .logo_wrapper {
     font-size: 26px;
@@ -343,29 +643,190 @@
   .form_container {
     height: 570px;
   }
-  .login_register_section {
-    background: url('../../img/imgBcg/coins_desc_right.png') right no-repeat,
-      url('../../img/imgBcg/coins_desc_left.png') left no-repeat,
-      radial-gradient(circle at center, rgba(47, 21, 176, 0.73), #101010),
-      radial-gradient(362px at bottom right, #652392, transparent),
-      radial-gradient(173px at top 0px left -45px, #8e2e79, transparent),
-      radial-gradient(134px at bottom 20px right 100px, #8e2e79, transparent),
-      radial-gradient(173px at bottom 153px right -20px, #302e8e, transparent),
-      radial-gradient(434px at top left, #652392, transparent);
-    background-size: contain;
+  .background_container_login div:nth-child(1) {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: rgba(109, 28, 119, 1);
+    bottom: -71px;
+    right: 307px;
   }
-  .register_login_section {
-    background: url('../../img/imgBcg/bucks_desc_left.png') no-repeat,
-      url('../../img/imgBcg/bucks_desc_right.png') right no-repeat,
-      radial-gradient(circle at center, rgba(47, 21, 176, 0.73), #101010),
-      radial-gradient(362px at bottom right, #652392, transparent),
-      radial-gradient(173px at top 0px left -45px, #8e2e79, transparent),
-      radial-gradient(134px at bottom 20px right 100px, #8e2e79, transparent),
-      radial-gradient(173px at bottom 153px right -20px, #302e8e, transparent),
-      radial-gradient(434px at top left, #652392, transparent);
-    background-size: contain;
+  .background_container_registration div:nth-child(1) {
+    position: absolute;
+    width: 369px;
+    height: 369px;
+    border-radius: 50%;
+    background: rgba(48, 46, 142, 1);
+    top: -68px;
+    left: -120px;
   }
-  .register_login_section::before {
+  .background_container_login div:nth-child(2) {
+    position: absolute;
+    width: 284px;
+    height: 284px;
+    background: rgba(48, 46, 142, 1);
+    border-radius: 50%;
+    right: -3px;
+    top: 196px;
+  }
+  .background_container_registration div:nth-child(2) {
+    position: absolute;
+    width: 251px;
+    height: 251px;
+    background: linear-gradient(
+      to top left,
+      rgba(142, 46, 121, 1),
+      rgba(171, 51, 173, 1)
+    );
+    border-radius: 50%;
+    left: -92px;
+    bottom: -97px;
+  }
+  .background_container_login div:nth-child(3) {
+    position: absolute;
+    width: 284px;
+    height: 284px;
+    background: linear-gradient(
+      to top right,
+      rgba(142, 46, 121, 1),
+      rgba(171, 51, 173, 1)
+    );
+    opacity: 0.68;
+    border-radius: 50%;
+    top: -58px;
+    left: -116px;
+  }
+  .background_container_registration div:nth-child(3) {
+    position: absolute;
+    width: 654px;
+    height: 654px;
+    background: linear-gradient(
+      to top right,
+      rgba(101, 35, 146, 1),
+      rgba(109, 84, 235, 1)
+    );
+    opacity: 0.73;
+    border-radius: 50%;
+    top: -240px;
+    right: -137px;
+  }
+  .background_container_login div:nth-child(4) {
+    position: absolute;
+    width: 713px;
+    height: 713px;
+    background: linear-gradient(
+      to top right,
+      rgba(101, 35, 146, 1),
+      rgba(109, 84, 235, 1)
+    );
+    opacity: 0.73;
+    border-radius: 50%;
+    top: -254px;
+    left: -219px;
+  }
+  .background_container_registration div:nth-child(4) {
+    position: absolute;
+    width: 454px;
+    height: 454px;
+    background: linear-gradient(
+      to bottom right,
+      rgba(47, 21, 176, 1),
+      rgba(47, 21, 176, 0.73)
+    );
+    opacity: 0.73;
+    border-radius: 50%;
+    top: -153px;
+    left: 107px;
+  }
+  .background_container_login div:nth-child(5) {
+    position: absolute;
+    width: 595px;
+    height: 595px;
+    border-radius: 50%;
+    background: linear-gradient(
+      to top right,
+      rgba(101, 35, 146, 1),
+      rgba(109, 84, 235, 1)
+    );
+    right: -81px;
+    bottom: -169px;
+  }
+  .background_container_registration div:nth-child(5) {
+    position: absolute;
+    width: 515px;
+    height: 515px;
+    border-radius: 50%;
+    background: rgba(109, 28, 119, 1);
+    right: -172px;
+    top: -107px;
+  }
+  .background_container_registration div:nth-child(6) {
+    position: absolute;
+    width: 515px;
+    height: 515px;
+    border-radius: 50%;
+    background: linear-gradient(
+      to top right,
+      rgba(101, 35, 146, 1),
+      rgba(109, 84, 235, 1)
+    );
+    left: -81px;
+    bottom: -366px;
+  }
+  .background_container_login::after,
+  .background_container_registration::after {
+    position: absolute;
     content: '';
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(100px);
+  }
+  .background_img_container_login,
+  .background_img_container_registration {
+    position: absolute;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+  }
+  .background_img_container_login div:nth-child(1) {
+    position: absolute;
+    width: 40%;
+    height: 100%;
+    opacity: 0.5;
+    content: url('../../img/imgBcg/coins_desc_left.png');
+    z-index: 1;
+    top: 0px;
+  }
+  .background_img_container_registration div:nth-child(1) {
+    position: absolute;
+    width: 35%;
+    height: 100%;
+    opacity: 0.5;
+    content: url('../../img/imgBcg/bucks_desc_left.png');
+    background-size: cover;
+    z-index: 1;
+    left: 0px;
+    right: auto;
+  }
+  .background_img_container_login div:nth-child(2) {
+    position: absolute;
+    opacity: 0.5;
+    content: url('../../img/imgBcg/coins_desc_right.png');
+    right: 300px;
+    bottom: 0px;
+    z-index: 1;
+    right: 0px;
+    height: 100%;
+  }
+  .background_img_container_registration div:nth-child(2) {
+    position: absolute;
+    opacity: 0.5;
+    max-width: 35%;
+    content: url('../../img/imgBcg/bucks_desc_right.png');
+    z-index: 1;
+    right: 0px;
+    bottom: 0px;
+    height: 100%;
   }
 }

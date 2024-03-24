@@ -1,0 +1,54 @@
+.tableContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 280px;
+}
+
+.tableHeader {
+  border-radius: 8px;
+  border-radius: 8px;
+  height: 56px;
+  backdrop-filter: blur(100px);
+  box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+  background: rgba(82, 59, 126, 0.6);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #fbfbfb;
+}
+
+.tableCell {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #fbfbfb;
+  padding: 10px;
+}
+
+.tableRow {
+  border-bottom: 1px solid rgba(82, 59, 126, 0.6);
+}
+
+.paragraphContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.paragraph {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #fbfbfb;
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1280px) {
+}

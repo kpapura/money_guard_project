@@ -1,43 +1,39 @@
 // StatisticsDashboard.jsx
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { fetchTransactionSummaryControllerThunk } from '../../../redux/transactions/operations';
+import React, { useState } from 'react';
+import s from './StatisticsDashboard.module.css';
 
-const StatisticsDashboard = ({ selectedMonth, selectedYear, onMonthChange, onYearChange }) => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchTransactionSummaryControllerThunk());
-  }, [dispatch]);
-
-  const handleMonthChange = (e) => {
-    onMonthChange(e);
-  };
-
-  const handleYearChange = (e) => {
-    onYearChange(e);
-  };
-
+const StatisticsDashboard = ({ onMonthChange, onYearChange }) => {
   const currentDate = new Date();
   const currentYear = currentDate.getFullYear();
+  const [selectedMonth, setSelectedMonth] = useState(currentDate.getMonth() + 1);
+  const [selectedYear, setSelectedYear] = useState(currentYear);
+
+  const handleMonthChange = e => {
+    setSelectedMonth(parseInt(e.target.value));
+    onMonthChange(parseInt(e.target.value));
+  };
+
+  const handleYearChange = e => {
+    setSelectedYear(parseInt(e.target.value));
+    onYearChange(parseInt(e.target.value));
+  };
 
   const years = Array.from({ length: currentYear - 2019 }, (_, i) => currentYear - i).reverse();
-
   const months = [
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'
   ];
 
   return (
-    <div>
-      <select value={selectedMonth} onChange={handleMonthChange}>
+    <div className={s.selectContainers}>
+      <select className={s.select} value={selectedMonth} onChange={handleMonthChange}>
         {months.map((month, index) => (
-          <option key={index + 1} value={index + 1}>{month}</option>
+          <option className={s.option} key={index + 1} value={index + 1}>{month}</option>
         ))}
       </select>
-      <select value={selectedYear} onChange={handleYearChange}>
+      <select className={s.select} value={selectedYear} onChange={handleYearChange}>
         {years.map(year => (
-          <option key={year} value={year}>{year}</option>
+          <option className={s.option} key={year} value={year}>{year}</option>
         ))}
       </select>
     </div>

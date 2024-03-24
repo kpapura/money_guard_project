@@ -33,24 +33,55 @@ const LoginRegisterForm = ({ onDataSubmit, formType, schema }) => {
   };
 
   return (
-    <section
-      className={
-        formType === 'login'
-          ? `${s.login_register_section}`
-          : `${s.register_login_section}`
-      }
-    >
-      {' '}
-      <div className={s.background_container}>
+    <>
+      <section
+        className={
+          formType === 'login'
+            ? `${s.login_register_section}`
+            : `${s.register_login_section}`
+        }
+      >
+        {formType === 'login' ? (
+          <>
+            <div className={s.background_img_container_login}>
+              <div></div>
+              <div></div>
+            </div>
+            <div className={s.background_container_login}>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className={s.background_container_registration}>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div className={s.background_img_container_registration}>
+              <div></div>
+              <div></div>
+            </div>
+          </>
+        )}
+
         <div
           className={s.form_container}
           style={{
             padding:
               size < 768 && formType === 'login'
-                ? '98px 20px'
+                ? '98px 0px'
                 : size > 768 && formType === 'login'
-                ? '80px 62px'
-                : '40px 62px',
+                ? '80px 0px'
+                : '40px 0px',
           }}
         >
           <a
@@ -127,8 +158,8 @@ const LoginRegisterForm = ({ onDataSubmit, formType, schema }) => {
             )}{' '}
           </form>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

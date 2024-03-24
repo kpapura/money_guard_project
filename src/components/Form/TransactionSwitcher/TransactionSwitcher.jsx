@@ -10,7 +10,7 @@ const TransactionSwitcher = ({ onChange }) => {
   };
   return (
     <div className={styles['transaction-switcher']}>
-      <span className={styles.labelIncome}>Income</span>
+      <span className={ isIncome  ? styles.activeIncome : styles.labelIncome}>Income</span>
 
       <label
         className={`${styles.switch} ${
@@ -20,7 +20,7 @@ const TransactionSwitcher = ({ onChange }) => {
         <input type="checkbox" onChange={handleSwitch} checked={!isIncome} />
         <span className={`${styles.slider} ${styles.round}`}></span>
       </label>
-      <span className={styles.labelExpense}>Expense</span>
+      <span className={ !isIncome  ? styles.activeExpense : styles.labelExpense}>Expense</span>
     </div>
   );
 };

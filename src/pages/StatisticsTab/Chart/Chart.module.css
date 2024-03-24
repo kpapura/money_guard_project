@@ -1,0 +1,20 @@
+.chartWrapper {
+  position: relative;
+}
+
+.periodText {
+  position: absolute;
+  bottom: 134px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1280px) {
+}

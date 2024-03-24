@@ -9,7 +9,7 @@ export const registerThunk = createAsyncThunk(
       setToken(data.token);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -22,7 +22,8 @@ export const loginThunk = createAsyncThunk(
       setToken(data.token);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      console.log(error);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -45,6 +46,7 @@ export const refreshThunk = createAsyncThunk('refresh', async (_, thunkApi) => {
   try {
     setToken(savedToken);
     const { data } = await walletApi.get('users/current');
+    console.log(data);
     return data;
   } catch (error) {
     return thunkApi.rejectWithValue(error.message);
