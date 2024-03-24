@@ -22,9 +22,9 @@ function App() {
   const isRefreshing = useSelector(selectIsRefresh);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(refreshThunk());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(refreshThunk());
+  }, [dispatch]);
 
   return isRefreshing ? (<Loader/>) : (
     <>
