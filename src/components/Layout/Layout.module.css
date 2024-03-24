@@ -1,5 +1,72 @@
-/* .layoutWrapper {
-    width: 100vw;
-    height: 100vh;
+.walletContainer {
+  /* margin-left: auto;
+  margin-right: auto; */
+  background-image: url(../../img/images/gradient_mob@1x.webp);
+  background: linear-gradient(276deg, #2e1746 3.19%, #2e225f 100%);
+  background-size: cover;
+}
+.mainContainer {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 32px;
+  padding: 0 20px;
 
-} */
+  @media screen and (max-width: 1279px) {
+    flex-direction: column;
+  }
+  @media screen and (min-width: 768px) {
+    gap: 20px;
+    padding: 0 32px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding: 0 16px 0 0;
+    gap: 73px;
+    max-width: 1280px;
+  }
+}
+
+.commonInfo {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    gap: 32px;
+  }
+  @media screen and (min-width: 1280px) {
+    flex-direction: column;
+    width: 480px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .commonInfo::after {
+    display: block;
+    position: absolute;
+    right: 0px;
+    top: 0;
+    content: '';
+    width: 1px;
+    height: 100%;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.6);
+  }
+}
+
+.wrap {
+  /* display: flex;
+  flex-direction: column;
+  gap: 28px; */
+}
+.navBar {
+  @media screen and (min-width: 768px) {
+    margin-bottom: 28px;
+  }
+}
+.balance {
+}
+
+.transactions_section {
+}

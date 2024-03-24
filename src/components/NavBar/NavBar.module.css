@@ -1,5 +1,10 @@
 .navLinkContainer {
   padding: 12px 0 12px 0;
+  @media screen and (max-width: 767px) {
+    position: sticky;
+    top: 60px;
+    z-index: 1000;
+  }
 }
 
 .navLinkWrapper {
@@ -11,6 +16,7 @@
 .navLinkTitle {
   display: flex;
   align-items: center;
+  line-height: 1.5;
 }
 
 .navLinkIcon {
@@ -60,15 +66,14 @@
   .navLinkTitle {
     display: flex;
     align-items: center;
-
+    line-height: 1.5;
     column-gap: 20px;
 
     color: var(--white, #fbfbfb);
-   
+
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
-    line-height: normal;
   }
 }
 
