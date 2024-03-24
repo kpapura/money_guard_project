@@ -26,14 +26,14 @@ const Login = () => {
     password: '0000000',
   };
   return (
-    <div>
+    <>
       <LoginRegisterForm
         formType={'login'}
         onDataSubmit={handleSubmit}
         values={values}
         schema={loginSchema}
       />
-    </div>
+    </>
   );
 };
 

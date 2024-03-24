@@ -541,6 +541,7 @@
     height: 100%;
     width: 100%;
     backdrop-filter: blur(100px);
+    background-color: transparent;
   }
   .background_img_container_login,
   .background_img_container_registration {
@@ -580,6 +581,8 @@
     right: -234px;
     z-index: 2;
     opacity: 0.5;
+    height: 896px;
+    max-height: 90%;
   }
   .background_container {
     display: flex;
