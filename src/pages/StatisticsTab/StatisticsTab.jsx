@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import StatisticsDashboard from './StatisticsDashboard/StatisticsDashboard';
 import { fetchTransactionSummaryControllerThunk } from '../../redux/transactions/operations';
-import { selectCategoriesSummary } from '../../redux/transactions/transactionsSlice';
+import { selectCategoriesSummary, selectExpenseSummary, selectIncomeSummary, selectPeriodTotal } from '../../redux/transactions/transactionsSlice';
 import s from './StatisticsTab.module.css';
 import StatisticsTable from './StatisticsTable/StatisticsTable';
 import DoughnutChart from './Chart/Chart';
@@ -10,12 +10,14 @@ import DoughnutChart from './Chart/Chart';
 const StatisticsTab = () => {
   const dispatch = useDispatch();
   const transactionsSummaryList = useSelector(selectCategoriesSummary);
+  const incomeTotal = useSelector(selectIncomeSummary);
+  const expenceTotal = useSelector(selectExpenseSummary);
+  const periodTotal = useSelector(selectPeriodTotal)
 
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1);
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [colors, setColors] = useState({});
 
-  console.log(transactionsSummaryList);
   useEffect(() => {
     dispatch(fetchTransactionSummaryControllerThunk({ month: selectedMonth, year: selectedYear }));
   }, [selectedMonth, selectedYear, dispatch]);
@@ -46,11 +48,15 @@ const StatisticsTab = () => {
       </div>
       <div className={s.contentContainer}>
         <div className={s.chartContainer}>
-          <DoughnutChart transactions={transactionsSummaryList} colors={colors} />
+          <DoughnutChart transactions={transactionsSummaryList} period={periodTotal} colors={colors} />
         </div>
         <div className={s.tableContainer}>
           <StatisticsDashboard onMonthChange={handleMonthChange} onYearChange={handleYearChange} />
-          <StatisticsTable transactionsSummary={transactionsSummaryList} colors={colors} />
+          <StatisticsTable
+            transactionsSummary={transactionsSummaryList}
+            colors={colors}
+            incomeSummary={incomeTotal}
+            expenseSummary={expenceTotal} />
         </div>
       </div>
     </section>
