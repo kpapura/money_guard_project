@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import sprite from '../../img/sprite.svg'
 
 import { Exit } from '../Exit/Exit';
 import Modal from '../Modal/Modal';
@@ -20,14 +21,13 @@ export const Header = () => {
   return (
     <header className={s.header}>
       <div className={s.hederContainer}>
-        {/* <Link to="/" className={s.logo}> */}
-        <a href="" className={s.logo}>
+        <Link to="/" className={s.logo}>
           <svg width="24" height="23">
-            <use href="../../img/sprite.svg#icon-logo"></use>
+            <use  xlinkHref={`${sprite}#icon-logo`}></use>
           </svg>
           Money Guard
-        </a>
-        {/* </Link > */}
+        
+        </Link >
         <div className={s.wrap}>
           {' '}
           <p className={s.user}>{userEmail}</p>

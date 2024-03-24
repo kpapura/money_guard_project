@@ -36,7 +36,7 @@ const NavBar = () => {
         </NavLink>
         ) : (<NavLink to="statistics" className={ ({isActive})=>clsx(s.navLinkTitle, isActive && s.active)}>
         <svg width="18" height="18" className={s.navLinkIcon}>
-          <use href="../../img/sprite.svg#icon-statistics"></use>
+          <use xlinkHref={`${sprite}#icon-statistics`}></use>
         </svg>
         Statistics
       </NavLink>)
