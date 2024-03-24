@@ -1,8 +1,8 @@
 // StatisticsTable.jsx
 import React from 'react';
-import s from './StatisticsTable.module.css'
+import s from './StatisticsTable.module.css';
 
-const StatisticsTable = ({ transactionsSummary }) => {
+const StatisticsTable = ({ transactionsSummary, colors }) => {
   const categoriesSummary = transactionsSummary?.categoriesSummary || [];
   const incomeSummary = transactionsSummary?.incomeSummary || 0;
   const expenseSummary = transactionsSummary?.expenseSummary || 0;
@@ -12,6 +12,7 @@ const StatisticsTable = ({ transactionsSummary }) => {
       <table className={s.table}>
         <thead className={s.tableHeader}>
           <tr>
+            <th className={s.tableCell}></th>
             <th className={s.tableCell}>Category</th>
             <th className={s.tableCell}>Sum</th>
           </tr>
@@ -19,8 +20,15 @@ const StatisticsTable = ({ transactionsSummary }) => {
         <tbody>
           {categoriesSummary.map((category, index) => (
             <tr key={index} className={s.tableRow}>
-              <td className={s.tableCell}>{category.name}</td>
-              <td className={s.tableCell}>{category.total}</td>
+              <td className={s.colorCell}>
+                <div className={s.colorSquare} style={{ backgroundColor: colors[category.name] }}></div>
+              </td>
+              <td className={s.tableCell}>
+                {category.name}
+              </td>
+              <td className={s.tableCell}>
+                {category.total}
+              </td>
             </tr>
           ))}
         </tbody>
