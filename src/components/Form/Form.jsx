@@ -1,14 +1,17 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import { useForm } from 'react-hook-form';
-import TransactionSwitcher from './TransactionSwitcher/TransactionSwitcher';
-import s from './Form.module.css';
-import { formatDate } from '../../helpers/addLeadingzero';
 import Select from 'react-select';
-import FormInput from './FormFields/FormFields';
 import { yupResolver } from '@hookform/resolvers/yup';
-//import { useDashboard } from '../../hooks/useDashboard';
+import DatePicker from 'react-datepicker';
+
+import TransactionSwitcher from './TransactionSwitcher/TransactionSwitcher';
+import FormInput from './FormFields/FormFields';
+
+import { formatDate } from '../../helpers/addLeadingzero';
+
+import 'react-datepicker/dist/react-datepicker.css';
+import s from './Form.module.css';
+import sprite from '../../img/sprite.svg';
 
 export function Form({
   content,
@@ -16,34 +19,21 @@ export function Form({
   toggle,
   typeForm,
   onDataSubmit,
-  schema
+  schema,
 }) {
   const {
     register,
     handleSubmit,
     formState: { errors },
     setValue,
-    reset
-  } = useForm(
-
-    
-    { resolver: yupResolver(schema) , mode:'onChange'}
-  )
-    ;
-    // schema
-  const [selectedOption, setSelectedOption] = useState('');
+  } = useForm({ resolver: yupResolver(schema), mode: 'onChange' });
+  const [selectedOption, setSelectedOption] = useState('EXPENSE');
   const [type, setType] = useState('');
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(null);
 
   useEffect(() => {
     content ? setType(content.type) : setType('EXPENSE');
-  }, [content]);
-
-  useEffect(() => {
-    setValue('amount', content && content.amount);
-  }, [content, setValue]);
-
-  useEffect(() => {
+    setValue('amount', content && +content.amount.toString().replace('-', ''));
     setValue('comment', content && content.comment);
   }, [content, setValue]);
 
@@ -62,11 +52,12 @@ export function Form({
   const handleChange = selectedOption => {
     setSelectedOption(selectedOption);
   };
+
   const submit = data => {
     if (typeForm === 'add') {
       onDataSubmit({
         transactionDate: formatDate(startDate),
-        amount:type === 'EXPENSE' ? `-${data.amount}` : data.amount,
+        amount: type === 'EXPENSE' ? +`-${data.amount}` : +data.amount,
         comment: data.comment,
         type: type,
         categoryId:
@@ -74,18 +65,17 @@ export function Form({
             ? selectedOption.value || categoriesValues[0].value
             : '063f1132-ba5d-42b4-951d-44011ca46262',
       });
-      reset()
     } else {
       onDataSubmit({
-        transactionDate: formatDate(startDate),
-        amount: +data.amount,
+        transactionDate: content
+          ? content.transactionDate
+          : formatDate(startDate),
+        amount: type === 'EXPENSE' ? +`-${data.amount}` : +data.amount,
         comment: data.comment,
       });
-      reset()
     }
-    reset();
-
   };
+
   const toggleTransaction = type => {
     if (type) {
       setType('INCOME');
@@ -144,43 +134,42 @@ export function Form({
                 className="react-select-container"
                 classNamePrefix="react-select"
                 options={categoriesValues}
-                placeholder="Select category"
-                defaultValue={defaultValue && defaultValue}
-                // categoriesValues[0]
+                // placeholder="Select category"
+                defaultValue={defaultValue ? defaultValue : categoriesValues[0]}
                 onChange={handleChange}
                 isDisabled={typeForm === 'edit'}
               />
-            {errors['category'] && <span>{errors['category'].message}</span>}
+          {/* {errors['category'] && <span>{errors['category'].message}</span>} */}
             </div>
           )}
-
           <div className={s.boxDate}>
             <FormInput
               className={s.incomeInput}
               name="amount"
               placeholder="0.00"
+              autoComplete="false"
               errors={errors}
               register={register}
             />
-
             <div className={s.svgBox}>
               <DatePicker
                 className={s.customInput}
                 selected={content ? content.transactionDate : startDate}
+                placeholderText="Enter the date"
                 onChange={date => {
                   setValue('transactionDate', date);
                   setStartDate(date);
                 }}
               />
               <svg width="36" height="36">
-          <use href="../../img/sprite.svg#icon-date"></use>
-        </svg>
+                <use xlinkHref={`${sprite}#icon-date`} />
+              </svg>
               {errors['transactionDate'] && (
                 <span>{errors['transactionDate'].message}</span>
               )}
             </div>
           </div>
-          
+
           <FormInput
             className={s.comment}
             name="comment"
@@ -197,7 +186,6 @@ export function Form({
               CANCEL
             </button>
           </div>
-
         </div>
       </form>
     </div>
