@@ -18,32 +18,32 @@ function CurrencyRates() {
   
   const { isDesktopOrLaptop, isBigScreen, isTabletOrMobile, isRetina } = useDashboard();
 
-  let imageSrc = "../../img/images/currency_mobile.webp";
-  let secondImageSrc = "../../img/images/line_desc_mob_1x.webp";
+  let imageSrc = "";
+let secondImageSrc = "";
 
-  if (window.devicePixelRatio >= 2) {
-    if (isDesktopOrLaptop) {
-      imageSrc = "../../img/images/currency_desk@2x.webp";
-      secondImageSrc = "../../img/images/line_desc_2x.webp";
-    } else if (isBigScreen) {
-      imageSrc = "../../img/images/currency_desk@2x.webp";
-      secondImageSrc = "../../img/images/line_desc_2x.webp";
-    } else if (isTabletOrMobile) {
-      imageSrc = "../../img/images/currency_tablet@2x.webp";
-      secondImageSrc = "../../img/images/line_desc_tab_2x.webp";
-    }
+if (isRetina) {
+  if (isBigScreen) {
+    imageSrc = "../../img/images/currency_desk@2x.webp";
+    secondImageSrc = "../../img/images/line_desc_2x.webp";
+  } else if (isTabletOrMobile) {
+    imageSrc = "../../img/images/currency_tablet@2x.webp";
+    secondImageSrc = "../../img/images/line_desc_tab_2x.webp";
   } else {
-    if (isDesktopOrLaptop) {
-      imageSrc = "../../img/images/currency_desk.webp";
-      secondImageSrc = "../../img/images/line_desc_1x.webp";
-    } else if (isBigScreen) {
-      imageSrc = "../../img/images/currency_desk.webp";
-      secondImageSrc = "../../img/images/line_desc_1x.webp";
-    } else if (isTabletOrMobile) {
-      imageSrc = "../../img/images/currency_tablet.webp";
-      secondImageSrc = "../../img/images/line_desc_tab_1x.webp";
-    }
+    imageSrc = "../../img/images/currency_mobile@2x.webp";
+    secondImageSrc = "../../img/images/line_desc_mob_2x.webp";
   }
+} else {
+  if (isBigScreen) {
+    imageSrc = "../../img/images/currency_desk.webp";
+    secondImageSrc = "../../img/images/line_desc_1x.webp";
+  } else if (isTabletOrMobile) {
+    imageSrc = "../../img/images/currency_tablet.webp";
+    secondImageSrc = "../../img/images/line_desc_tab_1x.webp";
+  } else {
+    imageSrc = "../../img/images/currency_mobile.webp";
+    secondImageSrc = "../../img/images/line_desc_mob_1x.webp";
+  }
+}
 
   useEffect(() => {
     const currentTime = new Date().getTime();
@@ -76,7 +76,7 @@ function CurrencyRates() {
     <li className={s.rowItem}>{eurRate.rateSell}</li>
   </ul>
 )}
-        {isDesktopOrLaptop && (
+        {isBigScreen && (
           <>
             <p className={s.smallnumeur}> {eurRate.rateBuy}</p>
             <p className={s.smallnumusd}> {usdRate.rateBuy}</p>
