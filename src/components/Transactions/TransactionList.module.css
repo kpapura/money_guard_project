@@ -59,8 +59,9 @@
 @media (min-width: 1280px) {
   .transactions_section {
     /* width: 100%; */
-    padding: 57px 0;
+    /* padding: 57px 0; */
     min-height: calc(100vh - 80px);
+    margin-top: 127px;
     /* border-left: 1px solid rgb(251, 251, 251, 0.6); */
     /* background-image: url(../../img/images/home_desk@1x.webp); */
   }
@@ -147,6 +148,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+@media screen and (min-width: 1280px) {
+  .btn_add {
+    right: 40px;
+    bottom: 40px;
+  }
 }
 
 .icon_plus {

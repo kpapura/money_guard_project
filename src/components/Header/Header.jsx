@@ -23,9 +23,15 @@ export const Header = () => {
     <header className={s.header}>
       <div className={s.hederContainer}>
         <Link to="/" className={s.logo}>
-          <svg width="24" height="23">
-            <use xlinkHref={`${sprite}#icon-logo`}></use>
-          </svg>
+          {isBigScreenOrTablet ? (
+            <svg width="24" height="23">
+              <use xlinkHref={`${sprite}#icon-logo`}></use>
+            </svg>
+          ) : (
+            <svg width="17" height="17">
+              <use xlinkHref={`${sprite}#icon-logo`}></use>
+            </svg>
+          )}
           Money Guard
         </Link>
         <div className={s.wrap}>
