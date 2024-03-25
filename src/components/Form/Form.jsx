@@ -27,9 +27,10 @@ export function Form({
     formState: { errors },
     setValue,
   } = useForm({ resolver: yupResolver(schema), mode: 'onChange' });
-  const [selectedOption, setSelectedOption] = useState('EXPENSE');
+  const [selectedOption, setSelectedOption] = useState(null);
   const [type, setType] = useState('');
   const [startDate, setStartDate] = useState(null);
+  const [isHidden, setIsHidden] = useState(true);
 
   useEffect(() => {
     content ? setType(content.type) : setType('EXPENSE');
@@ -52,9 +53,9 @@ export function Form({
   const handleChange = selectedOption => {
     setSelectedOption(selectedOption);
   };
-
+  // || categoriesValues[0].value
   const submit = data => {
-    if (typeForm === 'add') {
+    if (typeForm === 'add' && selectedOption) {
       onDataSubmit({
         transactionDate: formatDate(startDate),
         amount: type === 'EXPENSE' ? +`-${data.amount}` : +data.amount,
@@ -62,9 +63,13 @@ export function Form({
         type: type,
         categoryId:
           type === 'EXPENSE'
-            ? selectedOption.value || categoriesValues[0].value
+            ? selectedOption?.value
             : '063f1132-ba5d-42b4-951d-44011ca46262',
       });
+      setIsHidden(true);
+    } else if (typeForm === 'add' && !selectedOption) {
+      setIsHidden(false);
+      return;
     } else {
       onDataSubmit({
         transactionDate: content
@@ -75,7 +80,6 @@ export function Form({
       });
     }
   };
-
   const toggleTransaction = type => {
     if (type) {
       setType('INCOME');
@@ -134,12 +138,15 @@ export function Form({
                 className="react-select-container"
                 classNamePrefix="react-select"
                 options={categoriesValues}
-                // placeholder="Select category"
-                defaultValue={defaultValue ? defaultValue : categoriesValues[0]}
+                placeholder="Select category"
+                defaultValue={defaultValue && defaultValue}
+                // : categoriesValues[0]
                 onChange={handleChange}
                 isDisabled={typeForm === 'edit'}
               />
-          {/* {errors['category'] && <span>{errors['category'].message}</span>} */}
+              <span className={!isHidden ? s.active : s.hidden}>
+                Please, choose the category
+              </span>
             </div>
           )}
           <div className={s.boxDate}>
