@@ -1,7 +1,7 @@
 .walletContainer {
   /* margin-left: auto;
   margin-right: auto; */
-  background-image: url(../../img/images/gradient_mob@1x.webp);
+  /* background-image: url(../../img/images/gradient_mob@1x.webp); */
   background: linear-gradient(276deg, #2e1746 3.19%, #2e225f 100%);
   background-size: cover;
 }

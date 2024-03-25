@@ -30,7 +30,7 @@ const Layout = () => {
           <div className={s.commonInfo}>
             <div className={s.wrap}>
               <NavBar className={s.navBar} />
-              <Balance />
+              {screenWidth >= 768 && <Balance />}
             </div>
             {screenWidth >= 768 && <CurrencyRates />}
           </div>

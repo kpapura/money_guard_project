@@ -1,8 +1,8 @@
 .transactions_section {
-  background-color: black;
+  /* background-color: black; */
   /* background-image: url(../../img/images/gradient_mob@1x.webp); */
   /* background-size: cover; */
-  position: relative;
+  /* position: relative; */
   width: 100%;
   display: flex;
   margin-left: auto;
@@ -10,7 +10,7 @@
   /* padding: 32px 20px 0 20px; */
   /* height: 100%;
   min-height: calc(100vh - 208px); */
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
   color: var(--white-color);
@@ -27,7 +27,7 @@
 @media (min-width: 768px) {
   .transactions_section {
     /* background-image: url(../../img/images/gradient_tab@1x.webp); */
-    position: relative;
+
     /* padding: 20px 32px 0 32px; */
     display: block;
     max-width: 704px;
@@ -47,13 +47,13 @@
     gap: 40px;
   }
 
-  @media screen and (min-resolution: 192dpi),
+  /* @media screen and (min-resolution: 192dpi),
     screen and (min-device-pixel-ratio: 2),
     screen and (min-resolution: 2dppx) {
     .transactions_section {
       background-image: url(../../img/images/gradient_tab@2x.webp);
     }
-  }
+  }*/
 }
 
 @media (min-width: 1280px) {
@@ -62,19 +62,19 @@
     padding: 57px 0;
     min-height: calc(100vh - 80px);
     /* border-left: 1px solid rgb(251, 251, 251, 0.6); */
-    background-image: url(../../img/images/home_desk@1x.webp);
+    /* background-image: url(../../img/images/home_desk@1x.webp); */
   }
 
-  @media screen and (min-resolution: 192dpi),
+  /* @media screen and (min-resolution: 192dpi),
     screen and (min-device-pixel-ratio: 2),
     screen and (min-resolution: 2dppx) {
     .transactions_section {
       background-image: url(../../img/images/home_desk@2x.webp);
     }
-  }
+  } */
 
   .transactions_container {
-    max-height: calc(100vh - 226px);
+    max-height: calc(100vh - 250px);
   }
 }
 
@@ -85,6 +85,7 @@
 }
 
 .transactions_container {
+  position: relative;
   margin: 0 auto;
 }
 
