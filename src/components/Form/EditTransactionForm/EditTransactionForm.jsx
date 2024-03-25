@@ -1,21 +1,22 @@
 import React from 'react';
-import { Form } from '../Form';
-import { editTransactionThunk } from '../../../redux/transactions/operations';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
+import { Form } from '../Form';
+import { editTransactionThunk } from '../../../redux/transactions/operations';
 import { editTransactionShema } from '../../../Schemas/EditTransactionShema';
-// import { editTransactionShema } from '../../../Schemas/editTransactionShema';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 export function EditTransactionForm({ categories, editContent, toggle }) {
   const dispatch = useDispatch();
 
   const handleSubmit = data => {
-    dispatch(editTransactionThunk({ content:{...data}, id:editContent.id }))
+    dispatch(editTransactionThunk({ content: { ...data }, id: editContent.id }))
       .unwrap()
       .then(data => {
         toast.success(`Changed!`);
-        toggle()
+        toggle();
       })
       .catch(err => {
         toast.error('Credentials is not valid!');

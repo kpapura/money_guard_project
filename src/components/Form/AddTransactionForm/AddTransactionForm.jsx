@@ -1,10 +1,12 @@
 import React from 'react';
-import { Form } from '../Form';
 import { useDispatch } from 'react-redux';
-import { addTransactionThunk } from '../../../redux/transactions/operations';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
+import { Form } from '../Form';
+import { addTransactionThunk } from '../../../redux/transactions/operations';
 import { addTransactionShema } from '../../../Schemas/addTransactionShema';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 export function AddTransactionForm({ categories, toggle }) {
   const dispatch = useDispatch()
@@ -23,4 +25,3 @@ export function AddTransactionForm({ categories, toggle }) {
   );
 }
 
-// schema={addTransactionShema} 
