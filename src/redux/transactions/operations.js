@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { walletApi } from '../../axiosConfig/walletApi';
+import { refreshThunk } from '../auth/operations';
 
 export const fetchTransactionsDataThunk = createAsyncThunk(
   'fetchTransactionsData',
@@ -46,6 +47,7 @@ export const editTransactionThunk = createAsyncThunk(
         `/transactions/${body.id}`,
         body.content
       );
+      thunkAPI.dispatch(refreshThunk());
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

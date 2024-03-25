@@ -1,10 +1,15 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
+  getBalanceThunk,
   loginThunk,
   logoutThunk,
   refreshThunk,
   registerThunk,
 } from './operations';
+import {
+  addTransactionThunk,
+  deleteTransactionThunk,
+} from '../transactions/operations';
 
 const initialState = {
   user: {
@@ -37,6 +42,15 @@ const slice = createSlice({
   },
   extraReducers: builder => {
     builder
+      .addCase(getBalanceThunk.fulfilled, (state, { payload }) => {
+        state.balance = payload.balance;
+      })
+      .addCase(addTransactionThunk.fulfilled, (state, { payload }) => {
+        state.balance = state.balance + payload.amount;
+      })
+      .addCase(deleteTransactionThunk.fulfilled, (state, { payload }) => {
+        state.balance = state.balance - payload.amount;
+      })
       .addCase(logoutThunk.fulfilled, state => {
         return initialState;
       })
