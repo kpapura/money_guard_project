@@ -28,6 +28,7 @@ const slice = createSlice({
     selectToken: state => state.isLoggedIn,
     selectIsRefresh: state => state.isRefresh,
     selectBalance: state => state.balance,
+    selectIsLoading: state => state.loading,
   },
   reducers: {
     logout: state => {

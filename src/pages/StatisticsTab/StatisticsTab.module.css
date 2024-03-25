@@ -1,60 +1,61 @@
 .statisticsContainer {
-  background-color: black;
+  /* background-color: black;
   background-image: url(../../img/images/gradient_mob@1x.webp);
-  background-size: cover;
+  background-size: cover; */
   position: relative;
   width: 100%;
   min-width: 280px;
   display: flex;
   align-items: center;
-  padding: 32px 20px 0 20px;
+  margin-right: auto;
+  margin-left: auto;
+  /* padding: 32px 0 0 0; */
   height: 100%;
   min-height: calc(100vh - 208px);
-  display: flex;
   flex-direction: column;
   color: var(--white-color);
-  font-family: 'Poppins', sans-serif;
 }
 
-@media screen and (min-resolution: 192dpi),
+/* @media screen and (min-resolution: 192dpi),
   screen and (min-device-pixel-ratio: 2),
   screen and (min-resolution: 2dppx) {
   .statisticsContainer {
     background-image: url(../../img/images/gradient_mob@2x.webp);
   }
-}
-
-.chartContainer {
-  padding-top: 8px;
-}
+} */
 
 .title {
-  font-weight: var(--font-weight-regular);
+  width: 280px;
   font-size: 30px;
+  /* align-self: flex-start; */
 }
 
 .tableContainer {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  @media (max-width: 767px) {
+    margin-top: 32px;
+  }
 }
 
 @media (min-width: 768px) {
   .statisticsContainer {
-    background-image: url(../../img/images/gradient_tab@1x.webp);
+    /* background-image: url(../../img/images/gradient_tab@1x.webp); */
     position: relative;
-    padding: 20px 32px 0 32px;
+    /* padding: 20px 32px 0 32px; */
     display: block;
     min-height: calc(100vh - 294px);
+    width: 704px;
   }
 
-  @media screen and (min-resolution: 192dpi),
+  /* @media screen and (min-resolution: 192dpi),
     screen and (min-device-pixel-ratio: 2),
     screen and (min-resolution: 2dppx) {
     .statisticsContainer {
       background-image: url(../../img/images/gradient_tab@2x.webp);
     }
-  }
+  } */
 
   .contentContainer {
     display: flex;
@@ -65,12 +66,7 @@
 
 @media (min-width: 1280px) {
   .statisticsContainer {
-    padding: 46px 16px 0 69px;
     min-height: calc(100vh - 80px);
-    border-left: 1px solid rgb(251, 251, 251, 0.6);
+    padding-top: 32px;
   }
-
-  /* .transactions_container {
-    max-height: calc(100vh - 226px);
-  } */
 }

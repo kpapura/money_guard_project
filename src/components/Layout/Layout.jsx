@@ -1,27 +1,45 @@
-import React from 'react';
-
-
-import { Suspense } from 'react';
+import React, { Suspense } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectIsLoading } from '../../redux/auth/authSlice';
 
-import Loader from '../Loader/Loader'
+import { Header } from '../Header/Header';
+import NavBar from '../NavBar/NavBar';
+import Balance from '../Balance/Balance';
+import CurrencyRates from '../CurrencyRates/CurrenceRate';
+import Loader from '../Loader/Loader';
 
-import s from './Layout.module.css'
+import useResize from '../../hooks/useResize';
+import { selectIsLoggedIn, selectIsLoading } from '../../redux/auth/authSlice';
+import s from './Layout.module.css';
 
 const Layout = () => {
   const isLoading = useSelector(selectIsLoading);
+  const isAuth = useSelector(selectIsLoggedIn);
+  const screenWidth = useResize().windowWidth;
 
-  return (
-    <div className={s.layoutWrapper}>
-      
-          {isLoading && <Loader />}
+  return !isAuth ? (
+    <>
+      <Outlet />
+    </>
+  ) : (
+    <>
+      {isLoading && <Loader />}
+      <Header />
+      <div className={s.walletContainer}>
+        <div className={s.mainContainer}>
+          <div className={s.commonInfo}>
+            <div className={s.wrap}>
+              <NavBar className={s.navBar} />
+              {screenWidth >= 768 && <Balance />}
+            </div>
+            {screenWidth >= 768 && <CurrencyRates />}
+          </div>
           <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>
-      
-    </div>
+        </div>
+      </div>
+    </>
   );
 };
 

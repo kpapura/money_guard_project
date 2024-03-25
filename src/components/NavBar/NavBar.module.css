@@ -2,8 +2,8 @@
   padding: 12px 0 12px 0;
   @media screen and (max-width: 767px) {
     position: sticky;
-    z-index: 51;
-    top:80px;
+    top: 60px;
+    z-index: 1000;
   }
 }
 
@@ -17,11 +17,8 @@
 .navLinkTitle {
   display: flex;
   align-items: center;
+  line-height: 1.5;
 }
-
-
-
-
 
 .navLinkTitle {
   color: var(--white-color);
@@ -33,17 +30,16 @@
   justify-content: center;
   align-items: center;
 
-
   fill: rgba(175, 175, 175, 0.515);
 }
 
 .active {
-  fill: rgba(114,75,239,1);
+  fill: rgba(114, 75, 239, 1);
   z-index: 1;
   border-radius: 8px;
-  
+
   font-size: var(--secondary-font-size);
-  font-weight: 700 ;
+  font-weight: 700;
 }
 
 .navLinkIconBg {
@@ -64,9 +60,9 @@
 
   @media screen and (min-width: 768px) {
     width: 18px;
-  height: 18px;
+    height: 18px;
 
-  border-radius: 4px;
+    border-radius: 4px;
   }
 }
 
@@ -75,13 +71,12 @@
 }
 
 .navLinkIcon {
-
   transform: scale(1.25);
 
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
- 
+
   /* border-radius: 8px; */
-  fill: inherit;  
+  fill: inherit;
 }
 
 .navLinkIcon:hover,
@@ -90,7 +85,7 @@
 }
 .active .navLinkIcon:hover,
 .active .navLinkIcon:focus {
-  fill: rgba(114,75,239,1);
+  fill: rgba(114, 75, 239, 1);
 }
 
 /*! ===============/ MOBILE VERSION =================== */
@@ -114,14 +109,14 @@
   .navLinkTitle {
     display: flex;
     align-items: center;
-
+    line-height: 1.5;
     column-gap: 20px;
 
     color: var(--white, #fbfbfb);
-   
+
     font-size: 18px;
     font-style: normal;
-    line-height: normal;
+    font-weight: 700;
   }
 }
 

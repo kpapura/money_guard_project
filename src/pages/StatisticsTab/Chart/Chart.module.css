@@ -2,6 +2,10 @@
   position: relative;
 }
 
+.doughnut {
+  width: 280px;
+}
+
 .periodText {
   position: absolute;
   bottom: 134px;

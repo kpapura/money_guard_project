@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import sprite from '../../img/sprite.svg'
+import sprite from '../../img/sprite.svg';
 
 import { Exit } from '../Exit/Exit';
 import Modal from '../Modal/Modal';
@@ -9,10 +9,11 @@ import Modal from '../Modal/Modal';
 import { selectUser } from '../../redux/auth/authSlice';
 import { useModal } from '../../hooks/useModal';
 import s from './Header.module.css';
+import { useDashboard } from '../../hooks/useDashboard';
 
 export const Header = () => {
   const { isOpen, toggle } = useModal();
-
+  const { isBigScreenOrTablet, isMobile } = useDashboard();
   const user = useSelector(selectUser);
 
   const index = user.email.indexOf('@');
@@ -23,11 +24,10 @@ export const Header = () => {
       <div className={s.hederContainer}>
         <Link to="/" className={s.logo}>
           <svg width="24" height="23">
-            <use  xlinkHref={`${sprite}#icon-logo`}></use>
+            <use xlinkHref={`${sprite}#icon-logo`}></use>
           </svg>
           Money Guard
-        
-        </Link >
+        </Link>
         <div className={s.wrap}>
           {' '}
           <p className={s.user}>{userEmail}</p>
@@ -35,7 +35,7 @@ export const Header = () => {
             <svg width="18" height="18" className={s.icon}>
               <use href="../../img/sprite.svg#icon-exit"></use>
             </svg>{' '}
-            Exit
+            {isBigScreenOrTablet ? 'Exit' : ''}
           </button>
         </div>
         {isOpen && (
