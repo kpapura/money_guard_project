@@ -197,4 +197,9 @@
     font-style: italic;
   }
 }
-
+.active{
+  display: block;
+}
+.hidden{
+  display: none;
+}
