@@ -5,6 +5,7 @@ import s from './LoginRegisterForm.module.css';
 import { yupResolver } from '@hookform/resolvers/yup';
 import InputField from './InputField';
 import PassInputField from './PassInputField';
+import sprite from '../../img/sprite.svg';
 
 const LoginRegisterForm = ({ onDataSubmit, formType, schema }) => {
   const [size, setSize] = useState(0);
@@ -43,15 +44,15 @@ const LoginRegisterForm = ({ onDataSubmit, formType, schema }) => {
       >
         {formType === 'login' ? (
           <>
-            <div className={s.background_img_container_login}>
-              <div></div>
-              <div></div>
-            </div>
             <div className={s.background_container_login}>
               <div></div>
               <div></div>
               <div></div>
               <div></div>
+              <div></div>
+              <div></div>
+            </div>{' '}
+            <div className={s.background_img_container_login}>
               <div></div>
               <div></div>
             </div>
@@ -74,15 +75,11 @@ const LoginRegisterForm = ({ onDataSubmit, formType, schema }) => {
         )}
 
         <div
-          className={s.form_container}
-          style={{
-            padding:
-              size < 768 && formType === 'login'
-                ? '98px 0px'
-                : size > 768 && formType === 'login'
-                ? '80px 0px'
-                : '40px 0px',
-          }}
+          className={
+            formType === 'login'
+              ? s.form_container_login
+              : s.form_container_register
+          }
         >
           <a
             href=""
@@ -91,11 +88,11 @@ const LoginRegisterForm = ({ onDataSubmit, formType, schema }) => {
           >
             {size < 768 ? (
               <svg width="25.5" height="25.5">
-                <use href="../../img/sprite.svg#icon-logo"></use>
+                <use xlinkHref={`${sprite}#icon-logo`} />
               </svg>
             ) : (
               <svg width="36" height="36">
-                <use href="../../img/sprite.svg#icon-logo"></use>
+                <use xlinkHref={`${sprite}#icon-logo`} />
               </svg>
             )}
             Money Guard
