@@ -44,23 +44,23 @@ function CurrencyRates() {
     {usdRate && (
       <tr className={s.row}>
         <td className={s.rowItem}>USD</td>
-        <td className={s.rowItem}>{usdRate.rateBuy}</td>
-        <td className={s.rowItem}>{usdRate.rateSell}</td>
+        <td className={s.rowItem}>{usdRate?.rateBuy}</td>
+        <td className={s.rowItem}>{usdRate?.rateSell}</td>
       </tr>
     )}
     {eurRate && (
       <tr className={s.row}>
         <td className={s.rowItem}>EUR</td>
-        <td className={s.rowItem}>{eurRate.rateBuy}</td>
-        <td className={s.rowItem}>{eurRate.rateSell}</td>
+        <td className={s.rowItem}>{eurRate?.rateBuy}</td>
+        <td className={s.rowItem}>{eurRate?.rateSell}</td>
       </tr>
     )}
   </tbody>
 </table>
         {isBigScreen && (
           <>
-            <p className={s.smallnumeur}> {eurRate.rateBuy}</p>
-            <p className={s.smallnumusd}> {usdRate.rateBuy}</p>
+            <p className={s.smallnumeur}> {eurRate?.rateBuy}</p>
+            <p className={s.smallnumusd}> {usdRate?.rateBuy}</p>
           </>
         )}
         <div className={s.imgBox}>
