@@ -1,10 +1,12 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+
 import Login_RegisterForm from '../../components/LoginRegisterForm/LoginRegisterForm';
+
 import { registerThunk } from '../../redux/auth/operations';
 import { registerSchema } from '../../Schemas/registerShema';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import s from './Register.module.css';
 

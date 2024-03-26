@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useModal } from '../../hooks/useModal.jsx';
-import { useDashboard } from '../../hooks/useDashboard';
-import {
-  selectTransactionCategories,
-  selectTransactions,
-} from '../../redux/transactions/transactionsSlice';
+
 import Modal from '../Modal/Modal.jsx';
 import { EditTransactionForm } from '../Form/EditTransactionForm/EditTransactionForm.jsx';
 import { AddTransactionForm } from '../Form/AddTransactionForm/AddTransactionForm.jsx';
 import TransactionsItem from './TransactionItem/TransactionsItem.jsx';
+
+import {
+  selectTransactionCategories,
+  selectTransactions,
+} from '../../redux/transactions/transactionsSlice';
+import { useModal } from '../../hooks/useModal.jsx';
+import { useDashboard } from '../../hooks/useDashboard';
+
 import sprite from '../../img/sprite.svg';
 import s from './TransactionList.module.css';
 
@@ -24,21 +27,18 @@ const TransactionsList = () => {
 
   if (isOpen) {
     document.body.classList.add('modal-open');
-  }
-  else {
+  } else {
     document.body.classList.remove('modal-open');
   }
   const handleEditItem = (content, id, name) => {
     toggle();
     setEditContent({ content, id, name });
     isOpen && document.body.classList.add('modal-open');
-
   };
 
   const handleAddItem = () => {
     toggle();
     setEditContent(null);
-
   };
 
   return (

@@ -1,8 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useDashboard } from '../../../hooks/useDashboard';
+
 import { deleteTransactionThunk } from '../../../redux/transactions/operations';
 import { selectTransactionCategories } from '../../../redux/transactions/transactionsSlice';
+import { useDashboard } from '../../../hooks/useDashboard';
 import sprite from '../../../img/sprite.svg';
 import s from './TransactionsItem.module.css';
 

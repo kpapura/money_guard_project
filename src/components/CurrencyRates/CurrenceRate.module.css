@@ -1,5 +1,4 @@
 .wrapper {
-  /* background-color: rgb(44, 3, 97); */
   position: relative;
   display: flex;
   height: 100vh;
@@ -18,10 +17,10 @@
   @media screen and (min-width: 1280px) {
     width: 480px;
     height: 380px;
-  } 
-} 
+  }
+}
 
-.secondwrapper{
+.secondwrapper {
   width: 320px;
   @media screen and (min-width: 678px) and (max-width: 1279px) {
     width: 336px;
@@ -33,7 +32,7 @@
     height: 100%;
   }
 }
-.imgBox{
+.imgBox {
   width: 320px;
   @media screen and (min-width: 678px) and (max-width: 1279px) {
     width: 336px;
@@ -41,7 +40,7 @@
   }
   @media screen and (min-width: 1280px) {
     width: 480px;
-  }  
+  }
 }
 .table {
   width: 320px;
@@ -57,38 +56,36 @@
   }
 }
 
-.head{
+.head {
   width: 320px;
-  
+
   @media screen and (min-width: 678px) and (max-width: 1279px) {
     width: 336px;
-    }
-  
+  }
+
   @media screen and (min-width: 1280px) {
     width: 480px;
-    }
+  }
 }
 
-.tableBody{
+.tableBody {
   width: 320px;
-  
+
   @media screen and (min-width: 678px) and (max-width: 1279px) {
     width: 336px;
   }
   @media screen and (min-width: 1280px) {
     width: 480px;
-    }
+  }
 }
 .titleRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
   list-style-type: none;
-  /* width: 100%; */
   width: 320px;
   height: 50px;
   background-color: rgba(255, 255, 255, 0.2);
-  /* margin-top: 140px; */
   margin-top: 0px;
   @media screen and (min-width: 678px) and (max-width: 1279px) {
     width: 336px;
@@ -105,12 +102,11 @@
   display: flex;
   justify-content: space-between;
   list-style-type: none;
-  /* width: 100%; */
   width: 320px;
   height: 24px;
   margin-top: 8px;
   margin-bottom: 2px;
-  
+
   @media screen and (min-width: 678px) and (max-width: 1279px) {
     width: 336px;
     margin-top: 12px;
@@ -118,7 +114,7 @@
   @media screen and (min-width: 1280px) {
     width: 480px;
     margin-top: 24px;
-    }
+  }
 }
 
 .titleItem {
@@ -182,8 +178,7 @@
   position: absolute;
   top: 58%;
   left: 43%;
-  /* transform: translate(510%, -350%); */
-    transform: translate(500%, -350%);
+  transform: translate(500%, -350%);
 }
 
 .smallnumusd {
@@ -193,7 +188,5 @@
   position: absolute;
   top: 59%;
   left: 50%;
-  /* transform: translate(-640%, -130%); */
   transform: translate(-790%, -130%);
 }
-

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PiEyeClosedThin, PiEyeThin } from 'react-icons/pi';
 import ProgressBar from './ProgressBar';
+
 import s from './LoginRegisterForm.module.css';
 
 const PassInputField = ({

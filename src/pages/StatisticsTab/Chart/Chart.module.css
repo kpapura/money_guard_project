@@ -8,14 +8,14 @@
 .doughnut {
   width: 280px;
   height: 280px;
-@media (min-width: 768px) {
-  width: 336px;
+  @media (min-width: 768px) {
+    width: 336px;
+  }
 }
-}
-.chartContainer{
-@media screen and (min-width: 768px) and (max-width:1279px) {
-  max-height: 400px;
-}
+.chartContainer {
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    max-height: 400px;
+  }
 }
 .periodText {
   position: absolute;
@@ -28,17 +28,6 @@
   @media (min-width: 768px) {
     bottom: 45%;
   }
-}
-
-@media screen and (min-width: 768px) {
-  /* .doughnut {
-    width: 336px;
-    height: 336px;
-  }
-
-  .periodText {
-    bottom: 148px;
-  } */
 }
 
 @media (min-width: 1280px) {

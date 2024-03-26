@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { NavLink } from 'react-router-dom';
-import s from './LoginRegisterForm.module.css';
 import { yupResolver } from '@hookform/resolvers/yup';
-import InputField from './InputField';
+
 import PassInputField from './PassInputField';
+import InputField from './InputField';
+
 import sprite from '../../img/sprite.svg';
+import s from './LoginRegisterForm.module.css';
 
 const LoginRegisterForm = ({ onDataSubmit, formType, schema }) => {
   const [size, setSize] = useState(0);
+
   useEffect(() => {
     const handleResize = () => {
       setSize(window.innerWidth);

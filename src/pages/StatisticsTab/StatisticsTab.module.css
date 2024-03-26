@@ -1,7 +1,4 @@
 .statisticsContainer {
-  /* background-color: black;
-  background-image: url(../../img/images/gradient_mob@1x.webp);
-  background-size: cover; */
   position: relative;
   width: 100%;
   min-width: 280px;
@@ -9,7 +6,6 @@
   align-items: center;
   margin-right: auto;
   margin-left: auto;
-  /* padding: 32px 0 0 0; */
   height: 100%;
   min-height: calc(100vh - 208px);
   max-height: 500px;
@@ -17,18 +13,9 @@
   color: var(--white-color);
 }
 
-/* @media screen and (min-resolution: 192dpi),
-  screen and (min-device-pixel-ratio: 2),
-  screen and (min-resolution: 2dppx) {
-  .statisticsContainer {
-    background-image: url(../../img/images/gradient_mob@2x.webp);
-  }
-} */
-
 .title {
   width: 280px;
   font-size: 30px;
-  /* align-self: flex-start; */
 }
 
 .tableContainer {
@@ -52,21 +39,12 @@
 
 @media screen and (min-width: 768px) {
   .statisticsContainer {
-    /* background-image: url(../../img/images/gradient_tab@1x.webp); */
     position: relative;
-    /* padding: 20px 32px 0 32px; */
     display: block;
     min-height: calc(100vh - 294px);
     width: 704px;
   }
 }
-/* @media screen and (min-resolution: 192dpi),
-    screen and (min-device-pixel-ratio: 2),
-    screen and (min-resolution: 2dppx) {
-    .statisticsContainer {
-      background-image: url(../../img/images/gradient_tab@2x.webp);
-    }
-  } */
 
 .contentContainer {
   display: flex;
@@ -87,7 +65,6 @@
 @media screen and (min-width: 1280px) {
   .statisticsContainer {
     min-height: calc(100vh - 80px);
-    /* padding-top: 32px; */
     margin-top: 127px;
     min-width: 715px;
   }

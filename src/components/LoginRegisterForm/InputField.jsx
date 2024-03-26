@@ -1,4 +1,5 @@
 import React from 'react';
+
 import s from './LoginRegisterForm.module.css';
 
 const InputField = ({ register, errors, name, placeholder, className }) => {
