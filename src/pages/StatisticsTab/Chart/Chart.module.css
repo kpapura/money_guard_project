@@ -12,7 +12,11 @@
   width: 336px;
 }
 }
-
+.chartContainer{
+@media screen and (min-width: 768px) and (max-width:1279px) {
+  max-height: 400px;
+}
+}
 .periodText {
   position: absolute;
   bottom: 122px;
@@ -26,7 +30,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   /* .doughnut {
     width: 336px;
     height: 336px;

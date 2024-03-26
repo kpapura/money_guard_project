@@ -29,8 +29,10 @@ const StatisticsTable = ({ transactionsSummary, colors, incomeSummary, expenseSu
         </table>
       </div>
       <div className={s.paragraphContainer}>
-        <p className={s.paragraph}>Income: {incomeSummary}</p>
-        <p className={s.paragraph}>Expenses: {expenseSummary}</p>
+         <p className={s.paragraph}>Income:
+          <span className={s.income}>{incomeSummary}</span></p>
+        <p className={s.paragraph}>Expenses:
+          <span className={s.expense}>{expenseSummary.toString().replace('-', '')}</span></p>
       </div>
     </div>
   );
