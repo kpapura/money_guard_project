@@ -1,2 +1,0 @@
-import{u as r,R as e}from"./vendor-b754cceb.js";import{y as c}from"../commonHelpers2.js";const s="_wrapper_2o96h_1",l="_title_2o96h_37",o="_text_2o96h_45",t={wrapper:s,title:l,text:o};function m(){const a=r(c);return e.createElement("div",{className:t.wrapper},e.createElement("p",{className:t.title},"YOUR BALANCE"),e.createElement("p",{className:t.text},"₴ ",a))}export{m as default};
-//# sourceMappingURL=Balance-3b9c986f.js.map
