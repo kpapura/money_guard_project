@@ -94,10 +94,10 @@
 @media screen and (min-width: 768px) {
   .navLinkContainer {
     /* padding: 40px 32px 29px 32px; */
-    padding: 0;
-    margin-bottom: 28px;
+    /* margin-bottom: 28px; */
   }
 
+            
   .navLinkWrapper {
     display: flex;
     flex-direction: column;
@@ -127,6 +127,10 @@
 
 @media screen and (min-width: 1280px) {
   /* this screen has been inherited the TAB VERSION */
+  .navLinkContainer {
+        margin-bottom: 28px;
+        padding-left: 16px;
+      }
 }
 
 /*! ===============/ DESK VERSION ======================= */
