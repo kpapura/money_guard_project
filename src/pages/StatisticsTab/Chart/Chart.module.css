@@ -1,10 +1,16 @@
 .chartWrapper {
   position: relative;
+  @media (min-width: 768px) {
+    padding: 20px 0 0 0;
+  }
 }
 
 .doughnut {
   width: 280px;
   height: 280px;
+@media (min-width: 768px) {
+  width: 336px;
+}
 }
 
 .periodText {
@@ -12,21 +18,23 @@
   bottom: 122px;
   left: 50%;
   transform: translateX(-50%);
-  font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 18px;
   text-align: center;
+  @media (min-width: 768px) {
+    bottom: 50%;
+  }
 }
 
 @media (min-width: 768px) {
-  .doughnut {
+  /* .doughnut {
     width: 336px;
     height: 336px;
   }
 
   .periodText {
     bottom: 148px;
-  }
+  } */
 }
 
 @media (min-width: 1280px) {

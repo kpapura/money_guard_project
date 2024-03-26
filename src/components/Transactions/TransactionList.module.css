@@ -9,10 +9,11 @@
     align-items: flex-start;
     color: var(--white-color);
     overflow-y: auto;
+    padding-top: 0;
 }
 
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
     .transactions_section {
         display: block;
         max-width: 704px;
@@ -30,9 +31,22 @@
     }
 }
 
-@media (min-width: 1280px) {
+@media screen and (min-width: 1280px) {
+  .transactions_section {
+    /* width: 100%; */
+    /* padding: 57px 0; */
+    min-height: calc(100vh - 80px);
+    margin-top: 127px;
+    /* border-left: 1px solid rgb(251, 251, 251, 0.6); */
+    /* background-image: url(../../img/images/home_desk@1x.webp); */
+  }
+}
+ @media screen and (min-resolution: 192dpi),
+    screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 2dppx) {
     .transactions_section {
-        padding: 46px 0;
+        /* padding: 46px 0; */
+        /* margin-top: 127px; */
         min-height: calc(100vh - 80px);
     }
 
@@ -41,7 +55,7 @@
     }
 }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
     .transactions_container {
         width: 280px;
         height: 320px;
@@ -113,6 +127,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    /* @media screen and (max-width: 1280px){
+bottom: 40px;
+right: 40px;
+    } */
+}
+@media screen and (min-width: 1280px) {
+  .btn_add {
+    right: 40px;
+    bottom: 40px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .btn_add {
+    right: 40px;
+    bottom: 40px;
+  }
 }
 
 .icon_plus {

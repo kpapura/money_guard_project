@@ -6,52 +6,99 @@
 
 .table {
   border-collapse: collapse;
-  width: 100%;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  @media (min-width: 768px) {
+    width: 336px;
+  }
 }
 
 .tableHeader {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  /* justify-content: space-between; */
   border-radius: 8px;
   height: 56px;
   backdrop-filter: blur(100px);
   box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
   background: rgba(82, 59, 126, 0.6);
-  font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 16px;
   color: #fbfbfb;
   padding: 16px;
 }
 
+.tableCellBox{
+    color: #fbfbfb;
+    width: 24px;
+    height: 24px;
+    border-radius: 2px;
+    margin-right: 16px;
+}
 .tableCell {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
   font-size: 14px;
   color: #fbfbfb;
-  padding: 10px;
+  width: 104px;
+    @media (min-width: 768px) {
+      width: 132px;
+    }
 }
-
+.tableHeadCell{
+  width: 124px;
+  text-align: left;
+    @media (min-width: 768px) {
+        width: 152px;
+      }
+}
+.tableHeadCellRight{
+  width: 124px;
+  text-align: right;
+    @media (min-width: 768px) {
+        width: 152px;
+      }
+}
+.tableCellRight{
+  font-size: 14px;
+  color: #fbfbfb;
+  width: 104px;
+  text-align: right;
+    @media (min-width: 768px) {
+        width: 132px;
+      }
+}
 .tableRow {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 16px 16px;
   border-bottom: 1px solid rgba(82, 59, 126, 0.6);
 }
 
 .paragraphContainer {
+  width: 280px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
+  padding: 16px;
+    @media (min-width: 768px) {
+        width: 336px;
+      }
 }
 
 .paragraph {
-  display: flex;
-  justify-content: space-between;
-  font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 14px;
   color: #fbfbfb;
+  display: flex;
+  justify-content: space-between;
 }
-
+.income{
+  color: rgb(255, 182, 39);
+}
+.expense{
+  color: rgb(255, 134, 141);
+}
 @media (min-width: 768px) {
   .tableContainer {
     min-width: 336px;
