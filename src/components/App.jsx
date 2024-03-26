@@ -37,6 +37,9 @@ function App() {
 
   useEffect(() => {
     dispatch(refreshThunk());
+    if (!isAuth) {
+      return;
+    }
     dispatch(fetchTransactionCategoriesThunk());
   }, [dispatch]);
 
