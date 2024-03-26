@@ -31,7 +31,7 @@
   .wrapper {
     width: 480px;
     height: 380px;
-    background-color: rgb(44, 3, 97);
+    /* background-color: rgb(44, 3, 97); */
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     /* flex-direction: column;

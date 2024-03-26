@@ -67,6 +67,7 @@
 @media (min-width: 1280px) {
   .statisticsContainer {
     min-height: calc(100vh - 80px);
-    padding-top: 32px;
+    /* padding-top: 32px; */
+    margin-top: 127px;
   }
 }
