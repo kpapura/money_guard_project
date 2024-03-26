@@ -12,7 +12,7 @@
 }
 
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
     .transactions_section {
         display: block;
         max-width: 704px;
@@ -30,9 +30,10 @@
     }
 }
 
-@media (min-width: 1280px) {
+@media screen and (min-width: 1280px) {
     .transactions_section {
-        padding: 46px 0;
+        /* padding: 46px 0; */
+        margin-top: 127px;
         min-height: calc(100vh - 80px);
     }
 
@@ -41,7 +42,7 @@
     }
 }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
     .transactions_container {
         width: 280px;
         height: 320px;
@@ -113,6 +114,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    @media screen and (max-width: 1280px){
+bottom: 40px;
+right: 40px;
+    }
 }
 
 .icon_plus {

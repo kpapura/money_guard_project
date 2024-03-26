@@ -55,13 +55,13 @@ export function Form({
   };
   // || categoriesValues[0].value
   const submit = data => {
-    if (typeForm === 'add' && selectedOption) {
+    if (typeForm === 'add' && (type === 'EXPENSE' && selectedOption) || (type === 'INCOME')) {
       onDataSubmit({
         transactionDate: formatDate(startDate),
         amount: type === 'EXPENSE' ? +`-${data.amount}` : +data.amount,
         comment: data.comment,
         type: type,
-        categoryId:
+        categoryId: 
           type === 'EXPENSE'
             ? selectedOption?.value
             : '063f1132-ba5d-42b4-951d-44011ca46262',
