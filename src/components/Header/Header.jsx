@@ -7,11 +7,12 @@ import Modal from '../Modal/Modal';
 
 import { selectUser } from '../../redux/auth/authSlice';
 import { useModal } from '../../hooks/useModal';
-import s from './Header.module.css';
 import sprite from '../../img/sprite.svg';
 import { useDashboard } from '../../hooks/useDashboard';
 
-export const Header = () => {
+import s from './Header.module.css';
+
+const Header = () => {
   const { isOpen, toggle } = useModal();
   const { isBigScreenOrTablet, isMobile } = useDashboard();
   const user = useSelector(selectUser);
@@ -53,3 +54,5 @@ export const Header = () => {
     </header>
   );
 };
+
+export default Header;

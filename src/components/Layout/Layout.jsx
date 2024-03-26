@@ -1,16 +1,19 @@
 import React, { Suspense } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
+import { lazy } from 'react';
 
-import { Header } from '../Header/Header';
-import NavBar from '../NavBar/NavBar';
-import Balance from '../Balance/Balance';
-import CurrencyRates from '../CurrencyRates/CurrenceRate';
 import Loader from '../Loader/Loader';
 
 import useResize from '../../hooks/useResize';
 import { selectIsLoggedIn, selectIsLoading } from '../../redux/auth/authSlice';
+
 import s from './Layout.module.css';
+
+const Header = lazy(() => import("../Header/Header"));
+const Balance = lazy(() => import("../Balance/Balance"));
+const CurrencyRates = lazy(() => import("../CurrencyRates/CurrenceRate"));
+const NavBar = lazy(() => import("../NavBar/NavBar"));
 
 const Layout = () => {
   const isLoading = useSelector(selectIsLoading);

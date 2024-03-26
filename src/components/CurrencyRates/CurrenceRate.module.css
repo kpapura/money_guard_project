@@ -182,7 +182,8 @@
   position: absolute;
   top: 58%;
   left: 43%;
-  transform: translate(510%, -350%);
+  /* transform: translate(510%, -350%); */
+    transform: translate(500%, -350%);
 }
 
 .smallnumusd {
@@ -192,5 +193,7 @@
   position: absolute;
   top: 59%;
   left: 50%;
-  transform: translate(-640%, -130%);
+  /* transform: translate(-640%, -130%); */
+  transform: translate(-790%, -130%);
 }
+
