@@ -25,8 +25,8 @@ const Layout = () => {
     <>
       {isLoading && <Loader />}
       <Header />
-      <div className={s.walletContainer}>
-        <div className={s.backgroundContainer_home}>
+        <div className={s.walletContainer}>
+           <div className={s.backgroundContainer_home}>
           <div></div>
           <div></div>
           <div></div>

@@ -93,7 +93,9 @@
 
 @media screen and (min-width: 768px) {
   .navLinkContainer {
-    padding: 40px 32px 29px 32px;
+    /* padding: 40px 32px 29px 32px; */
+    padding: 0;
+    margin-bottom: 28px;
   }
 
   .navLinkWrapper {
