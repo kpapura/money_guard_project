@@ -1,6 +1,5 @@
 // Chart.jsx
 import React from 'react';
-
 import { Doughnut } from 'react-chartjs-2';
 import s from './Chart.module.css';
 import Chart from 'chart.js/auto';
@@ -23,14 +22,18 @@ const DoughnutChart = ({ transactions, colors, period }) => {
           transaction => colors[transaction.name]
         ),
         cutout: 95,
+        borderWidth: 0,
+        hoverOffset: 1
       },
     ],
   };
 
   return (
-    <div className={s.chartWrapper}>
-      <Doughnut data={data} className={s.doughnut} />
-      <p className={s.periodText}> ₴ {formattedPeriod}</p>
+    <div className={s.chartContainer}>
+      <div className={s.chartWrapper}>
+        <Doughnut data={data} className={s.doughnut}/>
+        <p className={s.periodText}> ₴ {formattedPeriod}</p> 
+      </div>
     </div>
   );
 };

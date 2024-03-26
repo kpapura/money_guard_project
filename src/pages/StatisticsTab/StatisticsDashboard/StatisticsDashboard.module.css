@@ -1,3 +1,4 @@
+/* StatisticsDashboard.module.css */
 .selectContainers {
   display: flex;
   flex-direction: column;
@@ -14,7 +15,9 @@
   font-size: var(--primarily-font-size);
   background: rgba(74, 86, 226, 0.1);
 }
-
+/* .reactSelect {
+  width: 100%;
+} */
 .option {
   font-weight: var(--font-weight-regular);
   font-size: var(--primarily-font-size);
@@ -52,7 +55,4 @@
   .select {
     width: 180px;
   }
-}
-
-@media (min-width: 1280px) {
 }

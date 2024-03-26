@@ -1,0 +1,92 @@
+/* @media (max-width: 767px) {
+  .reactSelect__control {
+    background-color: transparent !important;
+    content: rgba(255, 255, 255, 0.6) !important;
+    border-style: none !important;
+    border-radius: 0px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6) !important;
+    width: 100% !important;
+  }
+  .reactSelect__menu {
+    font-size: 16px;
+    color: white;
+    background-color: transparent !important;
+  }
+
+  .reactSelect__single-value {
+    color: white !important;
+  }
+
+  .reactSelect__indicator-separator {
+    width: 0px !important;
+  }
+
+  .reactSelect__dropdown-indicator {
+    color: rgba(255, 255, 255, 0.6) !important;
+  }
+
+  .reactSelect__menu-list {
+    backdrop-filter: blur(100px) !important;
+    background: rgba(83, 61, 172, 50) !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .reactSelect__control {
+    background-color: transparent !important;
+    border-style: none !important;
+    border-radius: 0px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6) !important;
+    width: 100% !important;
+  }
+
+  .reactSelect__menu {
+    font-size: 16px;
+    color: white;
+    background-color: transparent !important;
+  }
+
+  .reactSelect__single-value {
+    color: white !important;
+  }
+
+  .reactSelect__indicator-separator {
+    width: 0px !important;
+  }
+
+  .reactSelect__dropdown-indicator {
+    color: rgba(255, 255, 255, 0.6) !important;
+  }
+
+  .reactSelect__menu-list {
+    backdrop-filter: blur(100px) !important;
+    background: rgba(83, 61, 172, 85) !important;
+  }
+  .reactSelect-container .reactSelect__option {
+    background-color: transparent !important;
+  }
+
+  .reactSelect-container .reactSelect__option--is-focused {
+    color: rgb(0, 134, 141) !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .reactSelect-container .reactSelect__option {
+    background-color: transparent !important;
+  }
+  .reactSelect-container .reactSelect__option:hover {
+    color: rgb(0, 134, 141) !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+  }
+  .reactSelect-container .reactSelect__option--is-focused {
+    color: rgb(0, 134, 141) !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+.reactSelect__placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-size: 18px !important;
+} */

@@ -1,3 +1,4 @@
+// StatisticsTab.jsx
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import StatisticsDashboard from './StatisticsDashboard/StatisticsDashboard';
@@ -7,6 +8,8 @@ import {
   selectExpenseSummary,
   selectIncomeSummary,
   selectPeriodTotal,
+  selectMonth,
+  selectYear
 } from '../../redux/transactions/transactionsSlice';
 import s from './StatisticsTab.module.css';
 import StatisticsTable from './StatisticsTable/StatisticsTable';
@@ -18,9 +21,9 @@ const StatisticsTab = () => {
   const incomeTotal = useSelector(selectIncomeSummary);
   const expenceTotal = useSelector(selectExpenseSummary);
   const periodTotal = useSelector(selectPeriodTotal);
+  const selectedMonth = useSelector(selectMonth);
+  const selectedYear = useSelector(selectYear);
 
-  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1);
-  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [colors, setColors] = useState({});
 
   useEffect(() => {
@@ -46,11 +49,11 @@ const StatisticsTab = () => {
   }, [transactionsSummaryList]);
 
   const handleMonthChange = month => {
-    setSelectedMonth(month);
+    dispatch(fetchTransactionSummaryControllerThunk({ month, year: selectedYear }));
   };
 
   const handleYearChange = year => {
-    setSelectedYear(year);
+    dispatch(fetchTransactionSummaryControllerThunk({ month: selectedMonth, year }));
   };
 
   return (

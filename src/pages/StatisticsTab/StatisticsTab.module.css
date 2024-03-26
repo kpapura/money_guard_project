@@ -42,6 +42,12 @@ width: 336px;
      }
 }
 
+@media (max-width: 767px) {
+  .tableContainer {
+    padding-bottom: 45px;
+  }
+}
+
 @media (min-width: 768px) {
   .statisticsContainer {
     /* background-image: url(../../img/images/gradient_tab@1x.webp); */
@@ -64,6 +70,10 @@ width: 336px;
     display: flex;
     gap: 32px;
     justify-content: space-between;
+  }
+
+  .tableContainer {
+    margin-bottom: 20px;
   }
 }
 
