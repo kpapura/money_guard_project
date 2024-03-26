@@ -9,6 +9,7 @@
     align-items: flex-start;
     color: var(--white-color);
     overflow-y: auto;
+    padding-top: 0;
 }
 
 
@@ -44,7 +45,7 @@
     screen and (min-device-pixel-ratio: 2),
     screen and (min-resolution: 2dppx) {
     .transactions_section {
-        padding: 46px 0;
+        /* padding: 46px 0; */
         /* margin-top: 127px; */
         min-height: calc(100vh - 80px);
     }

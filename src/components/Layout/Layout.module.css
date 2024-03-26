@@ -8,28 +8,26 @@
 
 .mainContainer {
   display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  gap: 12px;
+  /* gap: 12px; */
   margin-top: 60px;
-  /* gap: 32px;
-    padding: 0 20px; */
-  @media screen and (max-width: 768px){
-    margin-top: 0;
+  gap: 32px; 
+  /* padding: 0 20px;  */
+@media screen and (max-width: 767px) {
+align-items: center;  
 }
-
   @media screen and (max-width: 1279px) {
     flex-direction: column;
   }
 
   @media screen and (min-width: 768px) {
     gap: 20px;
-    padding: 0 32px;
-  } */
+    /* padding: 0 32px;  */
+    margin-top: 0;
+  } 
 
   @media screen and (min-width: 1280px) {
-    padding: 0 16px 0 0;
-    gap: 73px;
+    padding: 0 16px 0 16px;
+    gap: 69px;
     max-width: 1280px;
   }
 }

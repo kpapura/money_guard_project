@@ -33,7 +33,7 @@ function CurrencyRates() {
     <div className={s.wrapper}>
       <div className={s.secondwrapper}>
       <table className={s.table}>
-  <thead>
+  <thead className={s.head}>
     <tr className={s.titleRow}>
       <th className={s.titleItem}>Currency</th>
       <th className={s.titleItem}>Purchase</th>
@@ -63,9 +63,11 @@ function CurrencyRates() {
             <p className={s.smallnumusd}> {usdRate.rateBuy}</p>
           </>
         )}
-        <img className={s.image} src={imageSrc} alt="Currency rate" />
-        <img className={s.secondimage} src={secondImageSrc} alt="Currency rate" />
-                </div>
+        <div className={s.imgBox}>
+      <img className={s.image} src={imageSrc} alt="Currency rate" />
+      <img className={s.secondimage} src={secondImageSrc} alt="Currency rate" />    
+        </div>
+</div>
     </div>
   );
 }
