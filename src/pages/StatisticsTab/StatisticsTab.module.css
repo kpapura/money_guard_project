@@ -1,34 +1,54 @@
 .statisticsContainer {
-  /* background-color: black;
-  background-image: url(../../img/images/gradient_mob@1x.webp);
-  background-size: cover; */
   position: relative;
   width: 100%;
   min-width: 280px;
   display: flex;
   align-items: center;
-  margin-right: auto;
-  margin-left: auto;
-  /* padding: 32px 0 0 0; */
   height: 100%;
   min-height: calc(100vh - 208px);
   max-height: 500px;
+  margin-top: 28px;
   flex-direction: column;
   color: var(--white-color);
+
+  @media screen and (min-width: 768px) {
+    position: relative;
+    display: block;
+    min-height: calc(100vh - 294px);
+    width: 704px;
+    margin-top: 0;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-top: 127px;
+    width: 715px;
+  }
 }
 
-/* @media screen and (min-resolution: 192dpi),
-  screen and (min-device-pixel-ratio: 2),
-  screen and (min-resolution: 2dppx) {
-  .statisticsContainer {
-    background-image: url(../../img/images/gradient_mob@2x.webp);
+.contentContainer {
+  width: 320px;
+  display: flex;
+  gap: 32px;
+  flex-direction: column;
+
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    max-height: 500px;
+    flex-direction: row;
+    width: 704px;
+    justify-content: space-between;
   }
-} */
+
+  @media screen and (min-width: 1280px) {
+    width: 715px;
+    flex-direction: row;
+  }
+}
 
 .title {
   width: 280px;
   font-size: 30px;
-  /* align-self: flex-start; */
+  @media screen and (max-width: 767px) {
+    margin-left: 20px;
+  }
 }
 
 .tableContainer {
@@ -43,52 +63,12 @@
     margin-bottom: 0px;
   }
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    min-width: 336px;
+    width: 336px;
     height: 500px;
     position: relative;
-    top: -43px;
+    top: -20px;
   }
-}
-
-@media screen and (min-width: 768px) {
-  .statisticsContainer {
-    /* background-image: url(../../img/images/gradient_tab@1x.webp); */
-    position: relative;
-    /* padding: 20px 32px 0 32px; */
-    display: block;
-    min-height: calc(100vh - 294px);
-    width: 704px;
-  }
-}
-/* @media screen and (min-resolution: 192dpi),
-    screen and (min-device-pixel-ratio: 2),
-    screen and (min-resolution: 2dppx) {
-    .statisticsContainer {
-      background-image: url(../../img/images/gradient_tab@2x.webp);
-    }
-  } */
-
-.contentContainer {
-  display: flex;
-  gap: 32px;
-  flex-direction: column;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
-    max-height: 500px;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
   @media screen and (min-width: 1280px) {
-    width: 715px;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .statisticsContainer {
-    min-height: calc(100vh - 80px);
-    /* padding-top: 32px; */
-    margin-top: 127px;
-    min-width: 715px;
+    margin-bottom: 0;
   }
 }

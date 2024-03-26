@@ -2,24 +2,57 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  @media screen and (max-width: 678) {
+  margin-left: auto;
+  margin-right: auto;
+  width: 320px;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: auto;
+  @media screen and (max-width: 768) {
     align-items: center;
   }
-    @media screen and (min-width: 768px) and (max-width:1279px) {
-      overflow-y: auto;
-    }
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    min-height: calc(100vh - 100px);
+    width: 336px;
+    gap: 0;
+  }
+  @media screen and (min-width: 1280px) {
+    min-height: 480px;
+    width: 395px;
+    gap: 0;
+  }
 }
+
+.tableContainer {
+  width: 320px;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  height: 320px;
+
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    max-height: calc(100vh - 414px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    width: 336px;
+  }
+  @media screen and (min-width: 1280px) {
+    min-width: 395px;
+    max-height: calc(100vh - 214px);
+  }
+}
+
 .table {
   border-collapse: collapse;
   width: 280px;
   display: flex;
   flex-direction: column;
-  @media screen and  (min-width: 1280px) {
+  @media screen and (min-width: 1280px) {
     width: 395px;
   }
-  @media screen and (min-width: 768px) and (max-width:1279px) {
-      width: 336px;
-     }
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    width: 336px;
+  }
 }
 
 .tableHeader {
@@ -37,43 +70,43 @@
   padding: 16px;
 }
 
-.tableCellBox{
-    color: #fbfbfb;
-    width: 24px;
-    height: 24px;
-    border-radius: 2px;
-    margin-right: 16px;
+.tableCellBox {
+  color: #fbfbfb;
+  width: 24px;
+  height: 24px;
+  border-radius: 2px;
+  margin-right: 16px;
 }
 .tableCell {
   font-size: 14px;
   color: #fbfbfb;
   width: 104px;
-    @media screen and (min-width: 768px) {
-      width: 132px;
-    }
+  @media screen and (min-width: 768px) {
+    width: 132px;
+  }
 }
-.tableHeadCell{
+.tableHeadCell {
   width: 124px;
   text-align: left;
-    @media screen and (min-width: 768px) {
-        width: 152px;
-      }
+  @media screen and (min-width: 768px) {
+    width: 152px;
+  }
 }
-.tableHeadCellRight{
+.tableHeadCellRight {
   width: 124px;
   text-align: right;
-    @media screen and (min-width: 768px) {
-        width: 152px;
-      }
+  @media screen and (min-width: 768px) {
+    width: 152px;
+  }
 }
-.tableCellRight{
+.tableCellRight {
   font-size: 14px;
   color: #fbfbfb;
   width: 104px;
   text-align: right;
-    @media screen and (min-width: 768px) {
-        width: 132px;
-      }
+  @media screen and (min-width: 768px) {
+    width: 132px;
+  }
 }
 .tableRow {
   display: flex;
@@ -90,12 +123,12 @@
   flex-direction: column;
   gap: 16px;
   padding: 16px;
-  @media screen and  (min-width: 1280px) {
+  @media screen and (min-width: 1280px) {
     width: 395px;
   }
-  @media screen and (min-width: 768px) and (max-width:1279px) {
-      width: 336px;
-     }
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    width: 336px;
+  }
 }
 
 .paragraph {
@@ -105,29 +138,10 @@
   display: flex;
   justify-content: space-between;
 }
-.income{
+.income {
   color: rgb(255, 182, 39);
 }
-.expense{
+.expense {
   color: rgb(255, 134, 141);
 }
-@media screen and (min-width: 768px) and (max-width:1279) {
-  .tableContainer {
-    min-width: 336px;
-    overflow-y: auto;
-  }
-}
 
-@media screen and (min-width: 1280px) {
-  .tableContainer {
-    min-width: 395px;
-  }
-}
-
-.expense {
-  color: #ff868d;
-}
-
-.income {
-  color: #ffb627;
-}

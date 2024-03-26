@@ -1,8 +1,9 @@
-// Chart.jsx
 import React from 'react';
+
 import { Doughnut } from 'react-chartjs-2';
-import s from './Chart.module.css';
 import Chart from 'chart.js/auto';
+
+import s from './Chart.module.css';
 
 const DoughnutChart = ({ transactions, colors, period }) => {
   if (!transactions || !colors) {

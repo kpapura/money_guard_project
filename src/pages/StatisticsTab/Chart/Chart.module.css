@@ -1,53 +1,45 @@
 .chartWrapper {
   position: relative;
-  @media (min-width: 768px) {
+  display: flex;
+  width: 280px;
+  @media screen and (min-width: 768px) {
     padding: 20px 0 0 0;
+  }
+}
+.chartContainer {
+  display: flex;
+  justify-content: center;
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    max-height: 400px;
   }
 }
 
 .doughnut {
   width: 280px;
   height: 280px;
-@media (min-width: 768px) {
-  width: 336px;
+
+  @media screen and (min-width: 768px) {
+    width: 336px;
+    height: 336px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 288px;
+    height: 288px;
+  }
 }
-}
-.chartContainer{
-@media screen and (min-width: 768px) and (max-width:1279px) {
-  max-height: 400px;
-}
-}
+
 .periodText {
   position: absolute;
-  bottom: 122px;
+  bottom: 150px;
   left: 50%;
   transform: translateX(-50%);
   font-weight: 600;
   font-size: 18px;
   text-align: center;
-  @media (min-width: 768px) {
-    bottom: 45%;
+  @media screen and (min-width: 768px) {
+    bottom: 55%;
   }
-}
-
-@media screen and (min-width: 768px) {
-  /* .doughnut {
-    width: 336px;
-    height: 336px;
-  }
-
-  .periodText {
-    bottom: 148px;
-  } */
-}
-
-@media (min-width: 1280px) {
-  .doughnut {
-    width: 288px;
-    height: 288px;
-  }
-
-  .periodText {
-    bottom: 125px;
+  @media screen and (min-width: 1280px) {
+    bottom: 375px;
   }
 }
