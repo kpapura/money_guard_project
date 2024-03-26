@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import sprite from '../../img/sprite.svg';
 
 import { Exit } from '../Exit/Exit';
 import Modal from '../Modal/Modal';
@@ -9,6 +8,7 @@ import Modal from '../Modal/Modal';
 import { selectUser } from '../../redux/auth/authSlice';
 import { useModal } from '../../hooks/useModal';
 import s from './Header.module.css';
+import sprite from '../../img/sprite.svg';
 import { useDashboard } from '../../hooks/useDashboard';
 
 export const Header = () => {
@@ -39,8 +39,8 @@ export const Header = () => {
           <p className={s.user}>{userEmail}</p>
           <button className={s.button} onClick={toggle}>
             <svg width="18" height="18" className={s.icon}>
-              <use href="../../img/sprite.svg#icon-exit"></use>
-            </svg>{' '}
+              <use href={`${sprite}#icon-exit`}></use>
+            </svg>
             {isBigScreenOrTablet ? 'Exit' : ''}
           </button>
         </div>

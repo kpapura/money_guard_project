@@ -5,6 +5,7 @@
   /* background: linear-gradient(276deg, #2e1746 3.19%, #2e225f 100%); */
   background-size: cover;
 }
+
 .mainContainer {
   display: flex;
   margin-left: auto;
@@ -37,11 +38,13 @@
   margin-left: auto;
   margin-right: auto;
   position: relative;
+  z-index: 0;
   @media screen and (min-width: 768px) {
     display: flex;
     gap: 32px;
     margin-top: 80px;
   }
+
   @media screen and (min-width: 1280px) {
     flex-direction: column;
     width: 480px;
@@ -67,12 +70,11 @@
   flex-direction: column;
   gap: 28px; */
 }
+
 .navBar {
   @media screen and (min-width: 768px) {
     margin-bottom: 28px;
   }
-}
-.balance {
 }
 
 .transactions_section {
