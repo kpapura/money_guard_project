@@ -4,11 +4,12 @@
 
 .doughnut {
   width: 280px;
+  height: 280px;
 }
 
 .periodText {
   position: absolute;
-  bottom: 134px;
+  bottom: 122px;
   left: 50%;
   transform: translateX(-50%);
   font-family: 'Poppins', sans-serif;
@@ -18,7 +19,23 @@
 }
 
 @media (min-width: 768px) {
+  .doughnut {
+    width: 336px;
+    height: 336px;
+  }
+
+  .periodText {
+    bottom: 148px;
+  }
 }
 
 @media (min-width: 1280px) {
+  .doughnut {
+    width: 288px;
+    height: 288px;
+  }
+
+  .periodText {
+    bottom: 125px;
+  }
 }

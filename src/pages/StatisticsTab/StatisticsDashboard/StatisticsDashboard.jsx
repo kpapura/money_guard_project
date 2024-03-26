@@ -1,6 +1,7 @@
-// StatisticsDashboard.jsx
 import React, { useState } from 'react';
+import Select from 'react-select';
 import s from './StatisticsDashboard.module.css';
+import './select.css'
 
 const StatisticsDashboard = ({ onMonthChange, onYearChange }) => {
   const currentDate = new Date();
@@ -8,34 +9,50 @@ const StatisticsDashboard = ({ onMonthChange, onYearChange }) => {
   const [selectedMonth, setSelectedMonth] = useState(currentDate.getMonth() + 1);
   const [selectedYear, setSelectedYear] = useState(currentYear);
 
-  const handleMonthChange = e => {
-    setSelectedMonth(parseInt(e.target.value));
-    onMonthChange(parseInt(e.target.value));
+  const handleMonthChange = selectedOption => {
+    setSelectedMonth(selectedOption.value);
+    onMonthChange(selectedOption.value);
   };
 
-  const handleYearChange = e => {
-    setSelectedYear(parseInt(e.target.value));
-    onYearChange(parseInt(e.target.value));
+  const handleYearChange = selectedOption => {
+    setSelectedYear(selectedOption.value);
+    onYearChange(selectedOption.value);
   };
 
   const years = Array.from({ length: currentYear - 2019 }, (_, i) => currentYear - i).reverse();
   const months = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
+    { value: 1, label: 'January' },
+    { value: 2, label: 'February' },
+    { value: 3, label: 'March' },
+    { value: 4, label: 'April' },
+    { value: 5, label: 'May' },
+    { value: 6, label: 'June' },
+    { value: 7, label: 'July' },
+    { value: 8, label: 'August' },
+    { value: 9, label: 'September' },
+    { value: 10, label: 'October' },
+    { value: 11, label: 'November' },
+    { value: 12, label: 'December' }
   ];
+
+  const yearOptions = years.map(year => ({ value: year, label: year }));
 
   return (
     <div className={s.selectContainers}>
-      <select className={s.select} value={selectedMonth} onChange={handleMonthChange}>
-        {months.map((month, index) => (
-          <option className={s.option} key={index + 1} value={index + 1}>{month}</option>
-        ))}
-      </select>
-      <select className={s.select} value={selectedYear} onChange={handleYearChange}>
-        {years.map(year => (
-          <option className={s.option} key={year} value={year}>{year}</option>
-        ))}
-      </select>
+      <Select
+        className="react-select-container"
+        classNamePrefix="react-select"
+        value={months.find(month => month.value === selectedMonth)}
+        options={months}
+        onChange={handleMonthChange}
+      />
+      <Select
+        className="react-select-container"
+        classNamePrefix="react-select"
+        value={yearOptions.find(option => option.value === selectedYear)}
+        options={yearOptions}
+        onChange={handleYearChange}
+      />
     </div>
   );
 };
