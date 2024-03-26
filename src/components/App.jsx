@@ -26,20 +26,11 @@ const StatisticsTab = lazy(() =>
 function App() {
   const isAuth = useSelector(selectIsLoggedIn);
   const isRefreshing = useSelector(selectIsRefresh);
-  const {
-    isDesktopOrLaptop,
-    isBigScreen,
-    isTabletOrMobile,
-    isRetina,
-    isMobile,
-  } = useDashboard();
+  const { isMobile } = useDashboard();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(refreshThunk());
-    if (!isAuth) {
-      return;
-    }
     dispatch(fetchTransactionCategoriesThunk());
   }, [dispatch]);
 
