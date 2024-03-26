@@ -2,22 +2,30 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  @media screen and (max-width: 678) {
+    align-items: center;
+  }
+    @media screen and (min-width: 768px) and (max-width:1279px) {
+      overflow-y: auto;
+    }
 }
-
 .table {
   border-collapse: collapse;
   width: 280px;
   display: flex;
   flex-direction: column;
-  @media (min-width: 768px) {
-    width: 336px;
+  @media screen and  (min-width: 1280px) {
+    width: 395px;
   }
+  @media screen and (min-width: 768px) and (max-width:1279px) {
+      width: 336px;
+     }
 }
 
 .tableHeader {
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   border-radius: 8px;
   height: 56px;
   backdrop-filter: blur(100px);
@@ -40,21 +48,21 @@
   font-size: 14px;
   color: #fbfbfb;
   width: 104px;
-    @media (min-width: 768px) {
+    @media screen and (min-width: 768px) {
       width: 132px;
     }
 }
 .tableHeadCell{
   width: 124px;
   text-align: left;
-    @media (min-width: 768px) {
+    @media screen and (min-width: 768px) {
         width: 152px;
       }
 }
 .tableHeadCellRight{
   width: 124px;
   text-align: right;
-    @media (min-width: 768px) {
+    @media screen and (min-width: 768px) {
         width: 152px;
       }
 }
@@ -63,13 +71,14 @@
   color: #fbfbfb;
   width: 104px;
   text-align: right;
-    @media (min-width: 768px) {
+    @media screen and (min-width: 768px) {
         width: 132px;
       }
 }
 .tableRow {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
   padding: 16px 16px;
   border-bottom: 1px solid rgba(82, 59, 126, 0.6);
@@ -81,9 +90,12 @@
   flex-direction: column;
   gap: 16px;
   padding: 16px;
-    @media (min-width: 768px) {
-        width: 336px;
-      }
+  @media screen and  (min-width: 1280px) {
+    width: 395px;
+  }
+  @media screen and (min-width: 768px) and (max-width:1279px) {
+      width: 336px;
+     }
 }
 
 .paragraph {
@@ -99,13 +111,14 @@
 .expense{
   color: rgb(255, 134, 141);
 }
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) and (max-width:1279) {
   .tableContainer {
     min-width: 336px;
+    overflow-y: auto;
   }
 }
 
-@media (min-width: 1280px) {
+@media screen and (min-width: 1280px) {
   .tableContainer {
     min-width: 395px;
   }
