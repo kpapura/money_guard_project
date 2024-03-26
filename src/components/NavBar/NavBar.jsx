@@ -33,9 +33,9 @@ const NavBar = () => {
             }
           >
             <div className={s.navLinkIconBg}>
-            <svg width="18" height="18" className={s.navLinkIcon}>
-              <use xlinkHref={`${sprite}#icon-home`} />
-            </svg>
+              <svg width="18" height="18" className={s.navLinkIcon}>
+                <use xlinkHref={`${sprite}#icon-home`} />
+              </svg>
             </div>
             Home
           </NavLink>
@@ -79,7 +79,7 @@ const NavBar = () => {
           >
             <div className={s.navLinkIconBg}>
               <svg width="38" height="38" className={s.navLinkIcon}>
-              <use xlinkHref={`${sprite}#icon-currency`} />
+                <use xlinkHref={`${sprite}#icon-currency`} />
               </svg>
             </div>
           </NavLink>

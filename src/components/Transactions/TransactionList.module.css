@@ -16,9 +16,9 @@
 @media screen and (min-width: 768px) {
     .transactions_section {
         display: block;
-        max-width: 704px;
+        max-height: 504px;
         min-height: calc(100vh - 294px);
-        margin-bottom: 32px;
+        margin-bottom: 16px;
     }
 
     .transactions_container {
@@ -34,8 +34,14 @@
 
 @media screen and (min-width: 1280px) {
 
-    .transactions_container {
+    /* .transactions_container {
         max-height: calc(100vh - 414px);
+    } */
+    .transactions_section {
+        display: block;
+        max-height: 704px;
+        min-height: calc(100vh - 294px);
+        margin-bottom: 32px;
     }
 }
 @media screen and (min-width: 1280px) {

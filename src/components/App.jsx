@@ -1,14 +1,10 @@
 import React, { Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { lazy } from 'react';
 
 import Layout from '../components/Layout/Layout.jsx';
-import Login from '../pages/Login/Login';
-import Register from '../pages/Register/Register';
-import HomeTab from '../pages/HomeTab/HomeTab';
 import Loader from '../components/Loader/Loader';
-import CurrencyRates from './CurrencyRates/CurrenceRate';
-import StatisticsTab from '../pages/StatisticsTab/StatisticsTab';
 
 import PrivateRoute from '../../src/authRoutes/PrivateRoute';
 import RestrictedRoute from '../../src/authRoutes/RestrictedRoute';
@@ -16,8 +12,16 @@ import RestrictedRoute from '../../src/authRoutes/RestrictedRoute';
 import { refreshThunk } from '../redux/auth/operations';
 import { selectIsLoggedIn, selectIsRefresh } from '../redux/auth/authSlice';
 import { fetchTransactionCategoriesThunk } from '../redux/transactions/operations';
-import 'modern-normalize';
 import { useDashboard } from '../hooks/useDashboard.jsx';
+import 'modern-normalize';
+
+const Login = lazy(() => import('../pages/Login/Login'));
+const Register = lazy(() => import('../pages/Register/Register'));
+const HomeTab = lazy(() => import('../pages/HomeTab/HomeTab'));
+const CurrencyRates = lazy(() => import('./CurrencyRates/CurrenceRate'));
+const StatisticsTab = lazy(() =>
+  import('../pages/StatisticsTab/StatisticsTab')
+);
 
 function App() {
   const isAuth = useSelector(selectIsLoggedIn);
@@ -30,9 +34,7 @@ function App() {
     isMobile,
   } = useDashboard();
   const dispatch = useDispatch();
-  if (isMobile) {
-    console.log('ok');
-  }
+
   useEffect(() => {
     dispatch(refreshThunk());
     dispatch(fetchTransactionCategoriesThunk());

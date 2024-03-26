@@ -12,6 +12,8 @@
   margin-top: 60px;
   gap: 32px; 
   /* padding: 0 20px;  */
+  margin-left: auto;
+  margin-right: auto;
 @media screen and (max-width: 767px) {
 align-items: center;  
 }
@@ -27,7 +29,7 @@ align-items: center;
   } 
 
   @media screen and (min-width: 1280px) {
-    padding: 0 16px 0 16px;
+    /* padding: 0 16px 0 16px; */
     gap: 69px;
     max-width: 1280px;
   }
@@ -53,6 +55,8 @@ align-items: center;
   @media screen and (min-width: 1280px) {
     flex-direction: column;
     width: 480px;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
@@ -79,7 +83,11 @@ align-items: center;
 .navBar {
   @media screen and (min-width: 768px) {
     margin-bottom: 28px;
+    padding-left: 32px;
   }
+    @media screen and (min-width: 1280px) {
+      padding-left: 16px;
+    }
 }
 
 .transactions_section {
@@ -393,6 +401,6 @@ align-items: center;
     content: '';
     height: 100%;
     width: 100%;
-    backdrop-filter: blur(135px);
+    backdrop-filter: blur(250px);
   }
 }
