@@ -40,15 +40,15 @@ const StatisticsDashboard = ({ onMonthChange, onYearChange }) => {
   return (
     <div className={s.selectContainers}>
       <Select
-        className="react-select-container"
-        classNamePrefix="react-select"
-        value={months.find(month => month.value === selectedMonth)}
-        options={months}
-        onChange={handleMonthChange}
-      />
+  className="react_select_container_special"
+  classNamePrefix="react_select"
+  value={months.find(month => month.value === selectedMonth)}
+  options={months}
+  onChange={handleMonthChange}
+/>
       <Select
-        className="react-select-container"
-        classNamePrefix="react-select"
+        className= 'react_select_container'
+        classNamePrefix= 'react_select'
         value={yearOptions.find(option => option.value === selectedYear)}
         options={yearOptions}
         onChange={handleYearChange}

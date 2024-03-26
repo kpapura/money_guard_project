@@ -22,7 +22,7 @@ const StatisticsTable = ({ transactionsSummary, colors, incomeSummary, expenseSu
                     {category.name}
                   </div>
                 </td>
-                <td style={{ textAlign: 'right' }} className={s.tableCell}>{category.total}</td>
+                <td style={{ textAlign: 'right' }} className={s.tableCell}>{category.total.toString().replace('-', '')}</td>
               </tr>
             ))}
           </tbody>

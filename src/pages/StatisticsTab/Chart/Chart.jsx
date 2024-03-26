@@ -21,7 +21,7 @@ const DoughnutChart = ({ transactions, colors, period }) => {
         hoverBackgroundColor: transactions?.map(
           transaction => colors[transaction.name]
         ),
-        cutout: "75%",
+        cutout: '75%',
         borderWidth: 0,
         hoverOffset: 1
       },

@@ -17,9 +17,7 @@
   font-size: var(--primarily-font-size);
   background: rgba(74, 86, 226, 0.1);
 }
-/* .reactSelect {
-  width: 100%;
-} */
+
 .option {
   font-weight: var(--font-weight-regular);
   font-size: var(--primarily-font-size);
@@ -33,7 +31,6 @@
     rgba(106, 70, 165, 0.7) 61.04%,
     rgba(133, 93, 175, 0.7) 100%
   );
-  cursor: pointer;
 }
 
 .option:active {

@@ -1,92 +1,110 @@
-/* @media (max-width: 767px) {
-  .reactSelect__control {
-    background-color: transparent !important;
+@media (max-width: 767px) {
+  .react_select__control {
+    background: rgba(74, 86, 226, 0.1) !important;
     content: rgba(255, 255, 255, 0.6) !important;
     border-style: none !important;
-    border-radius: 0px !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.6) !important;
+    border-radius: 8px !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
     width: 100% !important;
+    width: 280px !important;
+    height: 50px !important;
   }
-  .reactSelect__menu {
+  .react_select__menu {
     font-size: 16px;
     color: white;
     background-color: transparent !important;
   }
 
-  .reactSelect__single-value {
+  .react_select__single-value {
     color: white !important;
   }
 
-  .reactSelect__indicator-separator {
+  .react_select__indicator-separator {
     width: 0px !important;
   }
 
-  .reactSelect__dropdown-indicator {
+  .react_select__dropdown-indicator {
     color: rgba(255, 255, 255, 0.6) !important;
   }
 
-  .reactSelect__menu-list {
+  .react_select__menu-list {
     backdrop-filter: blur(100px) !important;
     background: rgba(83, 61, 172, 50) !important;
   }
 }
 
 @media (min-width: 768px) {
-  .reactSelect__control {
-    background-color: transparent !important;
+  .react_select__control {
+    background: rgba(74, 86, 226, 0.1) !important;
+    content: rgba(255, 255, 255, 0.6) !important;
     border-style: none !important;
-    border-radius: 0px !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.6) !important;
-    width: 100% !important;
+    border-radius: 8px !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 160px !important;
+    height: 50px !important;
   }
 
-  .reactSelect__menu {
+  .react_select__menu {
     font-size: 16px;
     color: white;
     background-color: transparent !important;
   }
 
-  .reactSelect__single-value {
+  .react_select__single-value {
     color: white !important;
   }
 
-  .reactSelect__indicator-separator {
+  .react_select__indicator-separator {
     width: 0px !important;
   }
 
-  .reactSelect__dropdown-indicator {
+  .react_select__dropdown-indicator {
     color: rgba(255, 255, 255, 0.6) !important;
   }
 
-  .reactSelect__menu-list {
+  .react_select__menu-list {
     backdrop-filter: blur(100px) !important;
     background: rgba(83, 61, 172, 85) !important;
+    cursor: pointer;
   }
-  .reactSelect-container .reactSelect__option {
+  .react_select_container .react_select__option {
     background-color: transparent !important;
   }
 
-  .reactSelect-container .reactSelect__option--is-focused {
-    color: rgb(0, 134, 141) !important;
+  .react_select_container .react_select__option--is-focused {
+    color: rgb(255, 134, 141) !important;
     background-color: rgba(255, 255, 255, 0.1) !important;
   }
+}
+
+.react_select_container_special .react_select__dropdown-indicator {
+  transform: rotate(180deg);
 }
 
 @media (max-width: 767px) {
-  .reactSelect-container .reactSelect__option {
+  .react_select_container .react_select__option {
     background-color: transparent !important;
   }
-  .reactSelect-container .reactSelect__option:hover {
-    color: rgb(0, 134, 141) !important;
+  .react_select_container .react_select__option:hover {
+    color: rgb(255, 134, 141) !important;
     background-color: rgba(255, 255, 255, 0.1) !important;
   }
-  .reactSelect-container .reactSelect__option--is-focused {
-    color: rgb(0, 134, 141) !important;
+  .react_select_container .react_select__option--is-focused {
+    color: rgb(255, 134, 141) !important;
     background-color: rgba(255, 255, 255, 0.1) !important;
   }
 }
 
-.reactSelect__placeholder {
+@media (min-width: 1280px) {
+  .react_select__control {
+    width: 182px !important;
+  }
+}
+
+.react_select__placeholder {
   color: rgba(255, 255, 255, 0.6) !important;
   font-size: 18px !important;
-} */
+}
