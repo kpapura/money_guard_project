@@ -8,7 +8,7 @@ import {
 } from '../../redux/currencyRate/currencyRateSlice';
 import {fetchCurrencyRate} from '../../redux/currencyRate/operations'
 import s from './CurrenceRate.module.css';
-export { currencyImages } from "./CurrencyImages/CurrencyImages"
+import currencyImages from './CurrencyImages';
 
 function CurrencyRates() {
   const dispatch = useDispatch();
