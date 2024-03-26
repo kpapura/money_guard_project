@@ -1,4 +1,4 @@
-export function currencyImages(isRetina, isBigScreen, isTabletOrMobile) {
+function currencyImages(isRetina, isBigScreen, isTabletOrMobile) {
   let imageSrc = "";
   let secondImageSrc = "";
 
@@ -28,3 +28,5 @@ export function currencyImages(isRetina, isBigScreen, isTabletOrMobile) {
 
   return { imageSrc, secondImageSrc };
 }
+
+export default currencyImages
