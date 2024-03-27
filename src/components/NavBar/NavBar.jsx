@@ -15,7 +15,7 @@ const NavBar = () => {
       <div className={s.navLinkWrapper}>
         {screenWidth < 768 ? (
           <NavLink
-            to="/"
+            to="home"
             className={({ isActive }) =>
               clsx(s.navLinkTitle, isActive && s.active)
             }
@@ -28,7 +28,7 @@ const NavBar = () => {
           </NavLink>
         ) : (
           <NavLink
-            to="/"
+            to="home"
             className={({ isActive }) =>
               clsx(s.navLinkTitle, isActive && s.active)
             }

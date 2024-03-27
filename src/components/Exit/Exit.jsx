@@ -15,7 +15,7 @@ export const Exit = ({ closeModal }) => {
     dispatch(logoutThunk());
     dispatch(logout());
     closeModal();
-    navigate('/login');
+    navigate('/');
   };
   return (
     <div className={s.wrap}>
