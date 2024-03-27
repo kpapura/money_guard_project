@@ -1,8 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import clsx from 'clsx';
+
 import useResize from '../../hooks/useResize';
 
-import clsx from 'clsx';
 import s from './NavBar.module.css';
 import sprite from '../../img/sprite.svg';
 

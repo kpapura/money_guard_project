@@ -24,7 +24,7 @@ const DoughnutChart = ({ transactions, colors, period }) => {
         ),
         cutout: '75%',
         borderWidth: 0,
-        hoverOffset: 1
+        hoverOffset: 1,
       },
     ],
   };
@@ -32,8 +32,8 @@ const DoughnutChart = ({ transactions, colors, period }) => {
   return (
     <div className={s.chartContainer}>
       <div className={s.chartWrapper}>
-        <Doughnut data={data} className={s.doughnut}/>
-        <p className={s.periodText}> ₴ {formattedPeriod}</p> 
+        <Doughnut data={data} className={s.doughnut} />
+        <p className={s.periodText}> ₴ {formattedPeriod}</p>
       </div>
     </div>
   );

@@ -27,6 +27,7 @@ export function Form({
     formState: { errors },
     setValue,
   } = useForm({ resolver: yupResolver(schema), mode: 'onChange' });
+
   const [selectedOption, setSelectedOption] = useState(null);
   const [type, setType] = useState('');
   const [startDate, setStartDate] = useState(null);
@@ -36,6 +37,7 @@ export function Form({
     content ? setType(content.type) : setType('EXPENSE');
     setValue('amount', content && +content.amount.toString().replace('-', ''));
     setValue('comment', content && content.comment);
+    content && setStartDate(content.transactionDate);
   }, [content, setValue]);
 
   const categoriesValues = useMemo(() => {
@@ -52,29 +54,30 @@ export function Form({
 
   const handleChange = selectedOption => {
     setSelectedOption(selectedOption);
+    setIsHidden(true);
   };
-  // || categoriesValues[0].value
+
   const submit = data => {
-    if (typeForm === 'add' && (type === 'EXPENSE' && selectedOption) || (type === 'INCOME')) {
+    if (
+      (typeForm === 'add' && type === 'EXPENSE' && selectedOption) ||
+      type === 'INCOME'
+    ) {
       onDataSubmit({
-        transactionDate: formatDate(startDate),
+        transactionDate: startDate,
         amount: type === 'EXPENSE' ? +`-${data.amount}` : +data.amount,
         comment: data.comment,
         type: type,
-        categoryId: 
+        categoryId:
           type === 'EXPENSE'
             ? selectedOption?.value
             : '063f1132-ba5d-42b4-951d-44011ca46262',
       });
-      setIsHidden(true);
     } else if (typeForm === 'add' && !selectedOption) {
       setIsHidden(false);
       return;
-    } else {
+    } else if (typeForm === 'edit') {
       onDataSubmit({
-        transactionDate: content
-          ? content.transactionDate
-          : formatDate(startDate),
+        transactionDate: startDate,
         amount: type === 'EXPENSE' ? +`-${data.amount}` : +data.amount,
         comment: data.comment,
       });
@@ -140,7 +143,6 @@ export function Form({
                 options={categoriesValues}
                 placeholder="Select category"
                 defaultValue={defaultValue && defaultValue}
-                // : categoriesValues[0]
                 onChange={handleChange}
                 isDisabled={typeForm === 'edit'}
               />
@@ -161,11 +163,11 @@ export function Form({
             <div className={s.svgBox}>
               <DatePicker
                 className={s.customInput}
-                selected={content ? content.transactionDate : startDate}
+                selected={startDate}
                 placeholderText="Enter the date"
                 onChange={date => {
                   setValue('transactionDate', date);
-                  setStartDate(date);
+                  setStartDate(formatDate(date));
                 }}
               />
               <svg width="36" height="36">

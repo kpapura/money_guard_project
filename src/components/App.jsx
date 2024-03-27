@@ -13,6 +13,7 @@ import { refreshThunk } from '../redux/auth/operations';
 import { selectIsLoggedIn, selectIsRefresh } from '../redux/auth/authSlice';
 import { fetchTransactionCategoriesThunk } from '../redux/transactions/operations';
 import { useDashboard } from '../hooks/useDashboard.jsx';
+
 import 'modern-normalize';
 
 const Login = lazy(() => import('../pages/Login/Login'));
@@ -26,20 +27,11 @@ const StatisticsTab = lazy(() =>
 function App() {
   const isAuth = useSelector(selectIsLoggedIn);
   const isRefreshing = useSelector(selectIsRefresh);
-  const {
-    isDesktopOrLaptop,
-    isBigScreen,
-    isTabletOrMobile,
-    isRetina,
-    isMobile,
-  } = useDashboard();
+  const { isMobile } = useDashboard();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(refreshThunk());
-    if (!isAuth) {
-      return;
-    }
     dispatch(fetchTransactionCategoriesThunk());
   }, [dispatch]);
 

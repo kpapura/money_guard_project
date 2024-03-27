@@ -1,40 +1,46 @@
+import currency_desk2x from '../../img/images/currency_desk@2x.webp';
+import line_desc_2x from '../../img/images/line_desc_2x.webp';
+
+import currency_tablet2x from '../../img/images/currency_tablet@2x.webp';
+import line_desc_tab_2x from '../../img/images/line_desc_tab_2x.webp';
+
+import currency_mobile2x from '../../img/images/currency_mobile@2x.webp';
+import line_desc_mob_2x from '../../img/images/line_desc_mob_2x.webp';
+
+import currency_desk from '../../img/images/currency_desk.webp';
+import line_desc_1x from '../../img/images/line_desc_1x.webp';
+
+import currency_tablet from '../../img/images/currency_tablet.webp';
+import line_desc_tab_1x from '../../img/images/line_desc_tab_1x.webp';
+
+import currency_mobile from '../../img/images/currency_mobile.webp';
+import line_desc_mob_1x from '../../img/images/line_desc_mob_1x.webp';
+
 function currencyImages(isRetina, isBigScreen, isTabletOrMobile) {
   let imageSrc = '';
   let secondImageSrc = '';
 
   if (isRetina) {
     if (isBigScreen) {
-      imageSrc = './img/images/currency_desk@2x.webp';
-      secondImageSrc = './img/images/line_desc_2x.webp';
-      // imageSrc = "../images/currency_desk@2x.webp"
-      // secondImageSrc = "../images/line_desc_2x.webp";
+      imageSrc = currency_desk2x;
+      secondImageSrc = line_desc_2x;
     } else if (isTabletOrMobile) {
-      imageSrc = './img/images/currency_tablet@2x.webp';
-      secondImageSrc = './img/images/line_desc_tab_2x.webp';
-      // imageSrc = "..images/currency_tablet@2x.webp";
-      // secondImageSrc = "../images/line_desc_tab_2x.webp";
+      imageSrc = currency_tablet2x;
+      secondImageSrc = line_desc_tab_2x;
     } else {
-      imageSrc = '../../img/images/currency_mobile@2x.webp';
-      secondImageSrc = '../../img/images/line_desc_mob_2x.webp';
-      // imageSrc = "../images/currency_mobile@2x.webp";
-      // secondImageSrc = "../img/images/line_desc_mob_2x.webp";
+      imageSrc = currency_mobile2x;
+      secondImageSrc = line_desc_mob_2x;
     }
   } else {
     if (isBigScreen) {
-      imageSrc = './img/images/currency_desk.webp';
-      secondImageSrc = './img/images/line_desc_1x.webp';
-      // imageSrc = "../images/currency_desk.webp";
-      // secondImageSrc = "../images/line_desc_1x.webp";
+      imageSrc = currency_desk;
+      secondImageSrc = line_desc_1x;
     } else if (isTabletOrMobile) {
-      imageSrc = './img/images/currency_tablet.webp';
-      secondImageSrc = './img/images/line_desc_tab_1x.webp';
-      // imageSrc = "../images/currency_tablet.webp";
-      // secondImageSrc = "../images/line_desc_tab_1x.webp";
+      imageSrc = currency_tablet;
+      secondImageSrc = line_desc_tab_1x;
     } else {
-      imageSrc = '../../img/images/currency_mobile.webp';
-      secondImageSrc = '../../img/images/line_desc_mob_1x.webp';
-      // imageSrc = "../images/currency_mobile.webp";
-      // secondImageSrc = "../img/images/line_desc_mob_1x.webp";
+      imageSrc = currency_mobile;
+      secondImageSrc = line_desc_mob_1x;
     }
   }
 

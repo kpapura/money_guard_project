@@ -1,10 +1,12 @@
 import React from 'react';
-
-import s from './Exit.module.css';
 import { useDispatch } from 'react-redux';
-import { logout } from '../../redux/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
+
+import { logout } from '../../redux/auth/authSlice';
 import { logoutThunk } from '../../redux/auth/operations';
+
+import sprite from '../../img/sprite.svg';
+import s from './Exit.module.css';
 
 export const Exit = ({ closeModal }) => {
   const navigate = useNavigate();
@@ -19,7 +21,7 @@ export const Exit = ({ closeModal }) => {
     <div className={s.wrap}>
       <a href="" className={s.logo}>
         <svg width="36" height="36">
-          <use href="../../img/sprite.svg#icon-logo"></use>
+          <use xlinkHref={`${sprite}#icon-logo`}></use>
         </svg>
         Money Guard
       </a>

@@ -24,6 +24,7 @@ const persistConfig = {
 
 const currencyPersistConfig = {
   key: 'root',
+  version: 1,
   storage,
 };
 
@@ -31,10 +32,7 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, authReducer),
     transactions: transactionsReducer,
-     currency:  persistReducer(
-  currencyPersistConfig,
-  currencyReducer
-),
+    currency: persistReducer(currencyPersistConfig, currencyReducer),
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
@@ -46,4 +44,4 @@ export const store = configureStore({
   devTools: process.env.NODE_ENV !== 'production',
 });
 
-export const persistor = persistStore(store)
+export const persistor = persistStore(store);

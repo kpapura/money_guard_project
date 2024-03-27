@@ -1,4 +1,5 @@
 import React from 'react';
+
 import s from '../Form.module.css';
 
 const FormInput = ({ name, register, errors, placeholder, className }) => {

@@ -1,8 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { useDashboard } from '../../../hooks/useDashboard';
 import { deleteTransactionThunk } from '../../../redux/transactions/operations';
 import { selectTransactionCategories } from '../../../redux/transactions/transactionsSlice';
+
 import sprite from '../../../img/sprite.svg';
 import s from './TransactionsItem.module.css';
 
@@ -31,6 +33,8 @@ const TransactionsItem = ({ transaction, handleEditItem }) => {
 
   const transactionTextColor =
     type.toLowerCase() === 'income' ? s.income_text : s.expense_text;
+  
+  const formattedAmount = amount.toLocaleString('ru-RU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
   return (
     <>
@@ -59,7 +63,7 @@ const TransactionsItem = ({ transaction, handleEditItem }) => {
               </tr>
               <tr className={s.transaction_row_mobile}>
                 <td className={s.transaction_first_column}>Sum</td>
-                <td className={transactionTextColor}>{amount}</td>
+                <td className={transactionTextColor}>{formattedAmount}</td>
               </tr>
               <tr className={s.transaction_row_mobile}>
                 <td>
@@ -103,7 +107,7 @@ const TransactionsItem = ({ transaction, handleEditItem }) => {
             className={`${s.transaction_colum} ${transactionTextColor}`}
             style={{ textAlign: 'right' }}
           >
-            {amount}
+            {formattedAmount}
           </td>
           <td className={s.transaction_colum}>
             <div className={s.btn_wrapper}>
