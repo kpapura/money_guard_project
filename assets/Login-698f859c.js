@@ -1,2 +1,0 @@
-import{A as o,C as t,l as m,k as e}from"./vendor-d6d862b0.js";import{L as i}from"./LoginRegisterForm-ceea509d.js";import{l as n}from"../commonHelpers2.js";const l=o({password:t().required().min(6,"Must be more then 6 symbols").max(12,"Must be less then 12 symbols"),email:t().required().email("Email is not valid")}).required(),h=()=>{const a=m(),s=r=>{a(n(r))};return e.createElement(e.Fragment,null,e.createElement(i,{formType:"login",onDataSubmit:s,schema:l}))};export{h as default};
-//# sourceMappingURL=Login-698f859c.js.map
