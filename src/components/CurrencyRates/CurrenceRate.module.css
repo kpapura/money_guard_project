@@ -5,8 +5,8 @@
   width: 100%;
   overflow: auto;
   justify-content: center;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
   overflow: hidden;
 
   @media screen and (min-width: 678px) and (max-width: 1279px) {
@@ -22,15 +22,19 @@
 
 .secondwrapper {
   width: 320px;
-
+  background-color: rgba(46, 86, 226, 0.1);
+  height: 210px;
+  margin-top: 12px;
   @media screen and (min-width: 678px) and (max-width: 1279px) {
     width: 336px;
     height: 100%;
+    margin-top: 0;
   }
 
   @media screen and (min-width: 1280px) {
     width: 480px;
     height: 100%;
+    margin-top: 0;
   }
 }
 

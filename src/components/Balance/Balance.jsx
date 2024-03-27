@@ -11,7 +11,8 @@ function Balance() {
 
   useEffect(() => {
   balance=dispatch(getBalanceThunk())
-})
+  },[])
+  
   const formattedBalance = balance.toLocaleString('ru-RU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   return (
     <div className={s.wrapper}>

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { PiEyeClosedThin, PiEyeThin } from 'react-icons/pi';
 import ProgressBar from './ProgressBar';
 
+import sprite from '../../img/sprite.svg';
 import s from './LoginRegisterForm.module.css';
 
 const PassInputField = ({
@@ -26,7 +27,7 @@ const PassInputField = ({
         <label className={s.password_label}>
           <div className={s.password_icon}>
             <svg width="20" height="20">
-              <use href="../../img/sprite.svg#icon-lock"></use>
+              <use xlinkHref={`${sprite}#icon-lock`} />
             </svg>
           </div>
           <input
