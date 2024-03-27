@@ -49,15 +49,15 @@ function App() {
         <Routes>
           <Route
             index
-            element={<RestrictedRoute component={Login} redirectTo="/" />}
+            element={<RestrictedRoute component={Login} redirectTo="/home" />}
           />
           <Route
             path="/register"
             element={
-              <RestrictedRoute component={Register} redirectTo="/" />
+              <RestrictedRoute component={Register} redirectTo="/home" />
             }
           />
-          <Route path="/" element={<Layout />}>n
+          <Route path="/home" element={<Layout />}>n
             <Route
               index
               element={<PrivateRoute component={HomeTab} redirectTo="/" />}
@@ -79,7 +79,7 @@ function App() {
           </Route>
           <Route
             path="*"
-            element={!isAuth ? <Navigate to="/login" /> : <Navigate to="/" />}
+            element={!isAuth ? <Navigate to="/login" /> : <Navigate to="/home" />}
           />
         </Routes>
       </Suspense>
