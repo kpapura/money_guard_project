@@ -32,7 +32,6 @@ function App() {
 
   useEffect(() => {
     dispatch(refreshThunk());
-    Navigate
   }, [dispatch]);
 
   useEffect(() => {
