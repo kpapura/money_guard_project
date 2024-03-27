@@ -62,9 +62,6 @@ const StatisticsTab = () => {
     );
   };
 
-  if (transactionsSummaryList.length === 0) {
-    return <h3 className={s.noStat}>No statistics</h3>
-  }
   return (
     <section className={s.statisticsContainer}>
       <h2 className={s.title}>Statistics</h2>

@@ -7,7 +7,7 @@ import s from './Chart.module.css';
 
 const DoughnutChart = ({ transactions, colors, period }) => {
   if (!transactions.length || !colors) {
-    return <div>No data available</div>;
+    return <div className={s.noStat}>No data available</div>;
   }
   const formattedPeriod = period.toFixed(2);
 
