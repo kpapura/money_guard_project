@@ -69,8 +69,19 @@ const slice = createSlice({
         state.error = payload;
         state.loading = false;
         state.isRefresh = false;
+        toast.error(payload);
       })
-
+      .addCase(registerThunk.rejected, (state, { payload }) => {
+        state.error = payload;
+        state.loading = false;
+        state.isRefresh = false;
+        toast.error(payload);
+      })
+      .addCase(refreshThunk.rejected, (state, { payload }) => {
+        state.error = payload;
+        state.loading = false;
+        state.isRefresh = false;
+      })
       .addMatcher(
         isAnyOf(registerThunk.fulfilled, loginThunk.fulfilled),
         (state, { payload }) => {
@@ -108,7 +119,6 @@ const slice = createSlice({
           state.error = payload;
           state.loading = false;
           state.isRefresh = false;
-          toast.error(payload);
         }
       );
   },
