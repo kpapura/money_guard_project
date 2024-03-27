@@ -126,12 +126,7 @@
     bottom: 40px;
   }
 }
-@media screen and (min-width: 1280px) {
-  .btn_add {
-    right: 40px;
-    bottom: 40px;
-  }
-}
+
 
 .icon_plus {
   width: 20px;

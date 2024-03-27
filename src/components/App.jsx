@@ -14,8 +14,6 @@ import { selectIsLoggedIn, selectIsRefresh } from '../redux/auth/authSlice';
 import { fetchTransactionCategoriesThunk } from '../redux/transactions/operations';
 import { useDashboard } from '../hooks/useDashboard.jsx';
 
-import 'modern-normalize';
-
 const Login = lazy(() => import('../pages/Login/Login'));
 const Register = lazy(() => import('../pages/Register/Register'));
 const HomeTab = lazy(() => import('../pages/HomeTab/HomeTab'));
@@ -23,6 +21,8 @@ const CurrencyRates = lazy(() => import('./CurrencyRates/CurrenceRate'));
 const StatisticsTab = lazy(() =>
   import('../pages/StatisticsTab/StatisticsTab')
 );
+
+import 'modern-normalize';
 
 function App() {
   const isAuth = useSelector(selectIsLoggedIn);
