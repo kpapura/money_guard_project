@@ -32,7 +32,9 @@ function App() {
 
   useEffect(() => {
     dispatch(refreshThunk());
-    dispatch(fetchTransactionCategoriesThunk());
+    if (isAuth) {
+      dispatch(fetchTransactionCategoriesThunk());
+    }
   }, [dispatch]);
 
   return isRefreshing ? (
