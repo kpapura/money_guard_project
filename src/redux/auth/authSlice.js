@@ -78,6 +78,7 @@ const slice = createSlice({
           state.user.username = payload.user.username;
           state.user.email = payload.user.email;
           state.user.password = payload.user.password;
+          state.balance = payload.user.balance;
           state.token = payload.token;
           state.loading = false;
           state.isLoggedIn = true;
