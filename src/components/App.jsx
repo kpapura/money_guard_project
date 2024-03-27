@@ -63,14 +63,14 @@ function App() {
               element={<PrivateRoute component={HomeTab} redirectTo="/" />}
             />
             <Route
-              path="/statistics"
+              path="statistics"
               element={
                 <PrivateRoute component={StatisticsTab} redirectTo="/" />
               }
             />
             {isMobile && (
               <Route
-                path="/currency"
+                path="currency"
                 element={
                   <PrivateRoute component={CurrencyRates} redirectTo="/" />
                 }
