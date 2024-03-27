@@ -19,7 +19,7 @@ const TransactionsItem = ({ transaction, handleEditItem }) => {
 
   function getCategoryName(id) {
     const category = categories.find(category => category.id === id);
-    return category ? category.name : 'Unknown Category';
+    return category ? category.name : 'Income';
   }
 
   const handleDeleteTransaction = () => {

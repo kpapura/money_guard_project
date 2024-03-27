@@ -23,6 +23,8 @@ const TransactionsList = () => {
   const transactions = useSelector(selectTransactions);
   const categories = useSelector(selectTransactionCategories);
 
+  
+  
   const { isBigScreenOrTablet, isMobile } = useDashboard();
 
   if (isOpen) {
@@ -40,7 +42,6 @@ const TransactionsList = () => {
     toggle();
     setEditContent(null);
   };
-
   return (
     <section className={s.transactions_section}>
       <div className={s.transactions_container}>

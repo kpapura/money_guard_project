@@ -6,10 +6,9 @@ import Chart from 'chart.js/auto';
 import s from './Chart.module.css';
 
 const DoughnutChart = ({ transactions, colors, period }) => {
-  if (!transactions || !colors) {
+  if (!transactions.length || !colors) {
     return <div>No data available</div>;
   }
-
   const formattedPeriod = period.toFixed(2);
 
   const data = {

@@ -16,7 +16,6 @@ const StatisticsTable = ({
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
-
   return (
     <div className={s.tableParagraphContainer}>
       <div className={s.tableContainer}>
