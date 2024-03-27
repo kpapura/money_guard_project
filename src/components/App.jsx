@@ -57,7 +57,7 @@ function App() {
               <RestrictedRoute component={Register} redirectTo="/home" />
             }
           />
-          <Route path="/" element={<Layout />}>n
+          <Route path="/" element={<Layout />}>
             <Route
               path="/home"
               element={<PrivateRoute component={HomeTab} redirectTo="/" />}
