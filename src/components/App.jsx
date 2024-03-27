@@ -79,7 +79,7 @@ function App() {
           </Route>
           <Route
             path="*"
-            element={!isAuth ? <Navigate to="/login" /> : <Navigate to="/home" />}
+            element={!isAuth ? <Navigate to="/login" /> : <Navigate to="/" />}
           />
         </Routes>
       </Suspense>
