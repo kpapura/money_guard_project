@@ -10,7 +10,9 @@ import App from './components/App';
 import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <BrowserRouter basename='/money_guard_project'>
+  // <BrowserRouter basename='/money_guard_project'>
+    <BrowserRouter>
+
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <App />
