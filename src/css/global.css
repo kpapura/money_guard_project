@@ -1,9 +1,3 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
 @import './main.css';
 
 @font-face {
@@ -29,9 +23,8 @@
 body {
   font-family: var(--font-family), sans-serif;
   font-weight: var(--font-weight-regular);
-  /* background-color: #231a64; */
-  /* backdrop-filter: blur(120px); */
-background-color: #101010;
+  background-color: #101010;
+
   @media screen and (min-width: 768px) {
     overflow: hidden;
   }

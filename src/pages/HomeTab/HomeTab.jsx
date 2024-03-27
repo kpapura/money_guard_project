@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchTransactionsDataThunk } from '../../redux/transactions/operations';
 
 import TransactionsList from '../../components/Transactions/TransactionsList';
 import Balance from '../../components/Balance/Balance';
+
+import { fetchTransactionsDataThunk } from '../../redux/transactions/operations';
 import useResize from '../../hooks/useResize';
 
 const HomeTab = () => {

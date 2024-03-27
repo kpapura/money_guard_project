@@ -1,4 +1,6 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
+
 import {
   getBalanceThunk,
   loginThunk,
@@ -63,6 +65,12 @@ const slice = createSlice({
         state.isRefresh = false;
         state.loading = false;
       })
+      .addCase(loginThunk.rejected, (state, { payload }) => {
+        state.error = payload;
+        state.loading = false;
+        state.isRefresh = false;
+        toast.error(payload);
+      })
 
       .addMatcher(
         isAnyOf(registerThunk.fulfilled, loginThunk.fulfilled),
@@ -75,6 +83,7 @@ const slice = createSlice({
           state.isLoggedIn = true;
           state.loading = false;
           state.isRefresh = false;
+          toast.success(`Welcome, ${payload.user.username}`);
         }
       )
       .addMatcher(

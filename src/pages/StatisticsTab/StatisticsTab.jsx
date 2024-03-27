@@ -1,7 +1,10 @@
-// StatisticsTab.jsx
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
+import StatisticsTable from './StatisticsTable/StatisticsTable';
+import DoughnutChart from './Chart/Chart';
 import StatisticsDashboard from './StatisticsDashboard/StatisticsDashboard';
+
 import { fetchTransactionSummaryControllerThunk } from '../../redux/transactions/operations';
 import {
   selectCategoriesSummary,
@@ -9,11 +12,10 @@ import {
   selectIncomeSummary,
   selectPeriodTotal,
   selectMonth,
-  selectYear
+  selectYear,
 } from '../../redux/transactions/transactionsSlice';
+
 import s from './StatisticsTab.module.css';
-import StatisticsTable from './StatisticsTable/StatisticsTable';
-import DoughnutChart from './Chart/Chart';
 
 const StatisticsTab = () => {
   const dispatch = useDispatch();
@@ -49,11 +51,15 @@ const StatisticsTab = () => {
   }, [transactionsSummaryList]);
 
   const handleMonthChange = month => {
-    dispatch(fetchTransactionSummaryControllerThunk({ month, year: selectedYear }));
+    dispatch(
+      fetchTransactionSummaryControllerThunk({ month, year: selectedYear })
+    );
   };
 
   const handleYearChange = year => {
-    dispatch(fetchTransactionSummaryControllerThunk({ month: selectedMonth, year }));
+    dispatch(
+      fetchTransactionSummaryControllerThunk({ month: selectedMonth, year })
+    );
   };
 
   return (

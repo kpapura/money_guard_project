@@ -84,13 +84,7 @@
   fill: rgba(114, 75, 239, 1);
 }
 
-/*! ===============/ MOBILE VERSION =================== */
-/** =============== TAB VERSION ======================= */
-
 @media screen and (min-width: 768px) {
-  .navLinkContainer {
-  }
-
   .navLinkWrapper {
     display: flex;
     flex-direction: column;
@@ -115,15 +109,9 @@
   }
 }
 
-/*! ===============/ TAB VERSION ======================= */
-/** =============== DESK VERSION ======================= */
-
 @media screen and (min-width: 1280px) {
-  /* this screen has been inherited the TAB VERSION */
   .navLinkContainer {
     margin-bottom: 28px;
     padding-left: 16px;
   }
 }
-
-/*! ===============/ DESK VERSION ======================= */

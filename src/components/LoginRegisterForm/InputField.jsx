@@ -1,5 +1,7 @@
 import React from 'react';
+
 import s from './LoginRegisterForm.module.css';
+import sprite from '../../img/sprite.svg';
 
 const InputField = ({ register, errors, name, placeholder, className }) => {
   return (
@@ -9,13 +11,13 @@ const InputField = ({ register, errors, name, placeholder, className }) => {
           {name === 'username' ? (
             <div className={s.name_user_icon}>
               <svg width="20" height="24">
-                <use href="../../img/sprite.svg#icon-user"></use>
+                <use xlinkHref={`${sprite}#icon-user`}></use>
               </svg>{' '}
             </div>
           ) : (
             <div className={s.icon_email_cont}>
               <svg width="20" height="24">
-                <use href="../../img/sprite.svg#icon-email"></use>
+                <use xlinkHref={`${sprite}#icon-email`}></use>
               </svg>
             </div>
           )}

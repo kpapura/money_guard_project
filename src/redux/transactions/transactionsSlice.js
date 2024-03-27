@@ -1,4 +1,6 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
+
 import {
   addTransactionThunk,
   deleteTransactionThunk,
@@ -110,6 +112,7 @@ const transactionsSlice = createSlice({
         (state, { payload }) => {
           state.error = payload;
           state.loading = false;
+          toast.error(payload);
         }
       );
   },

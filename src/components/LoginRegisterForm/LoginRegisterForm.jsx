@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { NavLink } from 'react-router-dom';
-import s from './LoginRegisterForm.module.css';
-import { yupResolver } from '@hookform/resolvers/yup';
+
 import InputField from './InputField';
 import PassInputField from './PassInputField';
+
+import { yupResolver } from '@hookform/resolvers/yup';
+
 import sprite from '../../img/sprite.svg';
+import s from './LoginRegisterForm.module.css';
 
 const LoginRegisterForm = ({ onDataSubmit, formType, schema }) => {
   const [size, setSize] = useState(0);
@@ -27,12 +30,12 @@ const LoginRegisterForm = ({ onDataSubmit, formType, schema }) => {
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
+
   const submit = dataS => {
     const { passwordConfirmation, ...data } = dataS;
     onDataSubmit(data);
     reset();
   };
-
   return (
     <>
       <section

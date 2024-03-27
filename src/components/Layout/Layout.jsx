@@ -3,15 +3,15 @@ import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 
 import Loader from '../Loader/Loader';
+import Header from '../Header/Header';
+import Balance from '../Balance/Balance';
+import CurrencyRates from '../CurrencyRates/CurrenceRate';
+import NavBar from '../NavBar/NavBar';
 
 import useResize from '../../hooks/useResize';
 import { selectIsLoggedIn, selectIsLoading } from '../../redux/auth/authSlice';
 
 import s from './Layout.module.css';
-import Header from '../Header/Header';
-import Balance from '../Balance/Balance';
-import CurrencyRates from '../CurrencyRates/CurrenceRate';
-import NavBar from '../NavBar/NavBar';
 
 const Layout = () => {
   const isLoading = useSelector(selectIsLoading);
@@ -26,8 +26,8 @@ const Layout = () => {
     <>
       {isLoading && <Loader />}
       <Header />
-        <div className={s.walletContainer}>
-           <div className={s.backgroundContainer_home}>
+      <div className={s.walletContainer}>
+        <div className={s.backgroundContainer_home}>
           <div></div>
           <div></div>
           <div></div>

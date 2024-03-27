@@ -30,7 +30,7 @@
 
 .periodText {
   position: absolute;
-  bottom: 150px;
+  bottom: 130px;
   left: 50%;
   transform: translateX(-50%);
   font-weight: 600;
