@@ -30,14 +30,13 @@ export function Form({
 
   const [selectedOption, setSelectedOption] = useState(null);
   const [type, setType] = useState('');
-  const [startDate, setStartDate] = useState(null);
+  const [startDate, setStartDate] = useState(new Date());
   const [isHidden, setIsHidden] = useState(true);
 
   useEffect(() => {
     content ? setType(content.type) : setType('EXPENSE');
     setValue('amount', content && +content.amount.toString().replace('-', ''));
     setValue('comment', content && content.comment);
-    content && setStartDate(content.transactionDate);
   }, [content, setValue]);
 
   const categoriesValues = useMemo(() => {
@@ -63,7 +62,7 @@ export function Form({
       type === 'INCOME'
     ) {
       onDataSubmit({
-        transactionDate: startDate,
+        transactionDate: formatDate(startDate),
         amount: type === 'EXPENSE' ? +`-${data.amount}` : +data.amount,
         comment: data.comment,
         type: type,
@@ -77,7 +76,7 @@ export function Form({
       return;
     } else if (typeForm === 'edit') {
       onDataSubmit({
-        transactionDate: startDate,
+        transactionDate: content ? content.transactionDate : formatDate(startDate),
         amount: type === 'EXPENSE' ? +`-${data.amount}` : +data.amount,
         comment: data.comment,
       });
@@ -164,10 +163,9 @@ export function Form({
               <DatePicker
                 className={s.customInput}
                 selected={startDate}
-                placeholderText="Enter the date"
                 onChange={date => {
                   setValue('transactionDate', date);
-                  setStartDate(formatDate(date));
+                  setStartDate(date);
                 }}
               />
               <svg width="36" height="36">
