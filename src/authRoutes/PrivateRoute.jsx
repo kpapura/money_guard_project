@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom';
 
 import { selectIsLoggedIn } from '../redux/auth/authSlice';
 
-const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {
+const PrivateRoute = ({ component: Component, redirectTo = '/login' }) => {
   const isAuth = useSelector(selectIsLoggedIn);
 
   return !isAuth ? <Navigate to={redirectTo} /> : <Component />;
