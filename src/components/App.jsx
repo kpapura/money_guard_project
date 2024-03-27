@@ -32,10 +32,14 @@ function App() {
 
   useEffect(() => {
     dispatch(refreshThunk());
-    if (isAuth) {
-      dispatch(fetchTransactionCategoriesThunk());
-    }
   }, [dispatch]);
+
+  useEffect(() => {
+    if (!isAuth) {
+      return;
+    }
+    dispatch(fetchTransactionCategoriesThunk());
+  }, [dispatch, isAuth]);
 
   return isRefreshing ? (
     <Loader />
