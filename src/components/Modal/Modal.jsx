@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import s from './Modal.module.css';
 
+import s from './Modal.module.css';
+import sprite from "../../img/sprite.svg"
 const modalRoot = document.querySelector('#modal');
 
 const Modal = ({ closeModal, children }) => {
@@ -32,7 +33,7 @@ const Modal = ({ closeModal, children }) => {
       <div className={s.modalContent}>
         <button className={s.closeButton} onClick={closeModal}>
           <svg width="16" height="16">
-            <use href="../../img/sprite.svg#icon-close"></use>
+            <use xlinkHref={`${sprite}#icon-close`} />
           </svg>
         </button>
         {children}
