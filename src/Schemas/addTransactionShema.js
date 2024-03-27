@@ -5,7 +5,7 @@ export const addTransactionShema = yup.object({
     .string()
     .required(`Describe your transaction`)
     .min(5, 'Give more details'),
-  transactionDate: yup.date().required('Please choose the date'),
+  transactionDate: yup.date(),
   amount: yup
     .number()
     .typeError('Please enter the number')
