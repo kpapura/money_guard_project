@@ -48,18 +48,18 @@ function App() {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route
-            index
-            element={<RestrictedRoute component={Login} redirectTo="/home" />}
+            path="login"
+            element={<RestrictedRoute component={Login} redirectTo="/" />}
           />
           <Route
             path="register"
             element={
-              <RestrictedRoute component={Register} redirectTo="/home" />
+              <RestrictedRoute component={Register} redirectTo="/" />
             }
           />
           <Route path="/" element={<Layout />}>
             <Route
-              path="/home"
+              index
               element={<PrivateRoute component={HomeTab} redirectTo="/" />}
             />
             <Route
