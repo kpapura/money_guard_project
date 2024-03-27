@@ -32,6 +32,7 @@ function App() {
 
   useEffect(() => {
     dispatch(refreshThunk());
+    Navigate
   }, [dispatch]);
 
   useEffect(() => {
@@ -79,7 +80,7 @@ function App() {
           </Route>
           <Route
             path="*"
-            element={!isAuth ? <Navigate to="/" /> : <Navigate to="/home" />}
+            element={!isAuth ? <Navigate to="/login" /> : <Navigate to="/home" />}
           />
         </Routes>
       </Suspense>
