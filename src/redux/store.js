@@ -26,6 +26,7 @@ const currencyPersistConfig = {
   key: 'root',
   version: 1,
   storage,
+  whitelist: ['usdRate','eurRate']
 };
 
 export const store = configureStore({
