@@ -69,7 +69,6 @@ const slice = createSlice({
         state.error = payload;
         state.loading = false;
         state.isRefresh = false;
-        toast.error(payload);
       })
 
       .addMatcher(
@@ -109,6 +108,7 @@ const slice = createSlice({
           state.error = payload;
           state.loading = false;
           state.isRefresh = false;
+          toast.error(payload);
         }
       );
   },
