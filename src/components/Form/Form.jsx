@@ -89,6 +89,7 @@ export function Form({
       setType('EXPENSE');
     }
   };
+
   return (
     <div className={s.container}>
       <form className={s.formWrapper} onSubmit={handleSubmit(submit)}>

@@ -1,113 +1,62 @@
-# Vanilla App Template
+# Money Guard application
+[Live page](https://kpapura.github.io/money_guard_project/)
 
-Цей проект було створено за допомогою Vite. Для знайомства та налаштування
-додаткових можливостей [звернись до документації](https://vitejs.dev/).
+_Role: teamlead, developer_
 
-## Створення репозиторію за шаблоном
+_Team project_
 
-Використовуй цей репозиторій організації GoIT як шаблон для створення
-репозиторію свого проекту. Для цього натисни на кнопку `«Use this template»` і
-обери опцію `«Create a new repository»`, як показано на зображенні.
+This application is designed to help users manage their finances efficiently. With features like user authentication (register, login), transaction management, currency exchange rates, and insightful statistics visualization, application allows users to take control of their financial health. From registering a new account to securely logging out, the application ensures a seamless and intuitive user experience at every step.
 
-![Creating repo from a template step 1](./assets/template-step-1.png)
+Built with React.js and Redux, application provide the latest web technologies to deliver a fast, responsive, and feature-rich financial management solution. Whether you're a seasoned investor or just starting your financial journey, Money Guard is your trusted companion for achieving your financial goals.
 
-На наступному етапі відкриється сторінка створення нового репозиторію. Заповни
-поле його імені, переконайся, що репозиторій публічний, після чого натисни
-кнопку `«Create repository from template»`.
+---
+### Functionality
+This application has the following features:  
+1. _User authentication_:
+   - registration form: allows users to register. Includes input validation using Formik and Yup libraries.
+   - login form: for log in with email and password. Also includes input validation using Formik and Yup libraries.
+2. _Private and public routes_:
+   - private routes are accessible only to authenticated users, such as the user's personal dashboard and transaction history.
+   - public routes, like the registration and login pages, are accessible to all users.
+3. _Navigation_:
+   - navigation is facilitated through a list of NavLink components, directing users to different routes such as the home page, statistics page, and currency page.
+4. _Currency exchange rates_:
+   - the application fetches current currency exchange rates from the Monobank API. To optimize requests, data and timestamp of the last request are stored in localStorage, and subsequent requests are made only if more than an hour has passed since the last request.
+5. _Transaction management_:
+   - form for adding transaction: allows users to add transactions, including type, sum, date, category, and comment. Input validation is performed using Formik and Yup libraries.
+   - form for editing transaction: enables users to edit existing transactions. 
+6. _Transaction statistics_:
+   - the application provides visual representation of transaction statistics, including charts and tables, for the current month. Users can view their spending habits and analyze their financial data.
+7. _Loading indicator_:
+   - a loader component is displayed while asynchronous data is being fetched. It also responds to changes in the Redux store.
+8. _Logout functionality_:
+   - users can log out of their accounts after confirming the action, clearing their session data from both the Redux store and localStorage.
 
-![Creating repo from a template step 2](./assets/template-step-2.png)
+---
+### Technologies
+This application has the following technologies:
+- __HTML__ - a markup language for creating web pages
+- __CSS__ - a stylesheet language for styling web pages
+- __module-css__ - let to write styles in CSS files but consume them as JavaScript objects for additional processing and safety
+- __React__ - a library for web and native user interfaces
+- __Redux__ - a library that provides a structured and predictable way to manage the state of an application
+- __React-DOM__ - a library for working with the DOM in React
+- __Redux-Toolkit__ - a library for working with global state of app
+- __Redux-Persist__ - a state management tool that allows the state in a Redux store to persist across browser and app sessions
+- __axios__ - a library for making HTTP requests
+- __React Router__ - a JavaScript framework that lets handle client and server-side routing in React applications
+- __Formik__ - a library component that helps with building forms
+- __Yup__ - a simple and elegant library for data schema validation
+- __react-responsive__ - a library that makes it easy to apply different styles to your React components based on the screen size
+- __react-loader-spinner__ - a library that provides a wide range of customizable spinners for React applications
+- __react-datepicker__ - a library that allows to pick the dates in the form of months, days, and years
+- __react-chartjs-2__ - a library for making HTML-based charts
+- __react-toastify__ - a library for adding toast notifications to the React application
 
-Після того, як репозиторій буде створено, необхідно перейти в налаштування
-створеного репозиторію на вкладку `Settings` > `Actions` > `General` як показано
-на зображенні.
-
-![Settings GitHub Actions permissions step 1](./assets/gh-actions-perm-1.png)
-
-Проскроливши сторінку до самого кінця, в секції `«Workflow permissions»` обери
-опцію `«Read and write permissions»` і постав галочку в чекбоксі. Це необхідно
-для автоматизації процесу деплою проекту.
-
-![Settings GitHub Actions permissions step 2](./assets/gh-actions-perm-2.png)
-
-Тепер у тебе є особистий репозиторій проекту, зі структурою файлів та папок
-репозиторію-шаблону. Далі працюй з ним, як з будь-яким іншим особистим
-репозиторієм, клонуй його собі на комп'ютер, пиши код, роби коміти та відправляй
-їх на GitHub.
-
-## Підготовка до роботи
-
-1. Переконайся, що на комп'ютері встановлено LTS-версію Node.js.
-   [Скачай та встанови](https://nodejs.org/en/) її якщо необхідно.
-2. Встанови базові залежності проекту в терміналі командою `npm install`.
-3. Запусти режим розробки, виконавши в терміналі команду `npm run dev`.
-4. Перейдіть у браузері за адресою
-   [http://localhost:5173](http://localhost:5173). Ця сторінка буде автоматично
-   перезавантажуватись після збереження змін у файли проекту.
-
-## Файли і папки
-
-- Файли розмітки компонентів сторінки повинні лежати в папці `src/partials` та
-  імпортуватись до файлу `index.html`. Наприклад, файл з розміткою хедера
-  `header.html` створюємо у папці `partials` та імпортуємо в `index.html`.
-- Файли стилів повинні лежати в папці `src/css` та імпортуватись до HTML-файлів
-  сторінок. Наприклад, для `index.html` файл стилів називається `index.css`.
-- Зображення додавай до папки `src/img`. Збирач оптимізує їх, але тільки при
-  деплої продакшн версії проекту. Все це відбувається у хмарі, щоб не
-  навантажувати твій комп'ютер, тому що на слабких компʼютерах це може зайняти
-  багато часу.
-
-## Деплой
-
-Продакшн версія проекту буде автоматично збиратися та деплоїтись на GitHub
-Pages, у гілку `gh-pages`, щоразу, коли оновлюється гілка `main`. Наприклад,
-після прямого пуша або прийнятого пул-реквесту. Для цього необхідно у файлі
-`package.json` змінити значення прапора `--base=/<REPO>/`, для команди `build`,
-замінивши `<REPO>` на назву свого репозиторію, та відправити зміни на GitHub.
-
-```json
-"build": "vite build --base=/<REPO>/",
-```
-
-Далі необхідно зайти в налаштування GitHub-репозиторію (`Settings` > `Pages`) та
-виставити роздачу продакшн версії файлів з папки `/root` гілки `gh-pages`, якщо
-це не було зроблено автоматично.
-
-![GitHub Pages settings](./assets/repo-settings.png)
-
-### Статус деплою
-
-Статус деплою крайнього коміту відображається іконкою біля його ідентифікатора.
-
-- **Жовтий колір** - виконується збірка та деплой проекту.
-- **Зелений колір** - деплой завершився успішно.
-- **Червоний колір** - під час лінтингу, збірки чи деплою сталася помилка.
-
-Більш детальну інформацію про статус можна переглянути натиснувши на іконку, і в
-вікні, що випадає, перейти за посиланням `Details`.
-
-![Deployment status](./assets/deploy-status.png)
-
-### Жива сторінка
-
-Через якийсь час, зазвичай кілька хвилин, живу сторінку можна буде подивитися за
-адресою, вказаною на вкладці `Settings` > `Pages` в налаштуваннях репозиторію.
-Наприклад, ось посилання на живу версію для цього репозиторію
-
-[https://goitacademy.github.io/vanilla-app-template/](https://goitacademy.github.io/vanilla-app-template/).
-
-Якщо відкриється порожня сторінка, переконайся, що у вкладці `Console` немає
-помилок пов'язаних з неправильними шляхами до CSS та JS файлів проекту
-(**404**). Швидше за все у тебе неправильне значення прапора `--base` для
-команди `build` у файлі `package.json`.
-
-## Як це працює
-
-![How it works](./assets/how-it-works.png)
-
-1. Після кожного пуша у гілку `main` GitHub-репозиторію, запускається
-   спеціальний скрипт (GitHub Action) із файлу `.github/workflows/deploy.yml`.
-2. Усі файли репозиторію копіюються на сервер, де проект ініціалізується та
-   проходить лінтинг та збірку перед деплоєм.
-3. Якщо всі кроки пройшли успішно, зібрана продакшн версія файлів проекту
-   відправляється у гілку `gh-pages`. В іншому випадку, у лозі виконання скрипта
-   буде вказано в чому проблема.
+---
+### Instalation
+To run this project just follow these steps:
+- clone the repository using the command _`git clone https://github.com/kpapura/money_guard_project`_
+-  install the dependencies using the command _`npm install`_
+-  start the project using the command _`npm run dev`_
+- you will be redirected to the following address _`http://localhost:3000`_
